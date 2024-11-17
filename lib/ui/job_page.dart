@@ -1,3 +1,4 @@
+import 'package:each_job/ui/widgets/percentile_line.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,14 @@ class JobPage extends StatelessWidget {
                   },
                   choices: regions,
                 ),
+                const SizedBox(height: 50,),
+                const PercentileLine(
+                  bottom: 208,
+                  upper: 651,
+                  median: 400,
+                  oftenSalariesBottom: 325,
+                  oftenSalariesUpper: 511
+                )
               ],
             ),
           ),

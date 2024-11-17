@@ -35,7 +35,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
           child: Material(
             type: MaterialType.card,
             elevation: 10,
-            borderRadius: BorderRadius.circular(AppSizes.textFieldBorderRadius),
+            borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius),
             child: child,
           ),
         );
@@ -48,7 +48,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             Text(widget.label, style: AppTextStyles.commonLabelTextStyle,),
             const SizedBox(height: AppSizes.innerIndent,),
             SizedBox(
-              height: AppSizes.btnHeight,
+              height: AppSizes.commonHeight,
               child: TextField(
                 controller: controller,
                 focusNode: focusNode,

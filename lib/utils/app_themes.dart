@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppThemes{
   static const InputBorder _commonInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(AppSizes.textFieldBorderRadius)),
+    borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius)),
     borderSide: BorderSide(
       color: AppColors.secondaryColor,
       width: 1
