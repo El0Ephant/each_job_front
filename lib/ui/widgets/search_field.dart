@@ -1,3 +1,4 @@
+import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,10 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
         return ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 350,),
           child: Material(
+            clipBehavior: Clip.hardEdge,
+            borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius),
             type: MaterialType.card,
             elevation: 10,
-            borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius),
             child: child,
           ),
         );
@@ -49,13 +51,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             const SizedBox(height: AppSizes.innerIndent,),
             SizedBox(
               height: AppSizes.commonHeight,
-              child: TextField(
-                controller: controller,
-                focusNode: focusNode,
-                decoration: InputDecoration(
-                  hintText: widget.hint,
-                ),
-              ),
+              child: _SearchTextField(controller: controller, focusNode: focusNode, hint: widget.hint)
             ),
           ],
         );
@@ -64,12 +60,21 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
       itemBuilder: (BuildContext context, T value) {
         return Padding(
           padding: const EdgeInsets.symmetric(
-              vertical: AppSizes.innerIndent,
-              horizontal: AppSizes.textFieldIndent
+            vertical: AppSizes.innerIndent,
+            horizontal: AppSizes.textFieldIndent
           ),
           child: Text(value.toString(),
             style: AppTextStyles.commonLabelTextStyle,
           ),
+        );
+      },
+      emptyBuilder: (context) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: AppSizes.innerIndent,
+            horizontal: AppSizes.textFieldIndent
+          ),
+          child: Text("Ничего не найдено", style: AppTextStyles.commonLabelTextStyle),
         );
       },
       onSelected: (value) {
@@ -93,3 +98,71 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
     );
   }
 }
+
+class _SearchTextField extends StatefulWidget {
+  const _SearchTextField({
+    super.key,
+    required this.controller,
+    required this.focusNode,
+    required this.hint
+  });
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final String hint;
+
+  @override
+  State<_SearchTextField> createState() => _SearchTextFieldState();
+}
+
+class _SearchTextFieldState extends State<_SearchTextField> {
+  final _suffixIconSize = 24.0;
+  @override
+  void initState() {
+    super.initState();
+    widget.focusNode.addListener(_onUpdate);
+    widget.controller.addListener(_onUpdate);
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode.removeListener(_onUpdate);
+    widget.controller.removeListener(_onUpdate);
+    super.dispose();
+  }
+
+  void _onUpdate(){
+    setState(() {
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget? suffixIcon;
+    if (widget.focusNode.hasFocus){
+      if (widget.controller.text.isNotEmpty){
+        suffixIcon = InkWell(
+          borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius),
+          onTap: () {
+            widget.controller.clear();
+          },
+          child: Icon(
+            Icons.close_rounded,
+            color: AppColors.main1Color,
+            size: _suffixIconSize,
+          ),
+        );
+      }
+    } else {
+      suffixIcon = Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.main1Color, size: _suffixIconSize,);
+    }
+    return TextField(
+      controller: widget.controller,
+      focusNode: widget.focusNode,
+      decoration: InputDecoration(
+        hintText: widget.hint,
+        suffixIcon: suffixIcon
+      ),
+    );
+  }
+}
+

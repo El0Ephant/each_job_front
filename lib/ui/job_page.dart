@@ -32,7 +32,17 @@ class JobPage extends StatelessWidget {
                   },
                   choices: regions,
                 ),
-                const SizedBox(height: 50,),
+                const SizedBox(height: AppSizes.outerIndent,),
+                SizedBox(
+                  height: AppSizes.commonHeight,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                    },
+                    child: Text("Показать статистику")
+                  ),
+                ),
+                const SizedBox(height: AppSizes.outerIndent,),
                 const PercentileLine(
                   bottom: 208,
                   upper: 651,

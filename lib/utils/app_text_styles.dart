@@ -7,6 +7,11 @@ abstract class AppTextStyles{
     fontSize: 16,
     fontWeight: FontWeight.normal
   );
+  static const mainButtonTextStyle = TextStyle(
+    color: AppColors.backgroundColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w500
+  );
   static const plotSecondaryTextStyle = TextStyle(
     color: AppColors.secondaryColor,
     height: 1.4,

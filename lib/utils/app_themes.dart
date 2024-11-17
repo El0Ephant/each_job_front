@@ -14,15 +14,15 @@ abstract class AppThemes{
 
   static ThemeData commonTheme = ThemeData(
     colorScheme: const ColorScheme(
-        brightness: Brightness.light,
-        primary: AppColors.main1Color,
-        onPrimary: AppColors.onMain1Color,
-        secondary: AppColors.secondaryColor,
-        onSecondary: AppColors.main1Color,
-        error: AppColors.main2Color,
-        onError: AppColors.onMain1Color,
-        surface: AppColors.backgroundColor,
-        onSurface: AppColors.strokeColor
+      brightness: Brightness.light,
+      primary: AppColors.main1Color,
+      onPrimary: AppColors.onMain1Color,
+      secondary: AppColors.secondaryColor,
+      onSecondary: AppColors.main1Color,
+      error: AppColors.main2Color,
+      onError: AppColors.onMain1Color,
+      surface: AppColors.backgroundColor,
+      onSurface: AppColors.strokeColor
     ),
     textTheme: const TextTheme(
       bodyLarge: AppTextStyles.commonLabelTextStyle,
@@ -36,6 +36,21 @@ abstract class AppThemes{
         borderSide: const BorderSide(color: AppColors.main1Color)
       ),
       hintStyle: AppTextStyles.commonLabelTextStyle
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        elevation: WidgetStateProperty.all(0.0),
+        backgroundColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.pressed)){
+            return AppColors.main1Color.withOpacity(0.9);
+          }
+          return AppColors.main1Color;
+        },),
+        foregroundColor: WidgetStateProperty.all(AppColors.onMain1Color),
+        textStyle: WidgetStateProperty.all(AppTextStyles.mainButtonTextStyle),
+        side: WidgetStateProperty.all(const BorderSide(color: AppColors.strokeColor, width: 1)),
+        shape: WidgetStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius))))
+      )
     ),
     useMaterial3: true,
   );
