@@ -7,6 +7,11 @@ abstract class AppTextStyles{
     fontSize: 16,
     fontWeight: FontWeight.normal
   );
+  static const boldLabelTextStyle = TextStyle(
+    color: AppColors.textColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w500
+  );
   static const mainButtonTextStyle = TextStyle(
     color: AppColors.backgroundColor,
     fontSize: 14,
@@ -16,7 +21,7 @@ abstract class AppTextStyles{
     color: AppColors.secondaryColor,
     height: 1.4,
     fontSize: 14,
-    fontWeight: FontWeight.bold
+    fontWeight: FontWeight.w500
   );
   static const plotOnMainTextStyle = TextStyle(
     color: AppColors.onMain1Color,

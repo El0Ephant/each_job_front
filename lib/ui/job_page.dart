@@ -1,4 +1,5 @@
 import 'package:each_job/ui/widgets/percentile_line.dart';
+import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class JobPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
@@ -49,6 +51,13 @@ class JobPage extends StatelessWidget {
                   median: 400,
                   oftenSalariesBottom: 325,
                   oftenSalariesUpper: 511
+                ),
+                const SizedBox(height: AppSizes.outerIndent,),
+                SizedBox(
+                  height: 300,
+                  child: SalaryChart(
+                    data: salaryData
+                  )
                 )
               ],
             ),
@@ -58,6 +67,81 @@ class JobPage extends StatelessWidget {
     );
   }
 }
+
+final salaryData = [
+  (
+    date: DateTime(2023, 1),
+    value: 348
+  ),
+  (
+    date: DateTime(2023, 2),
+    value: 355
+  ),
+  (
+    date: DateTime(2023, 3),
+    value: 372
+  ),
+  (
+    date: DateTime(2023, 4),
+    value: 367
+  ),
+  (
+    date: DateTime(2023, 5),
+    value: 388
+  ),
+  (
+    date: DateTime(2023, 6),
+    value: 395
+  ),
+  (
+    date: DateTime(2023, 7),
+    value: 365
+  ),
+  (
+    date: DateTime(2023, 8),
+    value: 386
+  ),
+  (
+    date: DateTime(2023, 9),
+    value: 402
+  ),
+  (
+    date: DateTime(2023, 10),
+    value: 425
+  ),
+  (
+    date: DateTime(2023, 11),
+    value: 408
+  ),
+  (
+    date: DateTime(2023, 12),
+    value: 412
+  ),
+  (
+    date: DateTime(2024, 1),
+    value: 430
+  ),
+  (
+    date: DateTime(2024, 2),
+    value: 422
+  ),
+  (
+    date: DateTime(2024, 3),
+    value: 410
+  ),
+  (
+    date: DateTime(2024, 4),
+    value: 406
+  ),
+  (
+    date: DateTime(2024, 5),
+    value: 402
+  ),
+  (
+    date: DateTime(2024, 6),
+    value: 400
+  ),
+];
 
 const List<String> regions = [
   'Москва', 'Санкт-Петербург', 'Севастополь',
