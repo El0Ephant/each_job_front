@@ -25,7 +25,11 @@ class JobBloc extends Bloc<JobEvent, JobState> {
 
   void _onSearch(_Search event, Emitter emit) async {
     emit(JobState.loading(tableData: state.tableData));
-    final data = await _apiService.getStatistics();
+    final data = await _apiService.getStatistics(
+      area: _selectedArea,
+      grade: _selectedGrade,
+      profession: _selectedProfession
+    );
     emit(JobState.loaded(tableData: state.tableData, salaryStatistics: data));
   }
 

@@ -10,5 +10,9 @@ abstract interface class IApiService{
 
   Future<List<Area>> getAreas();
 
-  Future<SalaryStatistics> getStatistics();
+  Future<SalaryStatistics> getStatistics({
+    required Area? area,
+    required Profession? profession,
+    required Grade? grade,
+  });
 }

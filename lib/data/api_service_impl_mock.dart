@@ -36,7 +36,11 @@ class ApiServiceImplMock implements IApiService{
   }
 
   @override
-  Future<SalaryStatistics> getStatistics() async {
+  Future<SalaryStatistics> getStatistics({
+    required Area? area,
+    required Profession? profession,
+    required Grade? grade,
+  }) async {
     await Future.delayed(const Duration(seconds: 2));
     return SalaryStatistics(
       bottomSalary: 208,

@@ -24,7 +24,11 @@ class ApiServiceImpl implements IApiService{
   }
 
   @override
-  Future<SalaryStatistics> getStatistics() {
+  Future<SalaryStatistics> getStatistics({
+    required Area? area,
+    required Profession? profession,
+    required Grade? grade,
+  }) {
     // TODO: implement getStatistics
     throw UnimplementedError();
   }
