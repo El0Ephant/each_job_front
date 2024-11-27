@@ -24,7 +24,8 @@ void main() async {
   runApp(
     BlocProvider<JobBloc>(
       create: (context) => JobBloc(
-        tableData: TableData(areas: areas, professions: professions, grades: grades)
+        apiService,
+        TableData(areas: areas, professions: professions, grades: grades)
       ),
       child: const MyApp()
     )

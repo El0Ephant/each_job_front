@@ -13,13 +13,15 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
     required this.onChange,
     required this.choices,
     this.hint = 'Выбрать...',
-    this.maxSuggestions = 15,
+    this.maxSuggestions = 20,
+    this.typeAheadEnabled = true
   });
   final List<T> choices;
-  final Function(T selectedValue) onChange;
+  final Function(T? selectedValue) onChange;
   final String label;
   final String hint;
   final int maxSuggestions;
+  final bool typeAheadEnabled;
 
   @override
   State<SearchField<T>> createState() => _SearchFieldState<T>();
@@ -27,6 +29,7 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
 
 class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
   final _searchController = TextEditingController();
+  final _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +46,7 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
           ),
         );
       },
+      focusNode: _focusNode,
       controller: _searchController,
       builder: (context, controller, focusNode) {
         return Column(
@@ -52,7 +56,13 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
             const SizedBox(height: AppSizes.innerIndent,),
             SizedBox(
               height: AppSizes.commonHeight,
-              child: _SearchTextField(controller: controller, focusNode: focusNode, hint: widget.hint)
+              child: _SearchTextField(
+                onClear: () { widget.onChange(null); },
+                controller: controller,
+                focusNode: focusNode,
+                hint: widget.hint,
+                readOnly: !widget.typeAheadEnabled,
+              )
             ),
           ],
         );
@@ -84,9 +94,10 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
           offset: value.searchValue.length
         );
         widget.onChange(value);
+        _focusNode.unfocus();
       },
       suggestionsCallback: (String search) {
-        if (search.isEmpty){
+        if (search.isEmpty || !widget.typeAheadEnabled){
           return widget.choices;
         }
         return extractTop<T>(
@@ -105,11 +116,15 @@ class _SearchTextField extends StatefulWidget {
   const _SearchTextField({
     required this.controller,
     required this.focusNode,
-    required this.hint
+    required this.hint,
+    required this.readOnly,
+    required this.onClear
   });
   final TextEditingController controller;
   final FocusNode focusNode;
   final String hint;
+  final bool readOnly;
+  final Function() onClear;
 
   @override
   State<_SearchTextField> createState() => _SearchTextFieldState();
@@ -144,6 +159,7 @@ class _SearchTextFieldState extends State<_SearchTextField> {
         suffixIcon = InkWell(
           borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius),
           onTap: () {
+            widget.onClear();
             widget.controller.clear();
           },
           child: Icon(
@@ -157,6 +173,7 @@ class _SearchTextFieldState extends State<_SearchTextField> {
       suffixIcon = Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.main1Color, size: _suffixIconSize,);
     }
     return TextField(
+      readOnly: widget.readOnly,
       controller: widget.controller,
       focusNode: widget.focusNode,
       decoration: InputDecoration(

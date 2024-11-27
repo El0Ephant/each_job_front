@@ -104,8 +104,8 @@ class __$$GradeImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GradeImpl implements _Grade {
-  const _$GradeImpl({required this.id, required this.title});
+class _$GradeImpl extends _Grade {
+  const _$GradeImpl({required this.id, required this.title}) : super._();
 
   factory _$GradeImpl.fromJson(Map<String, dynamic> json) =>
       _$$GradeImplFromJson(json);
@@ -147,9 +147,10 @@ class _$GradeImpl implements _Grade {
   }
 }
 
-abstract class _Grade implements Grade {
+abstract class _Grade extends Grade {
   const factory _Grade(
       {required final String id, required final String title}) = _$GradeImpl;
+  const _Grade._() : super._();
 
   factory _Grade.fromJson(Map<String, dynamic> json) = _$GradeImpl.fromJson;
 

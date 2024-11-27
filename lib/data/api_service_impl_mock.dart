@@ -2,6 +2,7 @@ import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
+import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
 
 class ApiServiceImplMock implements IApiService{
   @override
@@ -31,6 +32,19 @@ class ApiServiceImplMock implements IApiService{
         professions.length,
         (index) => Profession(id: index.toString(), title: professions[index]),
       )
+    );
+  }
+
+  @override
+  Future<SalaryStatistics> getStatistics() async {
+    await Future.delayed(const Duration(seconds: 2));
+    return SalaryStatistics(
+      bottomSalary: 208,
+      upperSalary: 651,
+      medianSalary: 400,
+      oftenSalariesBottom: 325,
+      oftenSalariesUpper: 511,
+      chartData: salaryData
     );
   }
 }
@@ -191,4 +205,79 @@ const List<String> professions = [
   'Специалист по PPC',
   'Специалист по email-маркетингу',
   'Аналитик цифрового маркетинга'
+];
+
+final salaryData = [
+  (
+  date: DateTime(2023, 1),
+  value: 348
+  ),
+  (
+  date: DateTime(2023, 2),
+  value: 355
+  ),
+  (
+  date: DateTime(2023, 3),
+  value: 372
+  ),
+  (
+  date: DateTime(2023, 4),
+  value: 367
+  ),
+  (
+  date: DateTime(2023, 5),
+  value: 388
+  ),
+  (
+  date: DateTime(2023, 6),
+  value: 395
+  ),
+  (
+  date: DateTime(2023, 7),
+  value: 365
+  ),
+  (
+  date: DateTime(2023, 8),
+  value: 386
+  ),
+  (
+  date: DateTime(2023, 9),
+  value: 402
+  ),
+  (
+  date: DateTime(2023, 10),
+  value: 425
+  ),
+  (
+  date: DateTime(2023, 11),
+  value: 408
+  ),
+  (
+  date: DateTime(2023, 12),
+  value: 412
+  ),
+  (
+  date: DateTime(2024, 1),
+  value: 430
+  ),
+  (
+  date: DateTime(2024, 2),
+  value: 422
+  ),
+  (
+  date: DateTime(2024, 3),
+  value: 410
+  ),
+  (
+  date: DateTime(2024, 4),
+  value: 406
+  ),
+  (
+  date: DateTime(2024, 5),
+  value: 402
+  ),
+  (
+  date: DateTime(2024, 6),
+  value: 400
+  ),
 ];
