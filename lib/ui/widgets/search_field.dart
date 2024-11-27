@@ -1,3 +1,4 @@
+import 'package:each_job/domain/models/i_searchable.dart';
 import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:fuzzywuzzy/fuzzywuzzy.dart';
 
-class SearchField<T> extends StatefulWidget {
+class SearchField<T extends ISearchable> extends StatefulWidget {
   const SearchField({
     super.key,
     required this.label,
@@ -24,7 +25,7 @@ class SearchField<T> extends StatefulWidget {
   State<SearchField<T>> createState() => _SearchFieldState<T>();
 }
 
-class _SearchFieldState<T> extends State<SearchField<T>> {
+class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
   final _searchController = TextEditingController();
 
   @override
@@ -63,7 +64,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             vertical: AppSizes.innerIndent,
             horizontal: AppSizes.textFieldIndent
           ),
-          child: Text(value.toString(),
+          child: Text(value.searchValue,
             style: AppTextStyles.commonLabelTextStyle,
           ),
         );
@@ -78,9 +79,9 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
         );
       },
       onSelected: (value) {
-        _searchController.text = value.toString();
+        _searchController.text = value.searchValue;
         _searchController.selection = TextSelection.collapsed(
-          offset: value.toString().length
+          offset: value.searchValue.length
         );
         widget.onChange(value);
       },
@@ -93,6 +94,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
           choices: widget.choices,
           limit: widget.maxSuggestions,
           cutoff: 70,
+          getter: (obj) => obj.searchValue,
         ).map((extractedResult) => extractedResult.choice).toList();
       },
     );
@@ -101,7 +103,6 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
 
 class _SearchTextField extends StatefulWidget {
   const _SearchTextField({
-    super.key,
     required this.controller,
     required this.focusNode,
     required this.hint
