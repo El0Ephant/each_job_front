@@ -4,6 +4,7 @@ import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
 import 'package:each_job/domain/models/table_data/table_data.dart';
+import 'package:each_job/domain/models/vacancy/vacancy.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -17,20 +18,62 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<_UpdateProfession>(_onUpdateProfessionEvent);
     on<_UpdateGrade>(_onUpdateGradeEvent);
     on<_Search>(_onSearch);
+    on<_FetchPage>(_onFetchPage);
   }
   final IApiService _apiService;
+  final _vacanciesPageSize = 20;
   Area? _selectedArea;
   Profession? _selectedProfession;
   Grade? _selectedGrade;
 
   void _onSearch(_Search event, Emitter emit) async {
     emit(JobState.loading(tableData: state.tableData));
-    final data = await _apiService.getStatistics(
+    final [
+      data as SalaryStatistics,
+      vacancies as List<Vacancy>
+    ] = await Future.wait([
+      _apiService.getStatistics(
+        area: _selectedArea,
+        grade: _selectedGrade,
+        profession: _selectedProfession
+      ),
+      _apiService.getVacanciesPage(
+        area: _selectedArea,
+        grade: _selectedGrade,
+        profession: _selectedProfession,
+        pageSize: _vacanciesPageSize,
+        skip: 0
+      ),
+    ]);
+    emit(JobState.loaded(
+      tableData: state.tableData,
+      salaryStatistics: data,
+      vacancies: vacancies,
+      hasReachedMaxVacancies: vacancies.length < _vacanciesPageSize
+    ));
+  }
+
+  void _onFetchPage(_FetchPage event, Emitter emit) async {
+    if (state is! _Loaded){
+      return;
+    }
+    final loadedState = state as _Loaded;
+    if (loadedState.hasReachedMaxVacancies){
+      return;
+    }
+    final newPage = await _apiService.getVacanciesPage(
       area: _selectedArea,
       grade: _selectedGrade,
-      profession: _selectedProfession
+      profession: _selectedProfession,
+      pageSize: _vacanciesPageSize,
+      skip: loadedState.vacancies.length
     );
-    emit(JobState.loaded(tableData: state.tableData, salaryStatistics: data));
+    emit(
+      loadedState.copyWith(
+        hasReachedMaxVacancies: newPage.length < _vacanciesPageSize,
+        vacancies: List.of(loadedState.vacancies)..addAll(newPage)
+      )
+    );
   }
 
   void _onUpdateAreaEvent(_UpdateArea event, Emitter emit){

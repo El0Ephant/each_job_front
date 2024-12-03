@@ -20,6 +20,7 @@ SalaryStatistics _$SalaryStatisticsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SalaryStatistics {
+  num get vacanciesNum => throw _privateConstructorUsedError;
   num get bottomSalary => throw _privateConstructorUsedError;
   num get upperSalary => throw _privateConstructorUsedError;
   num get medianSalary => throw _privateConstructorUsedError;
@@ -41,7 +42,8 @@ abstract class $SalaryStatisticsCopyWith<$Res> {
       _$SalaryStatisticsCopyWithImpl<$Res, SalaryStatistics>;
   @useResult
   $Res call(
-      {num bottomSalary,
+      {num vacanciesNum,
+      num bottomSalary,
       num upperSalary,
       num medianSalary,
       num oftenSalariesBottom,
@@ -62,6 +64,7 @@ class _$SalaryStatisticsCopyWithImpl<$Res, $Val extends SalaryStatistics>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? vacanciesNum = null,
     Object? bottomSalary = null,
     Object? upperSalary = null,
     Object? medianSalary = null,
@@ -70,6 +73,10 @@ class _$SalaryStatisticsCopyWithImpl<$Res, $Val extends SalaryStatistics>
     Object? chartData = null,
   }) {
     return _then(_value.copyWith(
+      vacanciesNum: null == vacanciesNum
+          ? _value.vacanciesNum
+          : vacanciesNum // ignore: cast_nullable_to_non_nullable
+              as num,
       bottomSalary: null == bottomSalary
           ? _value.bottomSalary
           : bottomSalary // ignore: cast_nullable_to_non_nullable
@@ -107,7 +114,8 @@ abstract class _$$SalaryStatisticsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {num bottomSalary,
+      {num vacanciesNum,
+      num bottomSalary,
       num upperSalary,
       num medianSalary,
       num oftenSalariesBottom,
@@ -126,6 +134,7 @@ class __$$SalaryStatisticsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? vacanciesNum = null,
     Object? bottomSalary = null,
     Object? upperSalary = null,
     Object? medianSalary = null,
@@ -134,6 +143,10 @@ class __$$SalaryStatisticsImplCopyWithImpl<$Res>
     Object? chartData = null,
   }) {
     return _then(_$SalaryStatisticsImpl(
+      vacanciesNum: null == vacanciesNum
+          ? _value.vacanciesNum
+          : vacanciesNum // ignore: cast_nullable_to_non_nullable
+              as num,
       bottomSalary: null == bottomSalary
           ? _value.bottomSalary
           : bottomSalary // ignore: cast_nullable_to_non_nullable
@@ -166,7 +179,8 @@ class __$$SalaryStatisticsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SalaryStatisticsImpl implements _SalaryStatistics {
   const _$SalaryStatisticsImpl(
-      {required this.bottomSalary,
+      {required this.vacanciesNum,
+      required this.bottomSalary,
       required this.upperSalary,
       required this.medianSalary,
       required this.oftenSalariesBottom,
@@ -177,6 +191,8 @@ class _$SalaryStatisticsImpl implements _SalaryStatistics {
   factory _$SalaryStatisticsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SalaryStatisticsImplFromJson(json);
 
+  @override
+  final num vacanciesNum;
   @override
   final num bottomSalary;
   @override
@@ -197,7 +213,7 @@ class _$SalaryStatisticsImpl implements _SalaryStatistics {
 
   @override
   String toString() {
-    return 'SalaryStatistics(bottomSalary: $bottomSalary, upperSalary: $upperSalary, medianSalary: $medianSalary, oftenSalariesBottom: $oftenSalariesBottom, oftenSalariesUpper: $oftenSalariesUpper, chartData: $chartData)';
+    return 'SalaryStatistics(vacanciesNum: $vacanciesNum, bottomSalary: $bottomSalary, upperSalary: $upperSalary, medianSalary: $medianSalary, oftenSalariesBottom: $oftenSalariesBottom, oftenSalariesUpper: $oftenSalariesUpper, chartData: $chartData)';
   }
 
   @override
@@ -205,6 +221,8 @@ class _$SalaryStatisticsImpl implements _SalaryStatistics {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SalaryStatisticsImpl &&
+            (identical(other.vacanciesNum, vacanciesNum) ||
+                other.vacanciesNum == vacanciesNum) &&
             (identical(other.bottomSalary, bottomSalary) ||
                 other.bottomSalary == bottomSalary) &&
             (identical(other.upperSalary, upperSalary) ||
@@ -223,6 +241,7 @@ class _$SalaryStatisticsImpl implements _SalaryStatistics {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      vacanciesNum,
       bottomSalary,
       upperSalary,
       medianSalary,
@@ -247,7 +266,8 @@ class _$SalaryStatisticsImpl implements _SalaryStatistics {
 
 abstract class _SalaryStatistics implements SalaryStatistics {
   const factory _SalaryStatistics(
-          {required final num bottomSalary,
+          {required final num vacanciesNum,
+          required final num bottomSalary,
           required final num upperSalary,
           required final num medianSalary,
           required final num oftenSalariesBottom,
@@ -258,6 +278,8 @@ abstract class _SalaryStatistics implements SalaryStatistics {
   factory _SalaryStatistics.fromJson(Map<String, dynamic> json) =
       _$SalaryStatisticsImpl.fromJson;
 
+  @override
+  num get vacanciesNum;
   @override
   num get bottomSalary;
   @override

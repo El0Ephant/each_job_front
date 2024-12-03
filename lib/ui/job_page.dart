@@ -65,7 +65,7 @@ class JobPage extends StatelessWidget {
                       )
                     ),
                     state.maybeWhen(
-                      loaded: (tableData, salaryStatistics) => Column(
+                      loaded: (tableData, salaryStatistics, vacancies, hasReachedMaxVacancies) => Column(
                         children: [
                           const SizedBox(height: AppSizes.outerIndent,),
                           PercentileLine(

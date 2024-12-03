@@ -6,6 +6,7 @@ part 'salary_statistics.g.dart';
 @freezed
 class SalaryStatistics with _$SalaryStatistics {
   const factory SalaryStatistics({
+    required num vacanciesNum,
     required num bottomSalary,
     required num upperSalary,
     required num medianSalary,

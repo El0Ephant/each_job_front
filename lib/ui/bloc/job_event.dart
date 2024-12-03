@@ -12,4 +12,5 @@ class JobEvent with _$JobEvent {
     Grade? grade
   }) = _UpdateGrade;
   const factory JobEvent.search() = _Search;
+  const factory JobEvent.fetchPage() = _FetchPage;
 }

@@ -22,6 +22,7 @@ mixin _$JobEvent {
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function() search,
+    required TResult Function() fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$JobEvent {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function()? search,
+    TResult? Function()? fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$JobEvent {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function()? search,
+    TResult Function()? fetchPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$JobEvent {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$JobEvent {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$JobEvent {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +173,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function() search,
+    required TResult Function() fetchPage,
   }) {
     return updateArea(area);
   }
@@ -178,6 +185,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function()? search,
+    TResult? Function()? fetchPage,
   }) {
     return updateArea?.call(area);
   }
@@ -189,6 +197,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function()? search,
+    TResult Function()? fetchPage,
     required TResult orElse(),
   }) {
     if (updateArea != null) {
@@ -204,6 +213,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
   }) {
     return updateArea(this);
   }
@@ -215,6 +225,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
   }) {
     return updateArea?.call(this);
   }
@@ -226,6 +237,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
   }) {
     if (updateArea != null) {
@@ -328,6 +340,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function() search,
+    required TResult Function() fetchPage,
   }) {
     return updateProfession(profession);
   }
@@ -339,6 +352,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function()? search,
+    TResult? Function()? fetchPage,
   }) {
     return updateProfession?.call(profession);
   }
@@ -350,6 +364,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function()? search,
+    TResult Function()? fetchPage,
     required TResult orElse(),
   }) {
     if (updateProfession != null) {
@@ -365,6 +380,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
   }) {
     return updateProfession(this);
   }
@@ -376,6 +392,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
   }) {
     return updateProfession?.call(this);
   }
@@ -387,6 +404,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
   }) {
     if (updateProfession != null) {
@@ -488,6 +506,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function() search,
+    required TResult Function() fetchPage,
   }) {
     return updateGrade(grade);
   }
@@ -499,6 +518,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function()? search,
+    TResult? Function()? fetchPage,
   }) {
     return updateGrade?.call(grade);
   }
@@ -510,6 +530,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function()? search,
+    TResult Function()? fetchPage,
     required TResult orElse(),
   }) {
     if (updateGrade != null) {
@@ -525,6 +546,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
   }) {
     return updateGrade(this);
   }
@@ -536,6 +558,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
   }) {
     return updateGrade?.call(this);
   }
@@ -547,6 +570,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
   }) {
     if (updateGrade != null) {
@@ -607,6 +631,7 @@ class _$SearchImpl implements _Search {
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function() search,
+    required TResult Function() fetchPage,
   }) {
     return search();
   }
@@ -618,6 +643,7 @@ class _$SearchImpl implements _Search {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function()? search,
+    TResult? Function()? fetchPage,
   }) {
     return search?.call();
   }
@@ -629,6 +655,7 @@ class _$SearchImpl implements _Search {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function()? search,
+    TResult Function()? fetchPage,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -644,6 +671,7 @@ class _$SearchImpl implements _Search {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
   }) {
     return search(this);
   }
@@ -655,6 +683,7 @@ class _$SearchImpl implements _Search {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
   }) {
     return search?.call(this);
   }
@@ -666,6 +695,7 @@ class _$SearchImpl implements _Search {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -680,6 +710,126 @@ abstract class _Search implements JobEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchPageImplCopyWith<$Res> {
+  factory _$$FetchPageImplCopyWith(
+          _$FetchPageImpl value, $Res Function(_$FetchPageImpl) then) =
+      __$$FetchPageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchPageImplCopyWithImpl<$Res>
+    extends _$JobEventCopyWithImpl<$Res, _$FetchPageImpl>
+    implements _$$FetchPageImplCopyWith<$Res> {
+  __$$FetchPageImplCopyWithImpl(
+      _$FetchPageImpl _value, $Res Function(_$FetchPageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchPageImpl implements _FetchPage {
+  const _$FetchPageImpl();
+
+  @override
+  String toString() {
+    return 'JobEvent.fetchPage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchPageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Area? area) updateArea,
+    required TResult Function(Profession? profession) updateProfession,
+    required TResult Function(Grade? grade) updateGrade,
+    required TResult Function() search,
+    required TResult Function() fetchPage,
+  }) {
+    return fetchPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Area? area)? updateArea,
+    TResult? Function(Profession? profession)? updateProfession,
+    TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function()? search,
+    TResult? Function()? fetchPage,
+  }) {
+    return fetchPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Area? area)? updateArea,
+    TResult Function(Profession? profession)? updateProfession,
+    TResult Function(Grade? grade)? updateGrade,
+    TResult Function()? search,
+    TResult Function()? fetchPage,
+    required TResult orElse(),
+  }) {
+    if (fetchPage != null) {
+      return fetchPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateArea value) updateArea,
+    required TResult Function(_UpdateProfession value) updateProfession,
+    required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
+  }) {
+    return fetchPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateArea value)? updateArea,
+    TResult? Function(_UpdateProfession value)? updateProfession,
+    TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
+  }) {
+    return fetchPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateArea value)? updateArea,
+    TResult Function(_UpdateProfession value)? updateProfession,
+    TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
+    required TResult orElse(),
+  }) {
+    if (fetchPage != null) {
+      return fetchPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchPage implements JobEvent {
+  const factory _FetchPage() = _$FetchPageImpl;
+}
+
+/// @nodoc
 mixin _$JobState {
   TableData get tableData => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -687,7 +837,10 @@ mixin _$JobState {
     required TResult Function(TableData tableData) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
-            TableData tableData, SalaryStatistics salaryStatistics)
+            TableData tableData,
+            SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies,
+            bool hasReachedMaxVacancies)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -695,7 +848,8 @@ mixin _$JobState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TableData tableData)? initial,
     TResult? Function(TableData tableData)? loading,
-    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -703,7 +857,8 @@ mixin _$JobState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TableData tableData)? initial,
     TResult Function(TableData tableData)? loading,
-    TResult Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -850,7 +1005,10 @@ class _$InitialImpl implements _Initial {
     required TResult Function(TableData tableData) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
-            TableData tableData, SalaryStatistics salaryStatistics)
+            TableData tableData,
+            SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies,
+            bool hasReachedMaxVacancies)
         loaded,
   }) {
     return initial(tableData);
@@ -861,7 +1019,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TableData tableData)? initial,
     TResult? Function(TableData tableData)? loading,
-    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
   }) {
     return initial?.call(tableData);
@@ -872,7 +1031,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TableData tableData)? initial,
     TResult Function(TableData tableData)? loading,
-    TResult Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
     required TResult orElse(),
   }) {
@@ -1000,7 +1160,10 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(TableData tableData) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
-            TableData tableData, SalaryStatistics salaryStatistics)
+            TableData tableData,
+            SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies,
+            bool hasReachedMaxVacancies)
         loaded,
   }) {
     return loading(tableData);
@@ -1011,7 +1174,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TableData tableData)? initial,
     TResult? Function(TableData tableData)? loading,
-    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
   }) {
     return loading?.call(tableData);
@@ -1022,7 +1186,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TableData tableData)? initial,
     TResult Function(TableData tableData)? loading,
-    TResult Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
     required TResult orElse(),
   }) {
@@ -1085,7 +1250,11 @@ abstract class _$$LoadedImplCopyWith<$Res> implements $JobStateCopyWith<$Res> {
       __$$LoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TableData tableData, SalaryStatistics salaryStatistics});
+  $Res call(
+      {TableData tableData,
+      SalaryStatistics salaryStatistics,
+      List<Vacancy> vacancies,
+      bool hasReachedMaxVacancies});
 
   @override
   $TableDataCopyWith<$Res> get tableData;
@@ -1105,6 +1274,8 @@ class __$$LoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? tableData = null,
     Object? salaryStatistics = null,
+    Object? vacancies = null,
+    Object? hasReachedMaxVacancies = null,
   }) {
     return _then(_$LoadedImpl(
       tableData: null == tableData
@@ -1115,6 +1286,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value.salaryStatistics
           : salaryStatistics // ignore: cast_nullable_to_non_nullable
               as SalaryStatistics,
+      vacancies: null == vacancies
+          ? _value._vacancies
+          : vacancies // ignore: cast_nullable_to_non_nullable
+              as List<Vacancy>,
+      hasReachedMaxVacancies: null == hasReachedMaxVacancies
+          ? _value.hasReachedMaxVacancies
+          : hasReachedMaxVacancies // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -1130,16 +1309,31 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.tableData, required this.salaryStatistics});
+  const _$LoadedImpl(
+      {required this.tableData,
+      required this.salaryStatistics,
+      required final List<Vacancy> vacancies,
+      required this.hasReachedMaxVacancies})
+      : _vacancies = vacancies;
 
   @override
   final TableData tableData;
   @override
   final SalaryStatistics salaryStatistics;
+  final List<Vacancy> _vacancies;
+  @override
+  List<Vacancy> get vacancies {
+    if (_vacancies is EqualUnmodifiableListView) return _vacancies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_vacancies);
+  }
+
+  @override
+  final bool hasReachedMaxVacancies;
 
   @override
   String toString() {
-    return 'JobState.loaded(tableData: $tableData, salaryStatistics: $salaryStatistics)';
+    return 'JobState.loaded(tableData: $tableData, salaryStatistics: $salaryStatistics, vacancies: $vacancies, hasReachedMaxVacancies: $hasReachedMaxVacancies)';
   }
 
   @override
@@ -1150,11 +1344,16 @@ class _$LoadedImpl implements _Loaded {
             (identical(other.tableData, tableData) ||
                 other.tableData == tableData) &&
             (identical(other.salaryStatistics, salaryStatistics) ||
-                other.salaryStatistics == salaryStatistics));
+                other.salaryStatistics == salaryStatistics) &&
+            const DeepCollectionEquality()
+                .equals(other._vacancies, _vacancies) &&
+            (identical(other.hasReachedMaxVacancies, hasReachedMaxVacancies) ||
+                other.hasReachedMaxVacancies == hasReachedMaxVacancies));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tableData, salaryStatistics);
+  int get hashCode => Object.hash(runtimeType, tableData, salaryStatistics,
+      const DeepCollectionEquality().hash(_vacancies), hasReachedMaxVacancies);
 
   @JsonKey(ignore: true)
   @override
@@ -1168,10 +1367,14 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(TableData tableData) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
-            TableData tableData, SalaryStatistics salaryStatistics)
+            TableData tableData,
+            SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies,
+            bool hasReachedMaxVacancies)
         loaded,
   }) {
-    return loaded(tableData, salaryStatistics);
+    return loaded(
+        tableData, salaryStatistics, vacancies, hasReachedMaxVacancies);
   }
 
   @override
@@ -1179,10 +1382,12 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TableData tableData)? initial,
     TResult? Function(TableData tableData)? loading,
-    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
   }) {
-    return loaded?.call(tableData, salaryStatistics);
+    return loaded?.call(
+        tableData, salaryStatistics, vacancies, hasReachedMaxVacancies);
   }
 
   @override
@@ -1190,12 +1395,14 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TableData tableData)? initial,
     TResult Function(TableData tableData)? loading,
-    TResult Function(TableData tableData, SalaryStatistics salaryStatistics)?
+    TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
+            List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(tableData, salaryStatistics);
+      return loaded(
+          tableData, salaryStatistics, vacancies, hasReachedMaxVacancies);
     }
     return orElse();
   }
@@ -1238,11 +1445,15 @@ class _$LoadedImpl implements _Loaded {
 abstract class _Loaded implements JobState {
   const factory _Loaded(
       {required final TableData tableData,
-      required final SalaryStatistics salaryStatistics}) = _$LoadedImpl;
+      required final SalaryStatistics salaryStatistics,
+      required final List<Vacancy> vacancies,
+      required final bool hasReachedMaxVacancies}) = _$LoadedImpl;
 
   @override
   TableData get tableData;
   SalaryStatistics get salaryStatistics;
+  List<Vacancy> get vacancies;
+  bool get hasReachedMaxVacancies;
   @override
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>

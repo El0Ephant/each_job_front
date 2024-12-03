@@ -9,6 +9,7 @@ part of 'salary_statistics.dart';
 _$SalaryStatisticsImpl _$$SalaryStatisticsImplFromJson(
         Map<String, dynamic> json) =>
     _$SalaryStatisticsImpl(
+      vacanciesNum: json['vacanciesNum'] as num,
       bottomSalary: json['bottomSalary'] as num,
       upperSalary: json['upperSalary'] as num,
       medianSalary: json['medianSalary'] as num,
@@ -28,6 +29,7 @@ _$SalaryStatisticsImpl _$$SalaryStatisticsImplFromJson(
 Map<String, dynamic> _$$SalaryStatisticsImplToJson(
         _$SalaryStatisticsImpl instance) =>
     <String, dynamic>{
+      'vacanciesNum': instance.vacanciesNum,
       'bottomSalary': instance.bottomSalary,
       'upperSalary': instance.upperSalary,
       'medianSalary': instance.medianSalary,

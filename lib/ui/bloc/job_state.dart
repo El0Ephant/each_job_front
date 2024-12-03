@@ -13,5 +13,7 @@ class JobState with _$JobState {
   const factory JobState.loaded({
     required TableData tableData,
     required SalaryStatistics salaryStatistics,
+    required List<Vacancy> vacancies,
+    required bool hasReachedMaxVacancies,
   }) = _Loaded;
 }

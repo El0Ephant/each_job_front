@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
+import 'package:each_job/domain/models/vacancy/vacancy.dart';
 
 class ApiServiceImplMock implements IApiService{
   @override
@@ -48,7 +51,35 @@ class ApiServiceImplMock implements IApiService{
       medianSalary: 400,
       oftenSalariesBottom: 325,
       oftenSalariesUpper: 511,
-      chartData: salaryData
+      chartData: salaryData,
+      vacanciesNum: 1227
+    );
+  }
+
+  final _random = Random();
+  @override
+  Future<List<Vacancy>> getVacanciesPage({
+    required Area? area,
+    required Profession? profession,
+    required Grade? grade,
+    required int pageSize,
+    required int skip
+  }) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return List.generate(
+      skip < 100 ? pageSize : pageSize~/2,
+      (index) => Vacancy(
+        id: (skip + index + 1).toString(),
+        name: 'Vacancy number ${skip + index + 1}',
+        employerName: 'Employer name ${skip + index + 1}',
+        publishedAt: DateTime(2021, 1, 1).add(Duration(days: skip + index)),
+        salaryFrom: _random.nextBool() ? _random.nextInt(500) + 40 : null,
+        salaryTo: _random.nextBool() ? _random.nextInt(500) + 40 : null,
+        salaryGross: _random.nextBool() ? _random.nextBool() : null,
+        salaryCurrency: _random.nextBool() ? (_random.nextBool() ? 'RUR': (_random.nextBool() ? 'EUR':'USD')) : null,
+        snippetRequirement: _random.nextBool() ? 'Snippet requirement ${skip + index + 1}' : null,
+        snippetResponsibility: _random.nextBool() ? 'Snippet responsibility ${skip + index + 1}' : null
+      ),
     );
   }
 }

@@ -14,7 +14,8 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
     required this.choices,
     this.hint = 'Выбрать...',
     this.maxSuggestions = 20,
-    this.typeAheadEnabled = true
+    this.typeAheadEnabled = true,
+    this.hasError = false
   });
   final List<T> choices;
   final Function(T? selectedValue) onChange;
@@ -22,6 +23,7 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
   final String hint;
   final int maxSuggestions;
   final bool typeAheadEnabled;
+  final bool hasError;
 
   @override
   State<SearchField<T>> createState() => _SearchFieldState<T>();
@@ -62,6 +64,7 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
                 focusNode: focusNode,
                 hint: widget.hint,
                 readOnly: !widget.typeAheadEnabled,
+                hasError: widget.hasError,
               )
             ),
           ],
@@ -118,13 +121,15 @@ class _SearchTextField extends StatefulWidget {
     required this.focusNode,
     required this.hint,
     required this.readOnly,
-    required this.onClear
+    required this.onClear,
+    required this.hasError
   });
   final TextEditingController controller;
   final FocusNode focusNode;
   final String hint;
   final bool readOnly;
   final Function() onClear;
+  final bool hasError;
 
   @override
   State<_SearchTextField> createState() => _SearchTextFieldState();
@@ -132,11 +137,26 @@ class _SearchTextField extends StatefulWidget {
 
 class _SearchTextFieldState extends State<_SearchTextField> {
   final _suffixIconSize = 24.0;
+  late bool _hasError = widget.hasError;
+  final _errorBorder = const OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius)),
+    borderSide: BorderSide(
+      color: AppColors.errorColor,
+      width: 1
+    )
+  );
+
   @override
   void initState() {
     super.initState();
     widget.focusNode.addListener(_onUpdate);
     widget.controller.addListener(_onUpdate);
+  }
+
+  @override
+  void didUpdateWidget(covariant _SearchTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _hasError = widget.hasError;
   }
 
   @override
@@ -177,6 +197,8 @@ class _SearchTextFieldState extends State<_SearchTextField> {
       controller: widget.controller,
       focusNode: widget.focusNode,
       decoration: InputDecoration(
+        enabledBorder: _hasError ? _errorBorder : null,
+        focusedBorder: _hasError ? _errorBorder : null,
         hintText: widget.hint,
         suffixIcon: suffixIcon
       ),
