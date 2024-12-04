@@ -53,14 +53,16 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     ));
   }
 
+  bool _pageFetching = false;
   void _onFetchPage(_FetchPage event, Emitter emit) async {
-    if (state is! _Loaded){
+    if (state is! _Loaded || _pageFetching){
       return;
     }
     final loadedState = state as _Loaded;
     if (loadedState.hasReachedMaxVacancies){
       return;
     }
+    _pageFetching = true;
     final newPage = await _apiService.getVacanciesPage(
       area: _selectedArea,
       grade: _selectedGrade,
@@ -68,6 +70,7 @@ class JobBloc extends Bloc<JobEvent, JobState> {
       pageSize: _vacanciesPageSize,
       skip: loadedState.vacancies.length
     );
+    _pageFetching = false;
     emit(
       loadedState.copyWith(
         hasReachedMaxVacancies: newPage.length < _vacanciesPageSize,

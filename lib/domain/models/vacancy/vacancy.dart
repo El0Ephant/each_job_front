@@ -8,6 +8,7 @@ class Vacancy with _$Vacancy {
   const factory Vacancy({
     required String id,
     required String name,
+    required String url,
     @JsonKey(name: 'employer_name') required String employerName,
     @JsonKey(name: 'published_at') required DateTime publishedAt,
     @JsonKey(name: 'snippet_requirement') String? snippetRequirement,

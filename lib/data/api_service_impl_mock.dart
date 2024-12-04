@@ -69,12 +69,13 @@ class ApiServiceImplMock implements IApiService{
     return List.generate(
       skip < 100 ? pageSize : pageSize~/2,
       (index) => Vacancy(
+        url: 'https://flutter.dev',
         id: (skip + index + 1).toString(),
         name: 'Vacancy number ${skip + index + 1}',
         employerName: 'Employer name ${skip + index + 1}',
         publishedAt: DateTime(2021, 1, 1).add(Duration(days: skip + index)),
-        salaryFrom: _random.nextBool() ? _random.nextInt(500) + 40 : null,
-        salaryTo: _random.nextBool() ? _random.nextInt(500) + 40 : null,
+        salaryFrom: _random.nextBool() ? (_random.nextInt(500) + 40) * 1000 : null,
+        salaryTo: _random.nextBool() ? (_random.nextInt(500) + 40) * 1000 : null,
         salaryGross: _random.nextBool() ? _random.nextBool() : null,
         salaryCurrency: _random.nextBool() ? (_random.nextBool() ? 'RUR': (_random.nextBool() ? 'EUR':'USD')) : null,
         snippetRequirement: _random.nextBool() ? 'Snippet requirement ${skip + index + 1}' : null,

@@ -34,4 +34,16 @@ abstract class AppTextStyles{
     fontSize: 16,
     fontWeight: FontWeight.w500
   );
+  static const vacancyBigTextStyle = TextStyle(
+    color: AppColors.textColor,
+    height: 1.2,
+    fontSize: 20,
+    fontWeight: FontWeight.w500
+  );
+  static const vacancyMediumTextStyle = TextStyle(
+    color: AppColors.textColor,
+    height: 1.2,
+    fontSize: 16,
+    fontWeight: FontWeight.w500
+  );
 }

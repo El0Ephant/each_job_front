@@ -22,6 +22,7 @@ Vacancy _$VacancyFromJson(Map<String, dynamic> json) {
 mixin _$Vacancy {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
   @JsonKey(name: 'employer_name')
   String get employerName => throw _privateConstructorUsedError;
   @JsonKey(name: 'published_at')
@@ -52,6 +53,7 @@ abstract class $VacancyCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
+      String url,
       @JsonKey(name: 'employer_name') String employerName,
       @JsonKey(name: 'published_at') DateTime publishedAt,
       @JsonKey(name: 'snippet_requirement') String? snippetRequirement,
@@ -77,6 +79,7 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? url = null,
     Object? employerName = null,
     Object? publishedAt = null,
     Object? snippetRequirement = freezed,
@@ -94,6 +97,10 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       employerName: null == employerName
           ? _value.employerName
@@ -141,6 +148,7 @@ abstract class _$$VacancyImplCopyWith<$Res> implements $VacancyCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
+      String url,
       @JsonKey(name: 'employer_name') String employerName,
       @JsonKey(name: 'published_at') DateTime publishedAt,
       @JsonKey(name: 'snippet_requirement') String? snippetRequirement,
@@ -164,6 +172,7 @@ class __$$VacancyImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? url = null,
     Object? employerName = null,
     Object? publishedAt = null,
     Object? snippetRequirement = freezed,
@@ -181,6 +190,10 @@ class __$$VacancyImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       employerName: null == employerName
           ? _value.employerName
@@ -224,6 +237,7 @@ class _$VacancyImpl implements _Vacancy {
   const _$VacancyImpl(
       {required this.id,
       required this.name,
+      required this.url,
       @JsonKey(name: 'employer_name') required this.employerName,
       @JsonKey(name: 'published_at') required this.publishedAt,
       @JsonKey(name: 'snippet_requirement') this.snippetRequirement,
@@ -240,6 +254,8 @@ class _$VacancyImpl implements _Vacancy {
   final String id;
   @override
   final String name;
+  @override
+  final String url;
   @override
   @JsonKey(name: 'employer_name')
   final String employerName;
@@ -267,7 +283,7 @@ class _$VacancyImpl implements _Vacancy {
 
   @override
   String toString() {
-    return 'Vacancy(id: $id, name: $name, employerName: $employerName, publishedAt: $publishedAt, snippetRequirement: $snippetRequirement, snippetResponsibility: $snippetResponsibility, salaryFrom: $salaryFrom, salaryTo: $salaryTo, salaryCurrency: $salaryCurrency, salaryGross: $salaryGross)';
+    return 'Vacancy(id: $id, name: $name, url: $url, employerName: $employerName, publishedAt: $publishedAt, snippetRequirement: $snippetRequirement, snippetResponsibility: $snippetResponsibility, salaryFrom: $salaryFrom, salaryTo: $salaryTo, salaryCurrency: $salaryCurrency, salaryGross: $salaryGross)';
   }
 
   @override
@@ -277,6 +293,7 @@ class _$VacancyImpl implements _Vacancy {
             other is _$VacancyImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.employerName, employerName) ||
                 other.employerName == employerName) &&
             (identical(other.publishedAt, publishedAt) ||
@@ -301,6 +318,7 @@ class _$VacancyImpl implements _Vacancy {
       runtimeType,
       id,
       name,
+      url,
       employerName,
       publishedAt,
       snippetRequirement,
@@ -328,6 +346,7 @@ abstract class _Vacancy implements Vacancy {
   const factory _Vacancy(
       {required final String id,
       required final String name,
+      required final String url,
       @JsonKey(name: 'employer_name') required final String employerName,
       @JsonKey(name: 'published_at') required final DateTime publishedAt,
       @JsonKey(name: 'snippet_requirement') final String? snippetRequirement,
@@ -344,6 +363,8 @@ abstract class _Vacancy implements Vacancy {
   String get id;
   @override
   String get name;
+  @override
+  String get url;
   @override
   @JsonKey(name: 'employer_name')
   String get employerName;
