@@ -4,6 +4,7 @@ import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/ui/bloc/job_bloc.dart';
 import 'package:each_job/ui/widgets/basic_progress_indicator.dart';
 import 'package:each_job/ui/widgets/percentile_line.dart';
+import 'package:each_job/ui/widgets/period_picker_component.dart';
 import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
 import 'package:each_job/ui/widgets/vacancies_list.dart';
@@ -63,6 +64,8 @@ class _JobPageState extends State<JobPage> {
                       typeAheadEnabled: false,
                     ),
                     const SizedBox(height: AppSizes.outerIndent,),
+                    PeriodPickerComponent(),
+                    const SizedBox(height: AppSizes.outerIndent,),
                     SizedBox(
                       height: AppSizes.commonHeight,
                       width: double.infinity,
@@ -74,6 +77,7 @@ class _JobPageState extends State<JobPage> {
                         ),
                       )
                     ),
+
                     state.maybeWhen(
                       loaded: (tableData, salaryStatistics, vacancies, hasReachedMaxVacancies) => Column(
                         children: [
