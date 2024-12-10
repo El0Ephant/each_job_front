@@ -1,6 +1,7 @@
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
+import 'package:each_job/ui/bloc/error_dto.dart';
 import 'package:each_job/ui/bloc/job_bloc.dart';
 import 'package:each_job/ui/widgets/basic_progress_indicator.dart';
 import 'package:each_job/ui/widgets/percentile_line.dart';
@@ -40,6 +41,10 @@ class _JobPageState extends State<JobPage> {
           child: BlocBuilder<JobBloc, JobState>(
             builder: (context, state) {
               final jobBloc = context.read<JobBloc>();
+              ErrorDto? errors;
+              if (state is JobStateInitial){
+                errors = state.errors;
+              }
               return SingleChildScrollView(
                 controller: _scrollController,
                 padding: const EdgeInsets.all(AppSizes.outerIndent),
@@ -47,12 +52,14 @@ class _JobPageState extends State<JobPage> {
                   children: [
                     SearchField<Area>(
                       label: 'Регион',
+                      hasError: errors?.areaIsEmpty == true,
                       onChange: (selectedValue) { jobBloc.add(JobEvent.updateArea(area: selectedValue)); },
                       choices: state.tableData.areas,
                     ),
                     const SizedBox(height: AppSizes.innerIndent,),
                     SearchField<Profession>(
                       label: 'Профессия',
+                      hasError: errors?.professionIsEmpty == true,
                       onChange: (selectedValue) { jobBloc.add(JobEvent.updateProfession(profession: selectedValue)); },
                       choices: state.tableData.professions,
                     ),
@@ -79,39 +86,52 @@ class _JobPageState extends State<JobPage> {
                     ),
 
                     state.maybeWhen(
-                      loaded: (tableData, salaryStatistics, vacancies, hasReachedMaxVacancies) => Column(
-                        children: [
-                          const SizedBox(height: AppSizes.outerIndent,),
-                          PercentileLine(
-                            bottom: salaryStatistics.bottomSalary,
-                            upper: salaryStatistics.upperSalary,
-                            median: salaryStatistics.medianSalary,
-                            oftenSalariesBottom: salaryStatistics.oftenSalariesBottom,
-                            oftenSalariesUpper: salaryStatistics.oftenSalariesUpper,
-                          ),
-                          const SizedBox(height: AppSizes.outerIndent,),
-                          SizedBox(
-                            height: 300,
-                            child: SalaryChart(
-                              data: salaryStatistics.chartData
-                            )
-                          ),
-                          const SizedBox(height: AppSizes.innerIndent,),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Рассчитано с учетом ${salaryStatistics.vacanciesNum} вакансий",
-                              style: AppTextStyles.commonLabelTextStyle,
+                      loaded: (tableData, salaryStatistics, vacancies, hasReachedMaxVacancies) {
+                        if (salaryStatistics.vacanciesNum < 50){
+                          return const Padding(
+                            padding: EdgeInsets.only(top: AppSizes.outerIndent),
+                            child: Center(
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                "Недостаточно данных для сбора статистики"
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: AppSizes.innerIndent,),
-                          VacanciesList(
-                            hasReachedMax: hasReachedMaxVacancies,
-                            vacancies: vacancies,
-                            scrollController: _scrollController,
-                          )
-                        ],
-                      ),
+                          );
+                        }
+                        return Column(
+                          children: [
+                            const SizedBox(height: AppSizes.outerIndent,),
+                            PercentileLine(
+                              bottom: salaryStatistics.bottomSalary,
+                              upper: salaryStatistics.upperSalary,
+                              median: salaryStatistics.medianSalary,
+                              oftenSalariesBottom: salaryStatistics.oftenSalariesBottom,
+                              oftenSalariesUpper: salaryStatistics.oftenSalariesUpper,
+                            ),
+                            const SizedBox(height: AppSizes.outerIndent,),
+                            SizedBox(
+                                height: 300,
+                                child: SalaryChart(
+                                    data: salaryStatistics.chartData
+                                )
+                            ),
+                            const SizedBox(height: AppSizes.innerIndent,),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Рассчитано с учетом ${salaryStatistics.vacanciesNum} вакансий",
+                                style: AppTextStyles.commonLabelTextStyle,
+                              ),
+                            ),
+                            const SizedBox(height: AppSizes.innerIndent,),
+                            VacanciesList(
+                              hasReachedMax: hasReachedMaxVacancies,
+                              vacancies: vacancies,
+                              scrollController: _scrollController,
+                            )
+                          ],
+                        );
+                      },
                       orElse: () => const SizedBox.shrink(),
                     )
                   ],

@@ -12,16 +12,20 @@ abstract interface class IApiService{
   Future<List<Area>> getAreas();
 
   Future<SalaryStatistics> getStatistics({
-    required Area? area,
-    required Profession? profession,
-    required Grade? grade,
+    required String professionId,
+    required String areaId,
+    required String? gradeId,
+    required String? isoDateFrom,
+    required String? isoDateTo,
   });
 
   Future<List<Vacancy>> getVacanciesPage({
-    required Area? area,
-    required Profession? profession,
-    required Grade? grade,
-    required int pageSize,
-    required int skip
+    required String professionId,
+    required String areaId,
+    required String? gradeId,
+    required String? isoDateFrom,
+    required String? isoDateTo,
+    required int pageNumber,
+    required int pageSize
   });
 }

@@ -834,7 +834,7 @@ mixin _$JobState {
   TableData get tableData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TableData tableData) initial,
+    required TResult Function(TableData tableData, ErrorDto? errors) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
             TableData tableData,
@@ -846,7 +846,7 @@ mixin _$JobState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TableData tableData)? initial,
+    TResult? Function(TableData tableData, ErrorDto? errors)? initial,
     TResult? Function(TableData tableData)? loading,
     TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -855,7 +855,7 @@ mixin _$JobState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TableData tableData)? initial,
+    TResult Function(TableData tableData, ErrorDto? errors)? initial,
     TResult Function(TableData tableData)? loading,
     TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -865,21 +865,21 @@ mixin _$JobState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(JobStateInitial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(JobStateInitial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(JobStateInitial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
@@ -934,75 +934,85 @@ class _$JobStateCopyWithImpl<$Res, $Val extends JobState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> implements $JobStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$JobStateInitialImplCopyWith<$Res>
+    implements $JobStateCopyWith<$Res> {
+  factory _$$JobStateInitialImplCopyWith(_$JobStateInitialImpl value,
+          $Res Function(_$JobStateInitialImpl) then) =
+      __$$JobStateInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TableData tableData});
+  $Res call({TableData tableData, ErrorDto? errors});
 
   @override
   $TableDataCopyWith<$Res> get tableData;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$JobStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$JobStateInitialImplCopyWithImpl<$Res>
+    extends _$JobStateCopyWithImpl<$Res, _$JobStateInitialImpl>
+    implements _$$JobStateInitialImplCopyWith<$Res> {
+  __$$JobStateInitialImplCopyWithImpl(
+      _$JobStateInitialImpl _value, $Res Function(_$JobStateInitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? tableData = null,
+    Object? errors = freezed,
   }) {
-    return _then(_$InitialImpl(
+    return _then(_$JobStateInitialImpl(
       tableData: null == tableData
           ? _value.tableData
           : tableData // ignore: cast_nullable_to_non_nullable
               as TableData,
+      errors: freezed == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as ErrorDto?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required this.tableData});
+class _$JobStateInitialImpl implements JobStateInitial {
+  const _$JobStateInitialImpl({required this.tableData, this.errors});
 
   @override
   final TableData tableData;
+  @override
+  final ErrorDto? errors;
 
   @override
   String toString() {
-    return 'JobState.initial(tableData: $tableData)';
+    return 'JobState.initial(tableData: $tableData, errors: $errors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _$JobStateInitialImpl &&
             (identical(other.tableData, tableData) ||
-                other.tableData == tableData));
+                other.tableData == tableData) &&
+            (identical(other.errors, errors) || other.errors == errors));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tableData);
+  int get hashCode => Object.hash(runtimeType, tableData, errors);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$JobStateInitialImplCopyWith<_$JobStateInitialImpl> get copyWith =>
+      __$$JobStateInitialImplCopyWithImpl<_$JobStateInitialImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TableData tableData) initial,
+    required TResult Function(TableData tableData, ErrorDto? errors) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
             TableData tableData,
@@ -1011,25 +1021,25 @@ class _$InitialImpl implements _Initial {
             bool hasReachedMaxVacancies)
         loaded,
   }) {
-    return initial(tableData);
+    return initial(tableData, errors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TableData tableData)? initial,
+    TResult? Function(TableData tableData, ErrorDto? errors)? initial,
     TResult? Function(TableData tableData)? loading,
     TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
         loaded,
   }) {
-    return initial?.call(tableData);
+    return initial?.call(tableData, errors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TableData tableData)? initial,
+    TResult Function(TableData tableData, ErrorDto? errors)? initial,
     TResult Function(TableData tableData)? loading,
     TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -1037,7 +1047,7 @@ class _$InitialImpl implements _Initial {
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(tableData);
+      return initial(tableData, errors);
     }
     return orElse();
   }
@@ -1045,7 +1055,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(JobStateInitial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
@@ -1055,7 +1065,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(JobStateInitial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) {
@@ -1065,7 +1075,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(JobStateInitial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
@@ -1077,14 +1087,17 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements JobState {
-  const factory _Initial({required final TableData tableData}) = _$InitialImpl;
+abstract class JobStateInitial implements JobState {
+  const factory JobStateInitial(
+      {required final TableData tableData,
+      final ErrorDto? errors}) = _$JobStateInitialImpl;
 
   @override
   TableData get tableData;
+  ErrorDto? get errors;
   @override
   @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+  _$$JobStateInitialImplCopyWith<_$JobStateInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1157,7 +1170,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TableData tableData) initial,
+    required TResult Function(TableData tableData, ErrorDto? errors) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
             TableData tableData,
@@ -1172,7 +1185,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TableData tableData)? initial,
+    TResult? Function(TableData tableData, ErrorDto? errors)? initial,
     TResult? Function(TableData tableData)? loading,
     TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -1184,7 +1197,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TableData tableData)? initial,
+    TResult Function(TableData tableData, ErrorDto? errors)? initial,
     TResult Function(TableData tableData)? loading,
     TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -1200,7 +1213,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(JobStateInitial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
@@ -1210,7 +1223,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(JobStateInitial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) {
@@ -1220,7 +1233,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(JobStateInitial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
@@ -1364,7 +1377,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TableData tableData) initial,
+    required TResult Function(TableData tableData, ErrorDto? errors) initial,
     required TResult Function(TableData tableData) loading,
     required TResult Function(
             TableData tableData,
@@ -1380,7 +1393,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TableData tableData)? initial,
+    TResult? Function(TableData tableData, ErrorDto? errors)? initial,
     TResult? Function(TableData tableData)? loading,
     TResult? Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -1393,7 +1406,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TableData tableData)? initial,
+    TResult Function(TableData tableData, ErrorDto? errors)? initial,
     TResult Function(TableData tableData)? loading,
     TResult Function(TableData tableData, SalaryStatistics salaryStatistics,
             List<Vacancy> vacancies, bool hasReachedMaxVacancies)?
@@ -1410,7 +1423,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(JobStateInitial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
   }) {
@@ -1420,7 +1433,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(JobStateInitial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
   }) {
@@ -1430,7 +1443,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(JobStateInitial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),

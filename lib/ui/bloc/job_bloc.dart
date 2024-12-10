@@ -2,9 +2,11 @@ import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
+import 'package:each_job/domain/models/request_dto/request_dto.dart';
 import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
 import 'package:each_job/domain/models/table_data/table_data.dart';
 import 'package:each_job/domain/models/vacancy/vacancy.dart';
+import 'package:each_job/ui/bloc/error_dto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -22,27 +24,43 @@ class JobBloc extends Bloc<JobEvent, JobState> {
   }
   final IApiService _apiService;
   final _vacanciesPageSize = 20;
-  Area? _selectedArea;
-  Profession? _selectedProfession;
-  Grade? _selectedGrade;
+  RequestDto _requestDto = RequestDto.empty();
+  late RequestDto _cachedRequestDto;
 
   void _onSearch(_Search event, Emitter emit) async {
+    if (!_requestDto.isReady){
+      emit(
+        JobState.initial(
+          tableData: state.tableData,
+          errors: ErrorDto(
+            areaIsEmpty: _requestDto.area == null,
+            professionIsEmpty: _requestDto.profession == null
+          )
+        )
+      );
+      return;
+    }
     emit(JobState.loading(tableData: state.tableData));
+    _cachedRequestDto = _requestDto.copyWith();
     final [
       data as SalaryStatistics,
       vacancies as List<Vacancy>
     ] = await Future.wait([
       _apiService.getStatistics(
-        area: _selectedArea,
-        grade: _selectedGrade,
-        profession: _selectedProfession
+        areaId: _cachedRequestDto.area!.id,
+        professionId: _cachedRequestDto.profession!.id,
+        gradeId: _cachedRequestDto.grade?.id,
+        isoDateFrom: _cachedRequestDto.fromDate?.toIso8601String(),
+        isoDateTo: _cachedRequestDto.toDate?.toIso8601String(),
       ),
       _apiService.getVacanciesPage(
-        area: _selectedArea,
-        grade: _selectedGrade,
-        profession: _selectedProfession,
+        areaId: _cachedRequestDto.area!.id,
+        professionId: _cachedRequestDto.profession!.id,
+        gradeId: _cachedRequestDto.grade?.id,
+        isoDateFrom: _cachedRequestDto.fromDate?.toIso8601String(),
+        isoDateTo: _cachedRequestDto.toDate?.toIso8601String(),
+        pageNumber: 0,
         pageSize: _vacanciesPageSize,
-        skip: 0
       ),
     ]);
     emit(JobState.loaded(
@@ -64,11 +82,13 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     }
     _pageFetching = true;
     final newPage = await _apiService.getVacanciesPage(
-      area: _selectedArea,
-      grade: _selectedGrade,
-      profession: _selectedProfession,
+      areaId: _cachedRequestDto.area!.id,
+      professionId: _cachedRequestDto.profession!.id,
+      gradeId: _cachedRequestDto.grade?.id,
+      isoDateFrom: _cachedRequestDto.fromDate?.toIso8601String(),
+      isoDateTo: _cachedRequestDto.toDate?.toIso8601String(),
+      pageNumber: loadedState.vacancies.length ~/ _vacanciesPageSize,
       pageSize: _vacanciesPageSize,
-      skip: loadedState.vacancies.length
     );
     _pageFetching = false;
     emit(
@@ -80,14 +100,14 @@ class JobBloc extends Bloc<JobEvent, JobState> {
   }
 
   void _onUpdateAreaEvent(_UpdateArea event, Emitter emit){
-    _selectedArea = event.area;
+    _requestDto = _requestDto.copyWith(area: event.area);
   }
 
   void _onUpdateProfessionEvent(_UpdateProfession event, Emitter emit){
-    _selectedProfession = event.profession;
+    _requestDto = _requestDto.copyWith(profession: event.profession);
   }
 
   void _onUpdateGradeEvent(_UpdateGrade event, Emitter emit){
-    _selectedGrade = event.grade;
+    _requestDto = _requestDto.copyWith(grade: event.grade);
   }
 }

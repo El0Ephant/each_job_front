@@ -28,21 +28,21 @@ class _PeriodPickerDemoState extends State<PeriodPickerDemo> {
               isStart = false;
             },
             child: Text("Конец")),
-        PeriodPicker.month(
-          height: 200.0,
-          width: 350.0,
-          year: 2024,
-          chosen: (start: start, end: end),
-          onTap: (date) {
-            setState(() {
-              if (isStart) {
-                start = date;
-              } else {
-                end = date;
-              }
-            });
-          },
-        ),
+        // PeriodPicker.month(
+        //   height: 200.0,
+        //   width: 350.0,
+        //   year: 2024,
+        //   chosen: (start: start, end: end),
+        //   onTap: (date) {
+        //     setState(() {
+        //       if (isStart) {
+        //         start = date;
+        //       } else {
+        //         end = date;
+        //       }
+        //     });
+        //   },
+        // ),
       ],
     );
   }

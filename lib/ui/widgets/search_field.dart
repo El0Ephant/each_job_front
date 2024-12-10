@@ -168,6 +168,7 @@ class _SearchTextFieldState extends State<_SearchTextField> {
 
   void _onUpdate(){
     setState(() {
+      _hasError = false;
     });
   }
 
@@ -190,7 +191,11 @@ class _SearchTextFieldState extends State<_SearchTextField> {
         );
       }
     } else {
-      suffixIcon = Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.main1Color, size: _suffixIconSize,);
+      suffixIcon = Icon(
+        Icons.keyboard_arrow_down_rounded,
+        color: _hasError ? AppColors.errorColor : AppColors.main1Color,
+        size: _suffixIconSize,
+      );
     }
     return TextField(
       readOnly: widget.readOnly,
@@ -200,6 +205,9 @@ class _SearchTextFieldState extends State<_SearchTextField> {
         enabledBorder: _hasError ? _errorBorder : null,
         focusedBorder: _hasError ? _errorBorder : null,
         hintText: widget.hint,
+        hintStyle: _hasError ? AppTextStyles.commonLabelTextStyle.copyWith(
+          color: AppColors.errorColor
+        ) : null,
         suffixIcon: suffixIcon
       ),
     );

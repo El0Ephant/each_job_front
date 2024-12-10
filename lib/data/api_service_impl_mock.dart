@@ -40,9 +40,11 @@ class ApiServiceImplMock implements IApiService{
 
   @override
   Future<SalaryStatistics> getStatistics({
-    required Area? area,
-    required Profession? profession,
-    required Grade? grade,
+    required String professionId,
+    required String areaId,
+    required String? gradeId,
+    required String? isoDateFrom,
+    required String? isoDateTo,
   }) async {
     await Future.delayed(const Duration(seconds: 2));
     return SalaryStatistics(
@@ -59,27 +61,30 @@ class ApiServiceImplMock implements IApiService{
   final _random = Random();
   @override
   Future<List<Vacancy>> getVacanciesPage({
-    required Area? area,
-    required Profession? profession,
-    required Grade? grade,
-    required int pageSize,
-    required int skip
+    required String professionId,
+    required String areaId,
+    required String? gradeId,
+    required String? isoDateFrom,
+    required String? isoDateTo,
+    required int pageNumber,
+    required int pageSize
   }) async {
     await Future.delayed(const Duration(seconds: 2));
+    final baseInd = (pageNumber - 1) * pageSize;
     return List.generate(
-      skip < 100 ? pageSize : pageSize~/2,
+      pageNumber < 5 ? pageSize : pageSize~/2,
       (index) => Vacancy(
         url: 'https://flutter.dev',
-        id: (skip + index + 1).toString(),
-        name: 'Vacancy number ${skip + index + 1}',
-        employerName: 'Employer name ${skip + index + 1}',
-        publishedAt: DateTime(2021, 1, 1).add(Duration(days: skip + index)),
+        id: (baseInd + index + 1).toString(),
+        name: 'Vacancy number ${baseInd + index + 1}',
+        employerName: 'Employer name ${baseInd + index + 1}',
+        publishedAt: DateTime(2021, 1, 1).add(Duration(days: baseInd + index)),
         salaryFrom: _random.nextBool() ? (_random.nextInt(500) + 40) * 1000 : null,
         salaryTo: _random.nextBool() ? (_random.nextInt(500) + 40) * 1000 : null,
         salaryGross: _random.nextBool() ? _random.nextBool() : null,
         salaryCurrency: _random.nextBool() ? (_random.nextBool() ? 'RUR': (_random.nextBool() ? 'EUR':'USD')) : null,
-        snippetRequirement: _random.nextBool() ? 'Snippet requirement ${skip + index + 1}' : null,
-        snippetResponsibility: _random.nextBool() ? 'Snippet responsibility ${skip + index + 1}' : null
+        snippetRequirement: _random.nextBool() ? 'Snippet requirement ${baseInd + index + 1}' : null,
+        snippetResponsibility: _random.nextBool() ? 'Snippet responsibility ${baseInd + index + 1}' : null
       ),
     );
   }
