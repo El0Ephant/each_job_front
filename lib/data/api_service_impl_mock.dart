@@ -13,7 +13,7 @@ class ApiServiceImplMock implements IApiService{
     return Future.value(
       List.generate(
         areas.length,
-        (index) => Area(id: index.toString(), title: areas[index]),
+        (index) => Area(id: index, title: areas[index]),
       )
     );
   }
@@ -41,7 +41,7 @@ class ApiServiceImplMock implements IApiService{
   @override
   Future<SalaryStatistics> getStatistics({
     required String professionId,
-    required String areaId,
+    required int areaId,
     required String? gradeId,
     required String? isoDateFrom,
     required String? isoDateTo,
@@ -62,7 +62,7 @@ class ApiServiceImplMock implements IApiService{
   @override
   Future<List<Vacancy>> getVacanciesPage({
     required String professionId,
-    required String areaId,
+    required int areaId,
     required String? gradeId,
     required String? isoDateFrom,
     required String? isoDateTo,
@@ -75,12 +75,13 @@ class ApiServiceImplMock implements IApiService{
       pageNumber < 5 ? pageSize : pageSize~/2,
       (index) => Vacancy(
         url: 'https://flutter.dev',
+        hhId: "112367875",
         id: (baseInd + index + 1).toString(),
         name: 'Vacancy number ${baseInd + index + 1}',
         employerName: 'Employer name ${baseInd + index + 1}',
         publishedAt: DateTime(2021, 1, 1).add(Duration(days: baseInd + index)),
-        salaryFrom: _random.nextBool() ? (_random.nextInt(500) + 40) * 1000 : null,
-        salaryTo: _random.nextBool() ? (_random.nextInt(500) + 40) * 1000 : null,
+        salaryFrom: _random.nextBool() ? ((_random.nextInt(500) + 40) * 1000).toString() : null,
+        salaryTo: _random.nextBool() ? ((_random.nextInt(500) + 40) * 1000).toString()  : null,
         salaryGross: _random.nextBool() ? _random.nextBool() : null,
         salaryCurrency: _random.nextBool() ? (_random.nextBool() ? 'RUR': (_random.nextBool() ? 'EUR':'USD')) : null,
         snippetRequirement: _random.nextBool() ? 'Snippet requirement ${baseInd + index + 1}' : null,

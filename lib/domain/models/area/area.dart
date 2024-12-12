@@ -9,7 +9,7 @@ class Area with _$Area implements ISearchable {
   const Area._();
 
   const factory Area({
-    required String id,
+    required int id,
     required String title,
   }) = _Area;
 

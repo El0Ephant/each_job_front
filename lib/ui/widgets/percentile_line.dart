@@ -22,6 +22,11 @@ class PercentileLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bottom = (this.bottom ~/ 1000);
+    final upper = (this.upper ~/ 1000);
+    final median = (this.median ~/ 1000);
+    final oftenSalariesBottom = (this.oftenSalariesBottom ~/ 1000);
+    final oftenSalariesUpper = (this.oftenSalariesUpper ~/ 1000);
     return LayoutBuilder(
       builder: (context, constraints) {
         final salaryWidth = upper - bottom;

@@ -20,12 +20,20 @@ SalaryStatistics _$SalaryStatisticsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SalaryStatistics {
-  num get vacanciesNum => throw _privateConstructorUsedError;
-  num get bottomSalary => throw _privateConstructorUsedError;
-  num get upperSalary => throw _privateConstructorUsedError;
-  num get medianSalary => throw _privateConstructorUsedError;
-  num get oftenSalariesBottom => throw _privateConstructorUsedError;
-  num get oftenSalariesUpper => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nVacancies')
+  num? get vacanciesNum => throw _privateConstructorUsedError;
+  @JsonKey(name: 'min')
+  num? get bottomSalary => throw _privateConstructorUsedError;
+  @JsonKey(name: 'max')
+  num? get upperSalary => throw _privateConstructorUsedError;
+  @JsonKey(name: 'median')
+  num? get medianSalary => throw _privateConstructorUsedError;
+  @JsonKey(name: 'q1')
+  num? get oftenSalariesBottom => throw _privateConstructorUsedError;
+  @JsonKey(name: 'q3')
+  num? get oftenSalariesUpper => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson)
   List<({DateTime date, num value})> get chartData =>
       throw _privateConstructorUsedError;
 
@@ -42,12 +50,14 @@ abstract class $SalaryStatisticsCopyWith<$Res> {
       _$SalaryStatisticsCopyWithImpl<$Res, SalaryStatistics>;
   @useResult
   $Res call(
-      {num vacanciesNum,
-      num bottomSalary,
-      num upperSalary,
-      num medianSalary,
-      num oftenSalariesBottom,
-      num oftenSalariesUpper,
+      {@JsonKey(name: 'nVacancies') num? vacanciesNum,
+      @JsonKey(name: 'min') num? bottomSalary,
+      @JsonKey(name: 'max') num? upperSalary,
+      @JsonKey(name: 'median') num? medianSalary,
+      @JsonKey(name: 'q1') num? oftenSalariesBottom,
+      @JsonKey(name: 'q3') num? oftenSalariesUpper,
+      @JsonKey(
+          name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson)
       List<({DateTime date, num value})> chartData});
 }
 
@@ -64,39 +74,39 @@ class _$SalaryStatisticsCopyWithImpl<$Res, $Val extends SalaryStatistics>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? vacanciesNum = null,
-    Object? bottomSalary = null,
-    Object? upperSalary = null,
-    Object? medianSalary = null,
-    Object? oftenSalariesBottom = null,
-    Object? oftenSalariesUpper = null,
+    Object? vacanciesNum = freezed,
+    Object? bottomSalary = freezed,
+    Object? upperSalary = freezed,
+    Object? medianSalary = freezed,
+    Object? oftenSalariesBottom = freezed,
+    Object? oftenSalariesUpper = freezed,
     Object? chartData = null,
   }) {
     return _then(_value.copyWith(
-      vacanciesNum: null == vacanciesNum
+      vacanciesNum: freezed == vacanciesNum
           ? _value.vacanciesNum
           : vacanciesNum // ignore: cast_nullable_to_non_nullable
-              as num,
-      bottomSalary: null == bottomSalary
+              as num?,
+      bottomSalary: freezed == bottomSalary
           ? _value.bottomSalary
           : bottomSalary // ignore: cast_nullable_to_non_nullable
-              as num,
-      upperSalary: null == upperSalary
+              as num?,
+      upperSalary: freezed == upperSalary
           ? _value.upperSalary
           : upperSalary // ignore: cast_nullable_to_non_nullable
-              as num,
-      medianSalary: null == medianSalary
+              as num?,
+      medianSalary: freezed == medianSalary
           ? _value.medianSalary
           : medianSalary // ignore: cast_nullable_to_non_nullable
-              as num,
-      oftenSalariesBottom: null == oftenSalariesBottom
+              as num?,
+      oftenSalariesBottom: freezed == oftenSalariesBottom
           ? _value.oftenSalariesBottom
           : oftenSalariesBottom // ignore: cast_nullable_to_non_nullable
-              as num,
-      oftenSalariesUpper: null == oftenSalariesUpper
+              as num?,
+      oftenSalariesUpper: freezed == oftenSalariesUpper
           ? _value.oftenSalariesUpper
           : oftenSalariesUpper // ignore: cast_nullable_to_non_nullable
-              as num,
+              as num?,
       chartData: null == chartData
           ? _value.chartData
           : chartData // ignore: cast_nullable_to_non_nullable
@@ -114,12 +124,14 @@ abstract class _$$SalaryStatisticsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {num vacanciesNum,
-      num bottomSalary,
-      num upperSalary,
-      num medianSalary,
-      num oftenSalariesBottom,
-      num oftenSalariesUpper,
+      {@JsonKey(name: 'nVacancies') num? vacanciesNum,
+      @JsonKey(name: 'min') num? bottomSalary,
+      @JsonKey(name: 'max') num? upperSalary,
+      @JsonKey(name: 'median') num? medianSalary,
+      @JsonKey(name: 'q1') num? oftenSalariesBottom,
+      @JsonKey(name: 'q3') num? oftenSalariesUpper,
+      @JsonKey(
+          name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson)
       List<({DateTime date, num value})> chartData});
 }
 
@@ -134,39 +146,39 @@ class __$$SalaryStatisticsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? vacanciesNum = null,
-    Object? bottomSalary = null,
-    Object? upperSalary = null,
-    Object? medianSalary = null,
-    Object? oftenSalariesBottom = null,
-    Object? oftenSalariesUpper = null,
+    Object? vacanciesNum = freezed,
+    Object? bottomSalary = freezed,
+    Object? upperSalary = freezed,
+    Object? medianSalary = freezed,
+    Object? oftenSalariesBottom = freezed,
+    Object? oftenSalariesUpper = freezed,
     Object? chartData = null,
   }) {
     return _then(_$SalaryStatisticsImpl(
-      vacanciesNum: null == vacanciesNum
+      vacanciesNum: freezed == vacanciesNum
           ? _value.vacanciesNum
           : vacanciesNum // ignore: cast_nullable_to_non_nullable
-              as num,
-      bottomSalary: null == bottomSalary
+              as num?,
+      bottomSalary: freezed == bottomSalary
           ? _value.bottomSalary
           : bottomSalary // ignore: cast_nullable_to_non_nullable
-              as num,
-      upperSalary: null == upperSalary
+              as num?,
+      upperSalary: freezed == upperSalary
           ? _value.upperSalary
           : upperSalary // ignore: cast_nullable_to_non_nullable
-              as num,
-      medianSalary: null == medianSalary
+              as num?,
+      medianSalary: freezed == medianSalary
           ? _value.medianSalary
           : medianSalary // ignore: cast_nullable_to_non_nullable
-              as num,
-      oftenSalariesBottom: null == oftenSalariesBottom
+              as num?,
+      oftenSalariesBottom: freezed == oftenSalariesBottom
           ? _value.oftenSalariesBottom
           : oftenSalariesBottom // ignore: cast_nullable_to_non_nullable
-              as num,
-      oftenSalariesUpper: null == oftenSalariesUpper
+              as num?,
+      oftenSalariesUpper: freezed == oftenSalariesUpper
           ? _value.oftenSalariesUpper
           : oftenSalariesUpper // ignore: cast_nullable_to_non_nullable
-              as num,
+              as num?,
       chartData: null == chartData
           ? _value._chartData
           : chartData // ignore: cast_nullable_to_non_nullable
@@ -177,34 +189,45 @@ class __$$SalaryStatisticsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SalaryStatisticsImpl implements _SalaryStatistics {
+class _$SalaryStatisticsImpl extends _SalaryStatistics {
   const _$SalaryStatisticsImpl(
-      {required this.vacanciesNum,
-      required this.bottomSalary,
-      required this.upperSalary,
-      required this.medianSalary,
-      required this.oftenSalariesBottom,
-      required this.oftenSalariesUpper,
+      {@JsonKey(name: 'nVacancies') this.vacanciesNum,
+      @JsonKey(name: 'min') this.bottomSalary,
+      @JsonKey(name: 'max') this.upperSalary,
+      @JsonKey(name: 'median') this.medianSalary,
+      @JsonKey(name: 'q1') this.oftenSalariesBottom,
+      @JsonKey(name: 'q3') this.oftenSalariesUpper,
+      @JsonKey(
+          name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson)
       required final List<({DateTime date, num value})> chartData})
-      : _chartData = chartData;
+      : _chartData = chartData,
+        super._();
 
   factory _$SalaryStatisticsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SalaryStatisticsImplFromJson(json);
 
   @override
-  final num vacanciesNum;
+  @JsonKey(name: 'nVacancies')
+  final num? vacanciesNum;
   @override
-  final num bottomSalary;
+  @JsonKey(name: 'min')
+  final num? bottomSalary;
   @override
-  final num upperSalary;
+  @JsonKey(name: 'max')
+  final num? upperSalary;
   @override
-  final num medianSalary;
+  @JsonKey(name: 'median')
+  final num? medianSalary;
   @override
-  final num oftenSalariesBottom;
+  @JsonKey(name: 'q1')
+  final num? oftenSalariesBottom;
   @override
-  final num oftenSalariesUpper;
+  @JsonKey(name: 'q3')
+  final num? oftenSalariesUpper;
   final List<({DateTime date, num value})> _chartData;
   @override
+  @JsonKey(
+      name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson)
   List<({DateTime date, num value})> get chartData {
     if (_chartData is EqualUnmodifiableListView) return _chartData;
     // ignore: implicit_dynamic_type
@@ -264,33 +287,45 @@ class _$SalaryStatisticsImpl implements _SalaryStatistics {
   }
 }
 
-abstract class _SalaryStatistics implements SalaryStatistics {
+abstract class _SalaryStatistics extends SalaryStatistics {
   const factory _SalaryStatistics(
-          {required final num vacanciesNum,
-          required final num bottomSalary,
-          required final num upperSalary,
-          required final num medianSalary,
-          required final num oftenSalariesBottom,
-          required final num oftenSalariesUpper,
+          {@JsonKey(name: 'nVacancies') final num? vacanciesNum,
+          @JsonKey(name: 'min') final num? bottomSalary,
+          @JsonKey(name: 'max') final num? upperSalary,
+          @JsonKey(name: 'median') final num? medianSalary,
+          @JsonKey(name: 'q1') final num? oftenSalariesBottom,
+          @JsonKey(name: 'q3') final num? oftenSalariesUpper,
+          @JsonKey(
+              name: 'monthlyMedians',
+              fromJson: SalaryStatistics._chartDataFromJson)
           required final List<({DateTime date, num value})> chartData}) =
       _$SalaryStatisticsImpl;
+  const _SalaryStatistics._() : super._();
 
   factory _SalaryStatistics.fromJson(Map<String, dynamic> json) =
       _$SalaryStatisticsImpl.fromJson;
 
   @override
-  num get vacanciesNum;
+  @JsonKey(name: 'nVacancies')
+  num? get vacanciesNum;
   @override
-  num get bottomSalary;
+  @JsonKey(name: 'min')
+  num? get bottomSalary;
   @override
-  num get upperSalary;
+  @JsonKey(name: 'max')
+  num? get upperSalary;
   @override
-  num get medianSalary;
+  @JsonKey(name: 'median')
+  num? get medianSalary;
   @override
-  num get oftenSalariesBottom;
+  @JsonKey(name: 'q1')
+  num? get oftenSalariesBottom;
   @override
-  num get oftenSalariesUpper;
+  @JsonKey(name: 'q3')
+  num? get oftenSalariesUpper;
   @override
+  @JsonKey(
+      name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson)
   List<({DateTime date, num value})> get chartData;
   @override
   @JsonKey(ignore: true)

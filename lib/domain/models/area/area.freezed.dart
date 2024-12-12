@@ -20,7 +20,7 @@ Area _$AreaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Area {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $AreaCopyWith<$Res> {
   factory $AreaCopyWith(Area value, $Res Function(Area) then) =
       _$AreaCopyWithImpl<$Res, Area>;
   @useResult
-  $Res call({String id, String title});
+  $Res call({int id, String title});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$AreaCopyWithImpl<$Res, $Val extends Area>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -72,7 +72,7 @@ abstract class _$$AreaImplCopyWith<$Res> implements $AreaCopyWith<$Res> {
       __$$AreaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title});
+  $Res call({int id, String title});
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class __$$AreaImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -110,7 +110,7 @@ class _$AreaImpl extends _Area {
       _$$AreaImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String title;
 
@@ -147,14 +147,14 @@ class _$AreaImpl extends _Area {
 }
 
 abstract class _Area extends Area {
-  const factory _Area({required final String id, required final String title}) =
+  const factory _Area({required final int id, required final String title}) =
       _$AreaImpl;
   const _Area._() : super._();
 
   factory _Area.fromJson(Map<String, dynamic> json) = _$AreaImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get title;
   @override

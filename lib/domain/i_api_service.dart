@@ -13,7 +13,7 @@ abstract interface class IApiService{
 
   Future<SalaryStatistics> getStatistics({
     required String professionId,
-    required String areaId,
+    required int areaId,
     required String? gradeId,
     required String? isoDateFrom,
     required String? isoDateTo,
@@ -21,7 +21,7 @@ abstract interface class IApiService{
 
   Future<List<Vacancy>> getVacanciesPage({
     required String professionId,
-    required String areaId,
+    required int areaId,
     required String? gradeId,
     required String? isoDateFrom,
     required String? isoDateTo,

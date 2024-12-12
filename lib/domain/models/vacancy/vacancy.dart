@@ -7,16 +7,17 @@ part 'vacancy.g.dart';
 class Vacancy with _$Vacancy {
   const factory Vacancy({
     required String id,
+    required String hhId,
     required String name,
-    required String url,
-    @JsonKey(name: 'employer_name') required String employerName,
-    @JsonKey(name: 'published_at') required DateTime publishedAt,
-    @JsonKey(name: 'snippet_requirement') String? snippetRequirement,
-    @JsonKey(name: 'snippet_responsibility') String? snippetResponsibility,
-    @JsonKey(name: 'salary_from') double? salaryFrom,
-    @JsonKey(name: 'salary_to') double? salaryTo,
-    @JsonKey(name: 'salary_currency') String? salaryCurrency,
-    @JsonKey(name: 'salary_gross') bool? salaryGross,
+    String? url,
+    @JsonKey(name: 'employerName') required String employerName,
+    @JsonKey(name: 'publishedAt') required DateTime publishedAt,
+    @JsonKey(name: 'snippetRequirement') String? snippetRequirement,
+    @JsonKey(name: 'snippetResponsibility') String? snippetResponsibility,
+    @JsonKey(name: 'salaryFrom') String? salaryFrom,
+    @JsonKey(name: 'salaryTo') String? salaryTo,
+    @JsonKey(name: 'salaryCurrency') String? salaryCurrency,
+    @JsonKey(name: 'salaryGross') bool? salaryGross,
   }) = _Vacancy;
 
   factory Vacancy.fromJson(Map<String, dynamic> json) =>

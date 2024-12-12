@@ -38,7 +38,8 @@ class VacancyTile extends StatelessWidget {
     final decodedCurrency = decodeCurrency(vacancy.salaryCurrency);
     return InkWell(
       onTap: () {
-        launchUrl(Uri.parse(vacancy.url));
+        final url = vacancy.url ?? 'https://hh.ru/vacancy/${vacancy.hhId}';
+        launchUrl(Uri.parse(url));
       },
       borderRadius: const BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius)),
       child: DecoratedBox(
@@ -56,13 +57,14 @@ class VacancyTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(vacancy.name, style: AppTextStyles.vacancyBigTextStyle,),
-                    Text(vacancy.employerName, style: AppTextStyles.vacancySmallTextStyle,),
+                    if (vacancy.employerName != null)
+                    Text(vacancy.employerName!, style: AppTextStyles.vacancySmallTextStyle,),
                     if (vacancy.salaryFrom != null && vacancy.salaryTo != null)
-                      Text('${vacancy.salaryFrom!.toInt()} - ${vacancy.salaryTo!.toInt()} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,),
+                      Text('${vacancy.salaryFrom!} - ${vacancy.salaryTo!} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,),
                     if (vacancy.salaryFrom != null && vacancy.salaryTo == null)
-                      Text('от ${vacancy.salaryFrom!.toInt()} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,),
+                      Text('от ${vacancy.salaryFrom!} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,),
                     if (vacancy.salaryFrom == null && vacancy.salaryTo != null)
-                      Text('до ${vacancy.salaryTo!.toInt()} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,)
+                      Text('до ${vacancy.salaryTo!} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,)
                   ],
                 ),
               ),

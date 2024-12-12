@@ -21,23 +21,24 @@ Vacancy _$VacancyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Vacancy {
   String get id => throw _privateConstructorUsedError;
+  String get hhId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
-  @JsonKey(name: 'employer_name')
+  String? get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'employerName')
   String get employerName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'published_at')
+  @JsonKey(name: 'publishedAt')
   DateTime get publishedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'snippet_requirement')
+  @JsonKey(name: 'snippetRequirement')
   String? get snippetRequirement => throw _privateConstructorUsedError;
-  @JsonKey(name: 'snippet_responsibility')
+  @JsonKey(name: 'snippetResponsibility')
   String? get snippetResponsibility => throw _privateConstructorUsedError;
-  @JsonKey(name: 'salary_from')
-  double? get salaryFrom => throw _privateConstructorUsedError;
-  @JsonKey(name: 'salary_to')
-  double? get salaryTo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'salary_currency')
+  @JsonKey(name: 'salaryFrom')
+  String? get salaryFrom => throw _privateConstructorUsedError;
+  @JsonKey(name: 'salaryTo')
+  String? get salaryTo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'salaryCurrency')
   String? get salaryCurrency => throw _privateConstructorUsedError;
-  @JsonKey(name: 'salary_gross')
+  @JsonKey(name: 'salaryGross')
   bool? get salaryGross => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,16 +53,17 @@ abstract class $VacancyCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String hhId,
       String name,
-      String url,
-      @JsonKey(name: 'employer_name') String employerName,
-      @JsonKey(name: 'published_at') DateTime publishedAt,
-      @JsonKey(name: 'snippet_requirement') String? snippetRequirement,
-      @JsonKey(name: 'snippet_responsibility') String? snippetResponsibility,
-      @JsonKey(name: 'salary_from') double? salaryFrom,
-      @JsonKey(name: 'salary_to') double? salaryTo,
-      @JsonKey(name: 'salary_currency') String? salaryCurrency,
-      @JsonKey(name: 'salary_gross') bool? salaryGross});
+      String? url,
+      @JsonKey(name: 'employerName') String employerName,
+      @JsonKey(name: 'publishedAt') DateTime publishedAt,
+      @JsonKey(name: 'snippetRequirement') String? snippetRequirement,
+      @JsonKey(name: 'snippetResponsibility') String? snippetResponsibility,
+      @JsonKey(name: 'salaryFrom') String? salaryFrom,
+      @JsonKey(name: 'salaryTo') String? salaryTo,
+      @JsonKey(name: 'salaryCurrency') String? salaryCurrency,
+      @JsonKey(name: 'salaryGross') bool? salaryGross});
 }
 
 /// @nodoc
@@ -78,8 +80,9 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
   @override
   $Res call({
     Object? id = null,
+    Object? hhId = null,
     Object? name = null,
-    Object? url = null,
+    Object? url = freezed,
     Object? employerName = null,
     Object? publishedAt = null,
     Object? snippetRequirement = freezed,
@@ -94,14 +97,18 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      hhId: null == hhId
+          ? _value.hhId
+          : hhId // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       employerName: null == employerName
           ? _value.employerName
           : employerName // ignore: cast_nullable_to_non_nullable
@@ -121,11 +128,11 @@ class _$VacancyCopyWithImpl<$Res, $Val extends Vacancy>
       salaryFrom: freezed == salaryFrom
           ? _value.salaryFrom
           : salaryFrom // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       salaryTo: freezed == salaryTo
           ? _value.salaryTo
           : salaryTo // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       salaryCurrency: freezed == salaryCurrency
           ? _value.salaryCurrency
           : salaryCurrency // ignore: cast_nullable_to_non_nullable
@@ -147,16 +154,17 @@ abstract class _$$VacancyImplCopyWith<$Res> implements $VacancyCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String hhId,
       String name,
-      String url,
-      @JsonKey(name: 'employer_name') String employerName,
-      @JsonKey(name: 'published_at') DateTime publishedAt,
-      @JsonKey(name: 'snippet_requirement') String? snippetRequirement,
-      @JsonKey(name: 'snippet_responsibility') String? snippetResponsibility,
-      @JsonKey(name: 'salary_from') double? salaryFrom,
-      @JsonKey(name: 'salary_to') double? salaryTo,
-      @JsonKey(name: 'salary_currency') String? salaryCurrency,
-      @JsonKey(name: 'salary_gross') bool? salaryGross});
+      String? url,
+      @JsonKey(name: 'employerName') String employerName,
+      @JsonKey(name: 'publishedAt') DateTime publishedAt,
+      @JsonKey(name: 'snippetRequirement') String? snippetRequirement,
+      @JsonKey(name: 'snippetResponsibility') String? snippetResponsibility,
+      @JsonKey(name: 'salaryFrom') String? salaryFrom,
+      @JsonKey(name: 'salaryTo') String? salaryTo,
+      @JsonKey(name: 'salaryCurrency') String? salaryCurrency,
+      @JsonKey(name: 'salaryGross') bool? salaryGross});
 }
 
 /// @nodoc
@@ -171,8 +179,9 @@ class __$$VacancyImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? hhId = null,
     Object? name = null,
-    Object? url = null,
+    Object? url = freezed,
     Object? employerName = null,
     Object? publishedAt = null,
     Object? snippetRequirement = freezed,
@@ -187,14 +196,18 @@ class __$$VacancyImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      hhId: null == hhId
+          ? _value.hhId
+          : hhId // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       employerName: null == employerName
           ? _value.employerName
           : employerName // ignore: cast_nullable_to_non_nullable
@@ -214,11 +227,11 @@ class __$$VacancyImplCopyWithImpl<$Res>
       salaryFrom: freezed == salaryFrom
           ? _value.salaryFrom
           : salaryFrom // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       salaryTo: freezed == salaryTo
           ? _value.salaryTo
           : salaryTo // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       salaryCurrency: freezed == salaryCurrency
           ? _value.salaryCurrency
           : salaryCurrency // ignore: cast_nullable_to_non_nullable
@@ -236,16 +249,17 @@ class __$$VacancyImplCopyWithImpl<$Res>
 class _$VacancyImpl implements _Vacancy {
   const _$VacancyImpl(
       {required this.id,
+      required this.hhId,
       required this.name,
-      required this.url,
-      @JsonKey(name: 'employer_name') required this.employerName,
-      @JsonKey(name: 'published_at') required this.publishedAt,
-      @JsonKey(name: 'snippet_requirement') this.snippetRequirement,
-      @JsonKey(name: 'snippet_responsibility') this.snippetResponsibility,
-      @JsonKey(name: 'salary_from') this.salaryFrom,
-      @JsonKey(name: 'salary_to') this.salaryTo,
-      @JsonKey(name: 'salary_currency') this.salaryCurrency,
-      @JsonKey(name: 'salary_gross') this.salaryGross});
+      this.url,
+      @JsonKey(name: 'employerName') required this.employerName,
+      @JsonKey(name: 'publishedAt') required this.publishedAt,
+      @JsonKey(name: 'snippetRequirement') this.snippetRequirement,
+      @JsonKey(name: 'snippetResponsibility') this.snippetResponsibility,
+      @JsonKey(name: 'salaryFrom') this.salaryFrom,
+      @JsonKey(name: 'salaryTo') this.salaryTo,
+      @JsonKey(name: 'salaryCurrency') this.salaryCurrency,
+      @JsonKey(name: 'salaryGross') this.salaryGross});
 
   factory _$VacancyImpl.fromJson(Map<String, dynamic> json) =>
       _$$VacancyImplFromJson(json);
@@ -253,37 +267,39 @@ class _$VacancyImpl implements _Vacancy {
   @override
   final String id;
   @override
+  final String hhId;
+  @override
   final String name;
   @override
-  final String url;
+  final String? url;
   @override
-  @JsonKey(name: 'employer_name')
+  @JsonKey(name: 'employerName')
   final String employerName;
   @override
-  @JsonKey(name: 'published_at')
+  @JsonKey(name: 'publishedAt')
   final DateTime publishedAt;
   @override
-  @JsonKey(name: 'snippet_requirement')
+  @JsonKey(name: 'snippetRequirement')
   final String? snippetRequirement;
   @override
-  @JsonKey(name: 'snippet_responsibility')
+  @JsonKey(name: 'snippetResponsibility')
   final String? snippetResponsibility;
   @override
-  @JsonKey(name: 'salary_from')
-  final double? salaryFrom;
+  @JsonKey(name: 'salaryFrom')
+  final String? salaryFrom;
   @override
-  @JsonKey(name: 'salary_to')
-  final double? salaryTo;
+  @JsonKey(name: 'salaryTo')
+  final String? salaryTo;
   @override
-  @JsonKey(name: 'salary_currency')
+  @JsonKey(name: 'salaryCurrency')
   final String? salaryCurrency;
   @override
-  @JsonKey(name: 'salary_gross')
+  @JsonKey(name: 'salaryGross')
   final bool? salaryGross;
 
   @override
   String toString() {
-    return 'Vacancy(id: $id, name: $name, url: $url, employerName: $employerName, publishedAt: $publishedAt, snippetRequirement: $snippetRequirement, snippetResponsibility: $snippetResponsibility, salaryFrom: $salaryFrom, salaryTo: $salaryTo, salaryCurrency: $salaryCurrency, salaryGross: $salaryGross)';
+    return 'Vacancy(id: $id, hhId: $hhId, name: $name, url: $url, employerName: $employerName, publishedAt: $publishedAt, snippetRequirement: $snippetRequirement, snippetResponsibility: $snippetResponsibility, salaryFrom: $salaryFrom, salaryTo: $salaryTo, salaryCurrency: $salaryCurrency, salaryGross: $salaryGross)';
   }
 
   @override
@@ -292,6 +308,7 @@ class _$VacancyImpl implements _Vacancy {
         (other.runtimeType == runtimeType &&
             other is _$VacancyImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.hhId, hhId) || other.hhId == hhId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.employerName, employerName) ||
@@ -317,6 +334,7 @@ class _$VacancyImpl implements _Vacancy {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      hhId,
       name,
       url,
       employerName,
@@ -345,49 +363,52 @@ class _$VacancyImpl implements _Vacancy {
 abstract class _Vacancy implements Vacancy {
   const factory _Vacancy(
       {required final String id,
+      required final String hhId,
       required final String name,
-      required final String url,
-      @JsonKey(name: 'employer_name') required final String employerName,
-      @JsonKey(name: 'published_at') required final DateTime publishedAt,
-      @JsonKey(name: 'snippet_requirement') final String? snippetRequirement,
-      @JsonKey(name: 'snippet_responsibility')
+      final String? url,
+      @JsonKey(name: 'employerName') required final String employerName,
+      @JsonKey(name: 'publishedAt') required final DateTime publishedAt,
+      @JsonKey(name: 'snippetRequirement') final String? snippetRequirement,
+      @JsonKey(name: 'snippetResponsibility')
       final String? snippetResponsibility,
-      @JsonKey(name: 'salary_from') final double? salaryFrom,
-      @JsonKey(name: 'salary_to') final double? salaryTo,
-      @JsonKey(name: 'salary_currency') final String? salaryCurrency,
-      @JsonKey(name: 'salary_gross') final bool? salaryGross}) = _$VacancyImpl;
+      @JsonKey(name: 'salaryFrom') final String? salaryFrom,
+      @JsonKey(name: 'salaryTo') final String? salaryTo,
+      @JsonKey(name: 'salaryCurrency') final String? salaryCurrency,
+      @JsonKey(name: 'salaryGross') final bool? salaryGross}) = _$VacancyImpl;
 
   factory _Vacancy.fromJson(Map<String, dynamic> json) = _$VacancyImpl.fromJson;
 
   @override
   String get id;
   @override
+  String get hhId;
+  @override
   String get name;
   @override
-  String get url;
+  String? get url;
   @override
-  @JsonKey(name: 'employer_name')
+  @JsonKey(name: 'employerName')
   String get employerName;
   @override
-  @JsonKey(name: 'published_at')
+  @JsonKey(name: 'publishedAt')
   DateTime get publishedAt;
   @override
-  @JsonKey(name: 'snippet_requirement')
+  @JsonKey(name: 'snippetRequirement')
   String? get snippetRequirement;
   @override
-  @JsonKey(name: 'snippet_responsibility')
+  @JsonKey(name: 'snippetResponsibility')
   String? get snippetResponsibility;
   @override
-  @JsonKey(name: 'salary_from')
-  double? get salaryFrom;
+  @JsonKey(name: 'salaryFrom')
+  String? get salaryFrom;
   @override
-  @JsonKey(name: 'salary_to')
-  double? get salaryTo;
+  @JsonKey(name: 'salaryTo')
+  String? get salaryTo;
   @override
-  @JsonKey(name: 'salary_currency')
+  @JsonKey(name: 'salaryCurrency')
   String? get salaryCurrency;
   @override
-  @JsonKey(name: 'salary_gross')
+  @JsonKey(name: 'salaryGross')
   bool? get salaryGross;
   @override
   @JsonKey(ignore: true)

@@ -131,7 +131,7 @@ class _ApiServiceImpl implements ApiServiceImpl {
   @override
   Future<SalaryStatistics> getStatistics({
     required String professionId,
-    required String areaId,
+    required int areaId,
     String? gradeId,
     String? isoDateFrom,
     String? isoDateTo,
@@ -177,7 +177,7 @@ class _ApiServiceImpl implements ApiServiceImpl {
   @override
   Future<List<Vacancy>> getVacanciesPage({
     required String professionId,
-    required String areaId,
+    required int areaId,
     String? gradeId,
     String? isoDateFrom,
     String? isoDateTo,

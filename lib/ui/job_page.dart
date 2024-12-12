@@ -87,7 +87,7 @@ class _JobPageState extends State<JobPage> {
 
                     state.maybeWhen(
                       loaded: (tableData, salaryStatistics, vacancies, hasReachedMaxVacancies) {
-                        if (salaryStatistics.vacanciesNum < 50){
+                        if (!salaryStatistics.isValid){
                           return const Padding(
                             padding: EdgeInsets.only(top: AppSizes.outerIndent),
                             child: Center(
@@ -102,18 +102,19 @@ class _JobPageState extends State<JobPage> {
                           children: [
                             const SizedBox(height: AppSizes.outerIndent,),
                             PercentileLine(
-                              bottom: salaryStatistics.bottomSalary,
-                              upper: salaryStatistics.upperSalary,
-                              median: salaryStatistics.medianSalary,
-                              oftenSalariesBottom: salaryStatistics.oftenSalariesBottom,
-                              oftenSalariesUpper: salaryStatistics.oftenSalariesUpper,
+                              bottom: salaryStatistics.bottomSalary!,
+                              upper: salaryStatistics.upperSalary!,
+                              median: salaryStatistics.medianSalary!,
+                              oftenSalariesBottom: salaryStatistics.oftenSalariesBottom!,
+                              oftenSalariesUpper: salaryStatistics.oftenSalariesUpper!,
                             ),
                             const SizedBox(height: AppSizes.outerIndent,),
+                            if (salaryStatistics.chartData.length >= 2 )
                             SizedBox(
-                                height: 300,
-                                child: SalaryChart(
-                                    data: salaryStatistics.chartData
-                                )
+                              height: 300,
+                              child: SalaryChart(
+                                data: salaryStatistics.chartData
+                              )
                             ),
                             const SizedBox(height: AppSizes.innerIndent,),
                             Align(

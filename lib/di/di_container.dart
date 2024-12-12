@@ -12,7 +12,7 @@ class DiContainer{
     return _instance;
   }
 
-  late final Dio _dio = Dio();
+  late final Dio _dio = Dio()..options.headers['Connection'] = 'Keep-Alive';
 
-  late final IApiService apiService = ApiServiceImplMock(); //ApiServiceImpl(_dio);
+  late final IApiService apiService = ApiServiceImpl(_dio);
 }

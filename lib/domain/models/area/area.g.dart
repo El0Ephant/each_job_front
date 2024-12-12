@@ -7,7 +7,7 @@ part of 'area.dart';
 // **************************************************************************
 
 _$AreaImpl _$$AreaImplFromJson(Map<String, dynamic> json) => _$AreaImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
     );
 

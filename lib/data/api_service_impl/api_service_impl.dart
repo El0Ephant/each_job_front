@@ -29,7 +29,7 @@ abstract class ApiServiceImpl implements IApiService{
   @override
   Future<SalaryStatistics> getStatistics({
     @Query('professionId') required String professionId,
-    @Query('areaId') required String areaId,
+    @Query('areaId') required int areaId,
     @Query('gradeId') required String? gradeId,
     @Query('from') required String? isoDateFrom,
     @Query('to') required String? isoDateTo,
@@ -39,7 +39,7 @@ abstract class ApiServiceImpl implements IApiService{
   @override
   Future<List<Vacancy>> getVacanciesPage({
     @Query('professionId') required String professionId,
-    @Query('areaId') required String areaId,
+    @Query('areaId') required int areaId,
     @Query('gradeId') required String? gradeId,
     @Query('from') required String? isoDateFrom,
     @Query('to') required String? isoDateTo,
