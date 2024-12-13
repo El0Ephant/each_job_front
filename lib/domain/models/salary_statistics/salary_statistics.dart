@@ -24,12 +24,12 @@ class SalaryStatistics with _$SalaryStatistics {
 
   static List<({DateTime date, num value})> _chartDataFromJson(dynamic data){
     final List<({DateTime date, num value})> chartData = [];
-    if (data is Map<String, num>){
+    if (data is Map<String, dynamic>){
       for (var key in data.keys) {
         final dateParts = key.split('-');
         chartData.add((
         date: DateTime(int.parse(dateParts[0]), int.parse(dateParts[1])),
-        value: data[key]!
+        value: data[key]! ~/ 1000
         ));
       }
     }

@@ -135,10 +135,11 @@ class _JobPageState extends State<JobPage> {
                               height: AppSizes.outerIndent,
                             ),
                             if (salaryStatistics.chartData.length >= 2)
-                              SizedBox(
-                                  height: 300,
-                                  child: SalaryChart(
-                                      data: salaryStatistics.chartData)),
+                            SizedBox(
+                              height: 300,
+                              child: SalaryChart(
+                                data: salaryStatistics.chartData)
+                            ),
                             const SizedBox(
                               height: AppSizes.innerIndent,
                             ),

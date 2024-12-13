@@ -55,8 +55,17 @@ class _SalaryChartState extends State<SalaryChart> {
       _leftTitlesReservedSize = 50;
     }
 
-    _stepY = (_maxY - _minY) / (height ~/ _leftTitleHeight);
-    _stepY = (_stepY ~/ 10) * 10;
+    if (_minY == _maxY){
+      final value = _minY;
+      _minY -= value * 0.2;
+      _maxY += value * 0.2;
+      _stepY = value * 0.1;
+    } else {
+      _stepY = (_maxY - _minY) / (height ~/ _leftTitleHeight);
+      if (_stepY > 10){
+        _stepY = (_stepY ~/ 10) * 10;
+      }
+    }
 
     _stepX = (data.length / (width ~/ _bottomTitleWidth)).ceilToDouble();
   }
