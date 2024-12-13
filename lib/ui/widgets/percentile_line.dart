@@ -55,22 +55,6 @@ class PercentileLine extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned.fill(
-                left: oftenSalariesStart,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: SizedBox(
-                    width: oftenSalariesEnd - oftenSalariesStart,
-                    height: AppSizes.commonHeight,
-                    child: const DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: AppColors.main2Color,
-                        borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius)),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               _Mark(
                 isOftenSalaries: false,
                 value: bottom.toInt(),
@@ -99,6 +83,22 @@ class PercentileLine extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 right: constraints.maxWidth - oftenSalariesEnd,
                 bottom: 0,
+              ),
+              Positioned.fill(
+                left: oftenSalariesStart,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    width: oftenSalariesEnd - oftenSalariesStart,
+                    height: AppSizes.commonHeight,
+                    child: const DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: AppColors.main2Color,
+                        borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius)),
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: medianPos, top: _mainMarkPadding.toDouble(), bottom: _mainMarkPadding.toDouble()),
