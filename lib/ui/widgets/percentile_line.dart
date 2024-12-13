@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
@@ -29,10 +31,11 @@ class PercentileLine extends StatelessWidget {
     final oftenSalariesUpper = (this.oftenSalariesUpper ~/ 1000);
     return LayoutBuilder(
       builder: (context, constraints) {
+        final fullWidth = constraints.maxWidth - AppSizes.commonBorderRadius * 2;
         final salaryWidth = upper - bottom;
-        final medianPos = (median - bottom) / salaryWidth * constraints.maxWidth;
-        final oftenSalariesStart = (oftenSalariesBottom - bottom) / salaryWidth * constraints.maxWidth;
-        final oftenSalariesEnd = (oftenSalariesUpper - bottom) / salaryWidth * constraints.maxWidth;
+        final oftenSalariesStart = (oftenSalariesBottom - bottom) / salaryWidth * fullWidth;
+        final medianPos = max((median - bottom) / salaryWidth * (fullWidth) + AppSizes.commonBorderRadius, oftenSalariesStart + 40);
+        final oftenSalariesEnd = max((oftenSalariesUpper - bottom) / salaryWidth * fullWidth + AppSizes.commonBorderRadius, medianPos + 40);
         return SizedBox(
           width: double.infinity,
           child: Stack(
@@ -45,8 +48,8 @@ class PercentileLine extends StatelessWidget {
                     height: AppSizes.commonHeight,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: AppColors.secondaryColor,
-                        borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius))
+                          color: AppColors.secondaryColor,
+                          borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius))
                       ),
                     ),
                   ),
@@ -105,11 +108,20 @@ class PercentileLine extends StatelessWidget {
                   child: const ColoredBox(color: AppColors.main2Color),
                 ),
               ),
-              Positioned.fill(
-                child: Align(
-                  alignment:  Alignment(-1 + (medianPos / constraints.maxWidth) * 2, 0),
-                  child: Text("${median}k", style: AppTextStyles.plotOnMainTextStyle,),
-                ),
+              Builder(
+                builder: (context) {
+                  TextPainter textPainter = TextPainter(
+                    text: TextSpan(text: "${median}k", style: AppTextStyles.plotOnMainTextStyle),
+                    textDirection: TextDirection.ltr,
+                    textAlign: TextAlign.center
+                  );
+                  textPainter.layout();
+                  return Positioned.fill(
+                    top: 95/2 - textPainter.height/2,
+                    left: medianPos - textPainter.width/2,
+                    child: Text("${median}k", style: AppTextStyles.plotOnMainTextStyle,),
+                  );
+                }
               )
             ],
           ),

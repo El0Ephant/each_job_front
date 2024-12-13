@@ -17,7 +17,7 @@ class SalaryStatistics with _$SalaryStatistics {
     @JsonKey(name: 'monthlyMedians', fromJson: SalaryStatistics._chartDataFromJson) required List<({DateTime date, num value})> chartData
   }) = _SalaryStatistics;
 
-  bool get isValid => vacanciesNum != null && vacanciesNum! > 50
+  bool get isValid => vacanciesNum != null && vacanciesNum! > 5
       && bottomSalary != null && upperSalary != null
       && oftenSalariesBottom != null && oftenSalariesUpper != null
       && medianSalary != null;
