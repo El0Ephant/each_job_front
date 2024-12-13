@@ -21,6 +21,8 @@ mixin _$JobEvent {
     required TResult Function(Area? area) updateArea,
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) =>
@@ -30,6 +32,7 @@ mixin _$JobEvent {
     TResult? Function(Area? area)? updateArea,
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) =>
@@ -39,6 +42,7 @@ mixin _$JobEvent {
     TResult Function(Area? area)? updateArea,
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -49,6 +53,7 @@ mixin _$JobEvent {
     required TResult Function(_UpdateArea value) updateArea,
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) =>
@@ -58,6 +63,7 @@ mixin _$JobEvent {
     TResult? Function(_UpdateArea value)? updateArea,
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) =>
@@ -67,6 +73,7 @@ mixin _$JobEvent {
     TResult Function(_UpdateArea value)? updateArea,
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -172,6 +179,8 @@ class _$UpdateAreaImpl implements _UpdateArea {
     required TResult Function(Area? area) updateArea,
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -184,6 +193,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult? Function(Area? area)? updateArea,
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -196,6 +206,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult Function(Area? area)? updateArea,
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -212,6 +223,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     required TResult Function(_UpdateArea value) updateArea,
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -224,6 +236,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult? Function(_UpdateArea value)? updateArea,
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -236,6 +249,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult Function(_UpdateArea value)? updateArea,
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -339,6 +353,8 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     required TResult Function(Area? area) updateArea,
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -351,6 +367,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult? Function(Area? area)? updateArea,
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -363,6 +380,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult Function(Area? area)? updateArea,
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -379,6 +397,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     required TResult Function(_UpdateArea value) updateArea,
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -391,6 +410,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult? Function(_UpdateArea value)? updateArea,
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -403,6 +423,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult Function(_UpdateArea value)? updateArea,
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -505,6 +526,8 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     required TResult Function(Area? area) updateArea,
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -517,6 +540,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult? Function(Area? area)? updateArea,
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -529,6 +553,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult Function(Area? area)? updateArea,
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -545,6 +570,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     required TResult Function(_UpdateArea value) updateArea,
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -557,6 +583,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult? Function(_UpdateArea value)? updateArea,
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -569,6 +596,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult Function(_UpdateArea value)? updateArea,
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -586,6 +614,165 @@ abstract class _UpdateGrade implements JobEvent {
   Grade? get grade;
   @JsonKey(ignore: true)
   _$$UpdateGradeImplCopyWith<_$UpdateGradeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdatePeriodImplCopyWith<$Res> {
+  factory _$$UpdatePeriodImplCopyWith(
+          _$UpdatePeriodImpl value, $Res Function(_$UpdatePeriodImpl) then) =
+      __$$UpdatePeriodImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({({DateTime end, DateTime start})? period});
+}
+
+/// @nodoc
+class __$$UpdatePeriodImplCopyWithImpl<$Res>
+    extends _$JobEventCopyWithImpl<$Res, _$UpdatePeriodImpl>
+    implements _$$UpdatePeriodImplCopyWith<$Res> {
+  __$$UpdatePeriodImplCopyWithImpl(
+      _$UpdatePeriodImpl _value, $Res Function(_$UpdatePeriodImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? period = freezed,
+  }) {
+    return _then(_$UpdatePeriodImpl(
+      period: freezed == period
+          ? _value.period
+          : period // ignore: cast_nullable_to_non_nullable
+              as ({DateTime end, DateTime start})?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdatePeriodImpl implements _UpdatePeriod {
+  const _$UpdatePeriodImpl({this.period});
+
+  @override
+  final ({DateTime end, DateTime start})? period;
+
+  @override
+  String toString() {
+    return 'JobEvent.updatePeriod(period: $period)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePeriodImpl &&
+            (identical(other.period, period) || other.period == period));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, period);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePeriodImplCopyWith<_$UpdatePeriodImpl> get copyWith =>
+      __$$UpdatePeriodImplCopyWithImpl<_$UpdatePeriodImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Area? area) updateArea,
+    required TResult Function(Profession? profession) updateProfession,
+    required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
+    required TResult Function() search,
+    required TResult Function() fetchPage,
+  }) {
+    return updatePeriod(period);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Area? area)? updateArea,
+    TResult? Function(Profession? profession)? updateProfession,
+    TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function()? search,
+    TResult? Function()? fetchPage,
+  }) {
+    return updatePeriod?.call(period);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Area? area)? updateArea,
+    TResult Function(Profession? profession)? updateProfession,
+    TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function()? search,
+    TResult Function()? fetchPage,
+    required TResult orElse(),
+  }) {
+    if (updatePeriod != null) {
+      return updatePeriod(period);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateArea value) updateArea,
+    required TResult Function(_UpdateProfession value) updateProfession,
+    required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
+  }) {
+    return updatePeriod(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateArea value)? updateArea,
+    TResult? Function(_UpdateProfession value)? updateProfession,
+    TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
+  }) {
+    return updatePeriod?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateArea value)? updateArea,
+    TResult Function(_UpdateProfession value)? updateProfession,
+    TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
+    required TResult orElse(),
+  }) {
+    if (updatePeriod != null) {
+      return updatePeriod(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatePeriod implements JobEvent {
+  const factory _UpdatePeriod(
+      {final ({DateTime end, DateTime start})? period}) = _$UpdatePeriodImpl;
+
+  ({DateTime end, DateTime start})? get period;
+  @JsonKey(ignore: true)
+  _$$UpdatePeriodImplCopyWith<_$UpdatePeriodImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -630,6 +817,8 @@ class _$SearchImpl implements _Search {
     required TResult Function(Area? area) updateArea,
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -642,6 +831,7 @@ class _$SearchImpl implements _Search {
     TResult? Function(Area? area)? updateArea,
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -654,6 +844,7 @@ class _$SearchImpl implements _Search {
     TResult Function(Area? area)? updateArea,
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -670,6 +861,7 @@ class _$SearchImpl implements _Search {
     required TResult Function(_UpdateArea value) updateArea,
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -682,6 +874,7 @@ class _$SearchImpl implements _Search {
     TResult? Function(_UpdateArea value)? updateArea,
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -694,6 +887,7 @@ class _$SearchImpl implements _Search {
     TResult Function(_UpdateArea value)? updateArea,
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -750,6 +944,8 @@ class _$FetchPageImpl implements _FetchPage {
     required TResult Function(Area? area) updateArea,
     required TResult Function(Profession? profession) updateProfession,
     required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -762,6 +958,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult? Function(Area? area)? updateArea,
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -774,6 +971,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult Function(Area? area)? updateArea,
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -790,6 +988,7 @@ class _$FetchPageImpl implements _FetchPage {
     required TResult Function(_UpdateArea value) updateArea,
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -802,6 +1001,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult? Function(_UpdateArea value)? updateArea,
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -814,6 +1014,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult Function(_UpdateArea value)? updateArea,
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),

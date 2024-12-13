@@ -42,7 +42,7 @@ class _JobPageState extends State<JobPage> {
             builder: (context, state) {
               final jobBloc = context.read<JobBloc>();
               ErrorDto? errors;
-              if (state is JobStateInitial){
+              if (state is JobStateInitial) {
                 errors = state.errors;
               }
               return SingleChildScrollView(
@@ -53,70 +53,95 @@ class _JobPageState extends State<JobPage> {
                     SearchField<Area>(
                       label: 'Регион',
                       hasError: errors?.areaIsEmpty == true,
-                      onChange: (selectedValue) { jobBloc.add(JobEvent.updateArea(area: selectedValue)); },
+                      onChange: (selectedValue) {
+                        jobBloc.add(JobEvent.updateArea(area: selectedValue));
+                      },
                       choices: state.tableData.areas,
                     ),
-                    const SizedBox(height: AppSizes.innerIndent,),
+                    const SizedBox(
+                      height: AppSizes.innerIndent,
+                    ),
                     SearchField<Profession>(
                       label: 'Профессия',
                       hasError: errors?.professionIsEmpty == true,
-                      onChange: (selectedValue) { jobBloc.add(JobEvent.updateProfession(profession: selectedValue)); },
+                      onChange: (selectedValue) {
+                        jobBloc.add(JobEvent.updateProfession(
+                            profession: selectedValue));
+                      },
                       choices: state.tableData.professions,
                     ),
-                    const SizedBox(height: AppSizes.innerIndent,),
+                    const SizedBox(
+                      height: AppSizes.innerIndent,
+                    ),
                     SearchField<Grade>(
                       label: 'Квалификация',
-                      onChange: (selectedValue) { jobBloc.add(JobEvent.updateGrade(grade: selectedValue)); },
+                      onChange: (selectedValue) {
+                        jobBloc.add(JobEvent.updateGrade(grade: selectedValue));
+                      },
                       choices: state.tableData.grades,
                       typeAheadEnabled: false,
                     ),
-                    const SizedBox(height: AppSizes.outerIndent,),
-                    PeriodPickerComponent(),
-                    const SizedBox(height: AppSizes.outerIndent,),
-                    SizedBox(
-                      height: AppSizes.commonHeight,
-                      width: double.infinity,
-                      child: state.maybeWhen(
-                        loading: (_) => const BasicProgressIndicator(),
-                        orElse: () => ElevatedButton(
-                          onPressed: () { jobBloc.add(const JobEvent.search()); },
-                          child: const Text("Показать статистику")
-                        ),
-                      )
+                    const SizedBox(
+                      height: AppSizes.outerIndent,
                     ),
 
+                    PeriodPickerComponent(
+                      onChanged: (period) {
+                        jobBloc.add(JobEvent.updatePeriod(period: period));
+                      },
+                    ),
+                    const SizedBox(
+                      height: AppSizes.outerIndent,
+                    ),
+                    SizedBox(
+                        height: AppSizes.commonHeight,
+                        width: double.infinity,
+                        child: state.maybeWhen(
+                          loading: (_) => const BasicProgressIndicator(),
+                          orElse: () => ElevatedButton(
+                              onPressed: () {
+                                jobBloc.add(const JobEvent.search());
+                              },
+                              child: const Text("Показать статистику")),
+                        )),
                     state.maybeWhen(
-                      loaded: (tableData, salaryStatistics, vacancies, hasReachedMaxVacancies) {
-                        if (!salaryStatistics.isValid){
+                      loaded: (tableData, salaryStatistics, vacancies,
+                          hasReachedMaxVacancies) {
+                        if (!salaryStatistics.isValid) {
                           return const Padding(
                             padding: EdgeInsets.only(top: AppSizes.outerIndent),
                             child: Center(
                               child: Text(
-                                textAlign: TextAlign.center,
-                                "Недостаточно данных для сбора статистики"
-                              ),
+                                  textAlign: TextAlign.center,
+                                  "Недостаточно данных для сбора статистики"),
                             ),
                           );
                         }
                         return Column(
                           children: [
-                            const SizedBox(height: AppSizes.outerIndent,),
+                            const SizedBox(
+                              height: AppSizes.outerIndent,
+                            ),
                             PercentileLine(
                               bottom: salaryStatistics.bottomSalary!,
                               upper: salaryStatistics.upperSalary!,
                               median: salaryStatistics.medianSalary!,
-                              oftenSalariesBottom: salaryStatistics.oftenSalariesBottom!,
-                              oftenSalariesUpper: salaryStatistics.oftenSalariesUpper!,
+                              oftenSalariesBottom:
+                                  salaryStatistics.oftenSalariesBottom!,
+                              oftenSalariesUpper:
+                                  salaryStatistics.oftenSalariesUpper!,
                             ),
-                            const SizedBox(height: AppSizes.outerIndent,),
-                            if (salaryStatistics.chartData.length >= 2 )
-                            SizedBox(
-                              height: 300,
-                              child: SalaryChart(
-                                data: salaryStatistics.chartData
-                              )
+                            const SizedBox(
+                              height: AppSizes.outerIndent,
                             ),
-                            const SizedBox(height: AppSizes.innerIndent,),
+                            if (salaryStatistics.chartData.length >= 2)
+                              SizedBox(
+                                  height: 300,
+                                  child: SalaryChart(
+                                      data: salaryStatistics.chartData)),
+                            const SizedBox(
+                              height: AppSizes.innerIndent,
+                            ),
                             Align(
                               alignment: Alignment.center,
                               child: Text(
@@ -124,7 +149,9 @@ class _JobPageState extends State<JobPage> {
                                 style: AppTextStyles.commonLabelTextStyle,
                               ),
                             ),
-                            const SizedBox(height: AppSizes.innerIndent,),
+                            const SizedBox(
+                              height: AppSizes.innerIndent,
+                            ),
                             VacanciesList(
                               hasReachedMax: hasReachedMaxVacancies,
                               vacancies: vacancies,

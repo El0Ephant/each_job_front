@@ -2,7 +2,9 @@ import 'package:each_job/ui/widgets/period_picker.dart';
 import 'package:flutter/material.dart';
 
 class PeriodPickerComponent extends StatefulWidget {
-  const PeriodPickerComponent({super.key});
+  const PeriodPickerComponent({super.key, this.onChanged});
+
+  final void Function(({DateTime start, DateTime end}) newPeriod)? onChanged;
 
   @override
   State<PeriodPickerComponent> createState() => _PeriodPickerComponentState();
@@ -12,19 +14,30 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
   late final PageController controller;
   bool isStart = true;
   bool isMonth = true;
-  int year = 2020;
+  int year = 2024;
   DateTime start = DateTime.utc(2024, 1);
   DateTime end = DateTime.utc(2024, 5);
 
   @override
   void initState() {
-    controller = PageController();
+    controller = PageController(initialPage: 1);
+
     controller.addListener(() {
       setState(() {
-        year = controller.page!.round() + 2020;
+        year = controller.page!.round() + 2023;
       });
     });
     super.initState();
+  }
+
+  void _onUpdate() {
+    setState(() {
+      widget.onChanged?.call((start: start, end: end));
+    });
+  }
+
+  DateTime _roundMonthToQuarter(DateTime date) {
+    return date.copyWith(month: ((date.month - 1) ~/ 3 * 3 + 1));
   }
 
   @override
@@ -40,9 +53,8 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
                 foregroundColor: isMonth ? Colors.white : Colors.black,
               ),
               onPressed: () {
-                setState(() {
-                  isMonth = true;
-                });
+                isMonth = true;
+                _onUpdate();
               },
               child: const Text("Месяцы"),
             ),
@@ -52,9 +64,10 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
                 foregroundColor: !isMonth ? Colors.white : Colors.black,
               ),
               onPressed: () {
-                setState(() {
-                  isMonth = false;
-                });
+                isMonth = false;
+                start = _roundMonthToQuarter(start); //TODO:CHECK
+                end = _roundMonthToQuarter(end);
+                _onUpdate();
               },
               child: const Text("Кварталы"),
             ),
@@ -63,12 +76,12 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
         SizedBox(
           height: 50,
           child: PageView.builder(
-              itemCount: 5,
+              itemCount: 2,
               controller: controller,
               itemBuilder: (_, i) {
                 return Center(
                     child: Text(
-                  "${i + 2020}",
+                  "${i + 2023}",
                   style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -76,81 +89,64 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
                 ));
               }),
         ),
-        if (isMonth) //TODO: refactor!!!
-          PeriodPicker.month(
-            height: 200.0,
-            width: 350.0,
-            year: year,
-            chosen: (start: start, end: end),
-            isStart: isStart,
-            onTap: (date) {
-              if (date.isAtSameMomentAs(start)) {
-                isStart = true;
-                setState(() {});
-                return;
-              }
-              if (date.isAtSameMomentAs(end)) {
-                isStart = false;
-                setState(() {});
-                return;
-              }
+        PeriodPicker(
+          period: isMonth ? Period.month : Period.quarter,
+          height: 200.0,
+          width: 350.0,
+          year: year,
+          chosen: (start: start, end: end),
+          isStart: isStart,
+          onTap: (date) {
+            if (date.isAtSameMomentAs(start)) {
+              isStart = true;
+              _onUpdate();
+              return;
+            }
+            if (date.isAtSameMomentAs(end)) {
+              isStart = false;
+              _onUpdate();
+              return;
+            }
 
-              if (isStart) {
-                if (date.isAfter(end)) {
-                  isStart = false;
-                  start = end;
-                  end = date;
-                } else
-                  start = date;
-              } else {
-                if (date.isBefore(start)) {
-                  isStart = true;
-                  end = start;
-                  start = date;
-                } else
-                  end = date;
-              }
-              setState(() {});
-            },
-          )
-        else
-          PeriodPicker.quarter(
-            height: 200.0,
-            width: 350.0,
-            year: year,
-            chosen: (start: start, end: end),
-            isStart: isStart,
-            onTap: (date) {
-              if (date.isAtSameMomentAs(start)) {
-                isStart = true;
-                setState(() {});
-                return;
-              }
-              if (date.isAtSameMomentAs(end)) {
+            if (isStart) {
+              if (date.isAfter(end)) {
                 isStart = false;
-                setState(() {});
-                return;
-              }
-
-              if (isStart) {
-                if (date.isAfter(end)) {
-                  isStart = false;
-                  start = end;
-                  end = date;
-                } else
-                  start = date;
+                start = end;
+                end = date;
               } else {
-                if (date.isBefore(start)) {
-                  isStart = true;
-                  end = start;
-                  start = date;
-                } else
-                  end = date;
+                start = date;
               }
-              setState(() {});
-            },
-          ),
+            } else {
+              if (date.isBefore(start)) {
+                isStart = true;
+                end = start;
+                start = date;
+              } else {
+                end = date;
+              }
+            }
+            _onUpdate();
+          },
+        )
       ],
+    );
+  }
+
+  static Future<({DateTime end, DateTime start})?> showAsDialog(BuildContext context) {
+    return showDialog<({DateTime start, DateTime end})>(
+      context: context,
+      builder: (BuildContext context) {
+        ({DateTime start, DateTime end}) period;
+        return PopScope(
+          child: AlertDialog(
+            content: PeriodPickerComponent(
+              onChanged: (newPeriod) {
+                period = newPeriod;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 

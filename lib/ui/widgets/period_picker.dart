@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 
 class PeriodPicker extends StatelessWidget {
-  const PeriodPicker._(
-    this._period, {
+  const PeriodPicker({
     super.key,
+    required this.period,
     required this.height,
     required this.width,
     required this.year,
@@ -13,56 +13,18 @@ class PeriodPicker extends StatelessWidget {
     this.onTap,
   });
 
-  const PeriodPicker.month(
-      {Key? key,
-      required double height,
-      required double width,
-      required year,
-      required ({DateTime start, DateTime end}) chosen,
-      required bool isStart,
-      void Function(DateTime date)? onTap})
-      : this._(
-          _Period.month,
-          key: key,
-          height: height,
-          width: width,
-          year: year,
-          isStart: isStart,
-          onTap: onTap,
-          chosen: chosen,
-        );
-
-  const PeriodPicker.quarter(
-      {Key? key,
-      required double height,
-      required double width,
-      required int year,
-      required ({DateTime start, DateTime end}) chosen,
-      required bool isStart,
-      void Function(DateTime date)? onTap})
-      : this._(
-          _Period.quarter,
-          key: key,
-          height: height,
-          width: width,
-          year: year,
-          isStart: isStart,
-          onTap: onTap,
-          chosen: chosen,
-        );
-
-  final _Period _period;
+  final Period period;
   final int year;
   final double height;
   final double width;
-  final bool isStart; //TODO: refactor
+  final bool isStart;
 
   final ({DateTime start, DateTime end}) chosen;
 
   final void Function(DateTime i)? onTap;
 
   DateTime dateFromUnit(int index) {
-    return DateTime.utc(year, index + 1);
+    return DateTime.utc(year, period.units[index]);
   }
 
   bool isStartWhenStart(DateTime date) {
@@ -90,11 +52,11 @@ class PeriodPicker extends StatelessWidget {
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: false,
-        itemCount: _period.titles.length,
+        itemCount: period.titles.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: _period.crossAxisCount,
-            childAspectRatio: (width / _period.crossAxisCount) /
-                (height / _period.mainAxisCount)),
+            crossAxisCount: period.crossAxisCount,
+            childAspectRatio: (width / period.crossAxisCount) /
+                (height / period.mainAxisCount)),
         itemBuilder: (_, i) => InkWell(
           onTap: () {
             onTap?.call(dateFromUnit(i));
@@ -114,15 +76,16 @@ class PeriodPicker extends StatelessWidget {
                       isEndWhenEnd(dateFromUnit(i))
                   ? GlowText(
                       blurRadius: 20,
-                      offset: const Offset(0,0),
-                      _period.titles[i],
+                      offset: const Offset(0, 0),
+                      period.titles[i],
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontSize: 17,
                       ),
                     )
                   : Text(
-                      _period.titles[i],
+                      period.titles[i],
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: isBorder(dateFromUnit(i)) ||
@@ -145,24 +108,24 @@ class PeriodPicker extends StatelessWidget {
       );
     }
 
-    if (index == _period.crossAxisCount - 1) {
+    if (index == period.crossAxisCount - 1) {
       return const BorderRadius.only(
         topRight: Radius.circular(16),
       );
     }
 
-    if (index == _period.titles.length - _period.crossAxisCount) {
+    if (index == period.titles.length - period.crossAxisCount) {
       return const BorderRadius.only(bottomLeft: Radius.circular(16));
     }
 
-    if (index == _period.titles.length - 1) {
+    if (index == period.titles.length - 1) {
       return const BorderRadius.only(bottomRight: Radius.circular(16));
     }
     return BorderRadius.zero;
   }
 }
 
-enum _Period {
+enum Period {
   month(
     titles: [
       "Январь",
@@ -200,7 +163,7 @@ enum _Period {
     crossAxisCount: 2,
   );
 
-  const _Period(
+  const Period(
       {required this.titles,
       required this.units,
       required this.crossAxisCount});
