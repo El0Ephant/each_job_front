@@ -9,6 +9,7 @@ import 'package:each_job/ui/widgets/period_picker_component.dart';
 import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
 import 'package:each_job/ui/widgets/vacancies_list.dart';
+import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -91,11 +92,24 @@ class _JobPageState extends State<JobPage> {
                     const SizedBox(
                       height: AppSizes.outerIndent,
                     ),
-
                     PeriodPickerComponent(
                       onChanged: (period) {
                         jobBloc.add(JobEvent.updatePeriod(period: period));
                       },
+                    ),
+                    const SizedBox(
+                      height: AppSizes.outerIndent,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Обратите внимание! В текущей версии проекта доступны данные только за ноябрь и декабрь 2024-го года. Могут пристутствовать вакансии несоответствующие профессии.",
+                        style: AppTextStyles.commonLabelTextStyle.copyWith(
+                          color: AppColors.errorColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     const SizedBox(
                       height: AppSizes.outerIndent,

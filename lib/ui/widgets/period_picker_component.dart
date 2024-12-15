@@ -21,23 +21,27 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
   @override
   void initState() {
     controller = PageController(initialPage: 1);
-
     controller.addListener(() {
       setState(() {
         year = controller.page!.round() + 2023;
       });
     });
     super.initState();
+    widget.onChanged?.call((start: start, end: end));
   }
 
   void _onUpdate() {
     setState(() {
-      widget.onChanged?.call((start: start, end: end));
+      widget.onChanged?.call((start: start, end: _lastDayOfMonth(end)));
     });
   }
 
   DateTime _roundMonthToQuarter(DateTime date) {
     return date.copyWith(month: ((date.month - 1) ~/ 3 * 3 + 1));
+  }
+
+  DateTime _lastDayOfMonth(DateTime date) {
+    return date.copyWith(month: date.month+1, day: 0);
   }
 
   @override
@@ -65,7 +69,7 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
               ),
               onPressed: () {
                 isMonth = false;
-                start = _roundMonthToQuarter(start); //TODO:CHECK
+                start = _roundMonthToQuarter(start);
                 end = _roundMonthToQuarter(end);
                 _onUpdate();
               },
