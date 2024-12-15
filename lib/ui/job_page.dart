@@ -52,6 +52,13 @@ class _JobPageState extends State<JobPage> {
                   children: [
                     SearchField<Area>(
                       label: 'Регион',
+                      initialValueGetter: () {
+                        final result = state.tableData.areas.where((area) => area.title == "Россия",);
+                        if (result.isNotEmpty){
+                          return result.first;
+                        }
+                        return null;
+                      },
                       hasError: errors?.areaIsEmpty == true,
                       onChange: (selectedValue) {
                         jobBloc.add(JobEvent.updateArea(area: selectedValue));

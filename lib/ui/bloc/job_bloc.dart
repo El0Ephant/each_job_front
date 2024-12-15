@@ -46,18 +46,10 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     final [data as SalaryStatistics, vacancies as List<Vacancy>] =
         await Future.wait([
       _apiService.getStatistics(
-        areaId: _cachedRequestDto.area!.id,
-        professionId: _cachedRequestDto.profession!.id,
-        gradeId: _cachedRequestDto.grade?.id,
-        isoDateFrom: _cachedRequestDto.fromDate?.toIso8601String(),
-        isoDateTo: _cachedRequestDto.toDate?.toIso8601String(),
+        requestDto: _cachedRequestDto,
       ),
       _apiService.getVacanciesPage(
-        areaId: _cachedRequestDto.area!.id,
-        professionId: _cachedRequestDto.profession!.id,
-        gradeId: _cachedRequestDto.grade?.id,
-        isoDateFrom: _cachedRequestDto.fromDate?.toIso8601String(),
-        isoDateTo: _cachedRequestDto.toDate?.toIso8601String(),
+        requestDto: _cachedRequestDto,
         pageNumber: 0,
         pageSize: _vacanciesPageSize,
       ),
@@ -81,11 +73,7 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     }
     _pageFetching = true;
     final newPage = await _apiService.getVacanciesPage(
-      areaId: _cachedRequestDto.area!.id,
-      professionId: _cachedRequestDto.profession!.id,
-      gradeId: _cachedRequestDto.grade?.id,
-      isoDateFrom: _cachedRequestDto.fromDate?.toIso8601String(),
-      isoDateTo: _cachedRequestDto.toDate?.toIso8601String(),
+      requestDto: _cachedRequestDto,
       pageNumber: loadedState.vacancies.length ~/ _vacanciesPageSize,
       pageSize: _vacanciesPageSize,
     );

@@ -17,6 +17,14 @@ class RequestDto with _$RequestDto {
     required DateTime? toDate
   }) = _RequestDto;
 
+  Map<String, dynamic> toJson() => {
+    "areaId": area?.id,
+    "professionId": profession?.id,
+    "gradeId": grade?.id,
+    "from": fromDate?.toIso8601String(),
+    "to": toDate?.toIso8601String(),
+  };
+
   factory RequestDto.empty() => const RequestDto(
     area: null,
     profession: null,

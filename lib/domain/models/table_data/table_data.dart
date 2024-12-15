@@ -10,6 +10,6 @@ class TableData with _$TableData {
   const factory TableData({
     required List<Area> areas,
     required List<Profession> professions,
-    required List<Grade> grades
+    required List<Grade> grades,
   }) = _TableData;
 }

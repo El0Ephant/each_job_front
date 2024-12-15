@@ -2,6 +2,7 @@ import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
+import 'package:each_job/domain/models/request_dto/request_dto.dart';
 import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
 import 'package:each_job/domain/models/vacancy/vacancy.dart';
 import 'package:dio/dio.dart';
@@ -28,21 +29,14 @@ abstract class ApiServiceImpl implements IApiService{
   @GET('/statistic')
   @override
   Future<SalaryStatistics> getStatistics({
-    @Query('professionId') required String professionId,
-    @Query('areaId') required int areaId,
-    @Query('gradeId') required String? gradeId,
-    @Query('from') required String? isoDateFrom,
-    @Query('to') required String? isoDateTo,
+    @Queries() required RequestDto requestDto,
+
   });
 
   @GET('/vacancies')
   @override
   Future<List<Vacancy>> getVacanciesPage({
-    @Query('professionId') required String professionId,
-    @Query('areaId') required int areaId,
-    @Query('gradeId') required String? gradeId,
-    @Query('from') required String? isoDateFrom,
-    @Query('to') required String? isoDateTo,
+    @Queries() required RequestDto requestDto,
     @Query('page') required int pageNumber,
     @Query('size') required int pageSize
   });

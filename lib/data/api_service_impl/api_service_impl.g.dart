@@ -129,22 +129,11 @@ class _ApiServiceImpl implements ApiServiceImpl {
   }
 
   @override
-  Future<SalaryStatistics> getStatistics({
-    required String professionId,
-    required int areaId,
-    String? gradeId,
-    String? isoDateFrom,
-    String? isoDateTo,
-  }) async {
+  Future<SalaryStatistics> getStatistics(
+      {required RequestDto requestDto}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'professionId': professionId,
-      r'areaId': areaId,
-      r'gradeId': gradeId,
-      r'from': isoDateFrom,
-      r'to': isoDateTo,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(requestDto.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<SalaryStatistics>(Options(
@@ -176,25 +165,16 @@ class _ApiServiceImpl implements ApiServiceImpl {
 
   @override
   Future<List<Vacancy>> getVacanciesPage({
-    required String professionId,
-    required int areaId,
-    String? gradeId,
-    String? isoDateFrom,
-    String? isoDateTo,
+    required RequestDto requestDto,
     required int pageNumber,
     required int pageSize,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'professionId': professionId,
-      r'areaId': areaId,
-      r'gradeId': gradeId,
-      r'from': isoDateFrom,
-      r'to': isoDateTo,
       r'page': pageNumber,
       r'size': pageSize,
     };
-    queryParameters.removeWhere((k, v) => v == null);
+    queryParameters.addAll(requestDto.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<List<Vacancy>>(Options(

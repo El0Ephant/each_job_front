@@ -15,7 +15,8 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
     this.hint = 'Выбрать...',
     this.maxSuggestions = 20,
     this.typeAheadEnabled = true,
-    this.hasError = false
+    this.hasError = false,
+    this.initialValueGetter
   });
   final List<T> choices;
   final Function(T? selectedValue) onChange;
@@ -24,6 +25,7 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
   final int maxSuggestions;
   final bool typeAheadEnabled;
   final bool hasError;
+  final T? Function()? initialValueGetter;
 
   @override
   State<SearchField<T>> createState() => _SearchFieldState<T>();
@@ -32,6 +34,26 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
 class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
   final _searchController = TextEditingController();
   final _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initialValueGetter != null){
+      final initialValue = widget.initialValueGetter!.call();
+      if (initialValue != null){
+        _onSelected(initialValue);
+      }
+    }
+  }
+
+  void _onSelected(value) {
+    _searchController.text = value.searchValue;
+    _searchController.selection = TextSelection.collapsed(
+        offset: value.searchValue.length
+    );
+    widget.onChange(value);
+    _focusNode.unfocus();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,14 +113,7 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
           child: Text("Ничего не найдено", style: AppTextStyles.commonLabelTextStyle),
         );
       },
-      onSelected: (value) {
-        _searchController.text = value.searchValue;
-        _searchController.selection = TextSelection.collapsed(
-          offset: value.searchValue.length
-        );
-        widget.onChange(value);
-        _focusNode.unfocus();
-      },
+      onSelected: _onSelected,
       suggestionsCallback: (String search) {
         if (search.isEmpty || !widget.typeAheadEnabled){
           return widget.choices;

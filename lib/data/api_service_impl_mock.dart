@@ -4,6 +4,7 @@ import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
+import 'package:each_job/domain/models/request_dto/request_dto.dart';
 import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
 import 'package:each_job/domain/models/vacancy/vacancy.dart';
 
@@ -40,11 +41,7 @@ class ApiServiceImplMock implements IApiService{
 
   @override
   Future<SalaryStatistics> getStatistics({
-    required String professionId,
-    required int areaId,
-    required String? gradeId,
-    required String? isoDateFrom,
-    required String? isoDateTo,
+    required RequestDto requestDto
   }) async {
     await Future.delayed(const Duration(seconds: 2));
     return SalaryStatistics(
@@ -61,11 +58,7 @@ class ApiServiceImplMock implements IApiService{
   final _random = Random();
   @override
   Future<List<Vacancy>> getVacanciesPage({
-    required String professionId,
-    required int areaId,
-    required String? gradeId,
-    required String? isoDateFrom,
-    required String? isoDateTo,
+    required RequestDto requestDto,
     required int pageNumber,
     required int pageSize
   }) async {
