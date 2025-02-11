@@ -23,6 +23,7 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<_UpdateProfession>(_onUpdateProfessionEvent);
     on<_UpdateGrade>(_onUpdateGradeEvent);
     on<_UpdatePeriod>(_onUpdatePeriodEvent);
+    on<_UpdateSelectionMode>(_onUpdateSelectionMode);
     on<_Search>(_onSearch);
     on<_FetchPage>(_onFetchPage);
   }
@@ -98,5 +99,9 @@ class JobBloc extends Bloc<JobEvent, JobState> {
   void _onUpdatePeriodEvent(_UpdatePeriod event, Emitter emit) {
     _requestDto = _requestDto.copyWith(
         fromDate: event.period?.start, toDate: event.period?.end);
+  }
+
+  void _onUpdateSelectionMode(_UpdateSelectionMode event, Emitter emit) {
+    _requestDto = _requestDto.copyWith(isStrictSelectionMode: event.isStrict);
   }
 }

@@ -14,6 +14,9 @@ class JobEvent with _$JobEvent {
   const factory JobEvent.updatePeriod({
   ({DateTime start, DateTime end})? period
   }) = _UpdatePeriod;
+  const factory JobEvent.updateSelectionMode({
+    required bool isStrict
+  }) = _UpdateSelectionMode;
   const factory JobEvent.search() = _Search;
   const factory JobEvent.fetchPage() = _FetchPage;
 }

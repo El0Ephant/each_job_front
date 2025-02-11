@@ -21,6 +21,7 @@ mixin _$RequestDto {
   Grade? get grade => throw _privateConstructorUsedError;
   DateTime? get fromDate => throw _privateConstructorUsedError;
   DateTime? get toDate => throw _privateConstructorUsedError;
+  bool get isStrictSelectionMode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestDtoCopyWith<RequestDto> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $RequestDtoCopyWith<$Res> {
       Profession? profession,
       Grade? grade,
       DateTime? fromDate,
-      DateTime? toDate});
+      DateTime? toDate,
+      bool isStrictSelectionMode});
 
   $AreaCopyWith<$Res>? get area;
   $ProfessionCopyWith<$Res>? get profession;
@@ -63,6 +65,7 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
     Object? grade = freezed,
     Object? fromDate = freezed,
     Object? toDate = freezed,
+    Object? isStrictSelectionMode = null,
   }) {
     return _then(_value.copyWith(
       area: freezed == area
@@ -85,6 +88,10 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isStrictSelectionMode: null == isStrictSelectionMode
+          ? _value.isStrictSelectionMode
+          : isStrictSelectionMode // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -138,7 +145,8 @@ abstract class _$$RequestDtoImplCopyWith<$Res>
       Profession? profession,
       Grade? grade,
       DateTime? fromDate,
-      DateTime? toDate});
+      DateTime? toDate,
+      bool isStrictSelectionMode});
 
   @override
   $AreaCopyWith<$Res>? get area;
@@ -164,6 +172,7 @@ class __$$RequestDtoImplCopyWithImpl<$Res>
     Object? grade = freezed,
     Object? fromDate = freezed,
     Object? toDate = freezed,
+    Object? isStrictSelectionMode = null,
   }) {
     return _then(_$RequestDtoImpl(
       area: freezed == area
@@ -186,6 +195,10 @@ class __$$RequestDtoImplCopyWithImpl<$Res>
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isStrictSelectionMode: null == isStrictSelectionMode
+          ? _value.isStrictSelectionMode
+          : isStrictSelectionMode // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -198,7 +211,8 @@ class _$RequestDtoImpl extends _RequestDto {
       required this.profession,
       required this.grade,
       required this.fromDate,
-      required this.toDate})
+      required this.toDate,
+      required this.isStrictSelectionMode})
       : super._();
 
   @override
@@ -211,10 +225,12 @@ class _$RequestDtoImpl extends _RequestDto {
   final DateTime? fromDate;
   @override
   final DateTime? toDate;
+  @override
+  final bool isStrictSelectionMode;
 
   @override
   String toString() {
-    return 'RequestDto(area: $area, profession: $profession, grade: $grade, fromDate: $fromDate, toDate: $toDate)';
+    return 'RequestDto(area: $area, profession: $profession, grade: $grade, fromDate: $fromDate, toDate: $toDate, isStrictSelectionMode: $isStrictSelectionMode)';
   }
 
   @override
@@ -228,12 +244,14 @@ class _$RequestDtoImpl extends _RequestDto {
             (identical(other.grade, grade) || other.grade == grade) &&
             (identical(other.fromDate, fromDate) ||
                 other.fromDate == fromDate) &&
-            (identical(other.toDate, toDate) || other.toDate == toDate));
+            (identical(other.toDate, toDate) || other.toDate == toDate) &&
+            (identical(other.isStrictSelectionMode, isStrictSelectionMode) ||
+                other.isStrictSelectionMode == isStrictSelectionMode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, area, profession, grade, fromDate, toDate);
+  int get hashCode => Object.hash(runtimeType, area, profession, grade,
+      fromDate, toDate, isStrictSelectionMode);
 
   @JsonKey(ignore: true)
   @override
@@ -248,7 +266,8 @@ abstract class _RequestDto extends RequestDto {
       required final Profession? profession,
       required final Grade? grade,
       required final DateTime? fromDate,
-      required final DateTime? toDate}) = _$RequestDtoImpl;
+      required final DateTime? toDate,
+      required final bool isStrictSelectionMode}) = _$RequestDtoImpl;
   const _RequestDto._() : super._();
 
   @override
@@ -261,6 +280,8 @@ abstract class _RequestDto extends RequestDto {
   DateTime? get fromDate;
   @override
   DateTime? get toDate;
+  @override
+  bool get isStrictSelectionMode;
   @override
   @JsonKey(ignore: true)
   _$$RequestDtoImplCopyWith<_$RequestDtoImpl> get copyWith =>

@@ -19,7 +19,6 @@ mixin _$TableData {
   List<Area> get areas => throw _privateConstructorUsedError;
   List<Profession> get professions => throw _privateConstructorUsedError;
   List<Grade> get grades => throw _privateConstructorUsedError;
-  Area? get initialArea => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TableDataCopyWith<TableData> get copyWith =>
@@ -32,12 +31,7 @@ abstract class $TableDataCopyWith<$Res> {
       _$TableDataCopyWithImpl<$Res, TableData>;
   @useResult
   $Res call(
-      {List<Area> areas,
-      List<Profession> professions,
-      List<Grade> grades,
-      Area? initialArea});
-
-  $AreaCopyWith<$Res>? get initialArea;
+      {List<Area> areas, List<Profession> professions, List<Grade> grades});
 }
 
 /// @nodoc
@@ -56,7 +50,6 @@ class _$TableDataCopyWithImpl<$Res, $Val extends TableData>
     Object? areas = null,
     Object? professions = null,
     Object? grades = null,
-    Object? initialArea = freezed,
   }) {
     return _then(_value.copyWith(
       areas: null == areas
@@ -71,23 +64,7 @@ class _$TableDataCopyWithImpl<$Res, $Val extends TableData>
           ? _value.grades
           : grades // ignore: cast_nullable_to_non_nullable
               as List<Grade>,
-      initialArea: freezed == initialArea
-          ? _value.initialArea
-          : initialArea // ignore: cast_nullable_to_non_nullable
-              as Area?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AreaCopyWith<$Res>? get initialArea {
-    if (_value.initialArea == null) {
-      return null;
-    }
-
-    return $AreaCopyWith<$Res>(_value.initialArea!, (value) {
-      return _then(_value.copyWith(initialArea: value) as $Val);
-    });
   }
 }
 
@@ -100,13 +77,7 @@ abstract class _$$TableDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Area> areas,
-      List<Profession> professions,
-      List<Grade> grades,
-      Area? initialArea});
-
-  @override
-  $AreaCopyWith<$Res>? get initialArea;
+      {List<Area> areas, List<Profession> professions, List<Grade> grades});
 }
 
 /// @nodoc
@@ -123,7 +94,6 @@ class __$$TableDataImplCopyWithImpl<$Res>
     Object? areas = null,
     Object? professions = null,
     Object? grades = null,
-    Object? initialArea = freezed,
   }) {
     return _then(_$TableDataImpl(
       areas: null == areas
@@ -138,10 +108,6 @@ class __$$TableDataImplCopyWithImpl<$Res>
           ? _value._grades
           : grades // ignore: cast_nullable_to_non_nullable
               as List<Grade>,
-      initialArea: freezed == initialArea
-          ? _value.initialArea
-          : initialArea // ignore: cast_nullable_to_non_nullable
-              as Area?,
     ));
   }
 }
@@ -152,8 +118,7 @@ class _$TableDataImpl implements _TableData {
   const _$TableDataImpl(
       {required final List<Area> areas,
       required final List<Profession> professions,
-      required final List<Grade> grades,
-      this.initialArea})
+      required final List<Grade> grades})
       : _areas = areas,
         _professions = professions,
         _grades = grades;
@@ -183,11 +148,8 @@ class _$TableDataImpl implements _TableData {
   }
 
   @override
-  final Area? initialArea;
-
-  @override
   String toString() {
-    return 'TableData(areas: $areas, professions: $professions, grades: $grades, initialArea: $initialArea)';
+    return 'TableData(areas: $areas, professions: $professions, grades: $grades)';
   }
 
   @override
@@ -198,9 +160,7 @@ class _$TableDataImpl implements _TableData {
             const DeepCollectionEquality().equals(other._areas, _areas) &&
             const DeepCollectionEquality()
                 .equals(other._professions, _professions) &&
-            const DeepCollectionEquality().equals(other._grades, _grades) &&
-            (identical(other.initialArea, initialArea) ||
-                other.initialArea == initialArea));
+            const DeepCollectionEquality().equals(other._grades, _grades));
   }
 
   @override
@@ -208,8 +168,7 @@ class _$TableDataImpl implements _TableData {
       runtimeType,
       const DeepCollectionEquality().hash(_areas),
       const DeepCollectionEquality().hash(_professions),
-      const DeepCollectionEquality().hash(_grades),
-      initialArea);
+      const DeepCollectionEquality().hash(_grades));
 
   @JsonKey(ignore: true)
   @override
@@ -222,8 +181,7 @@ abstract class _TableData implements TableData {
   const factory _TableData(
       {required final List<Area> areas,
       required final List<Profession> professions,
-      required final List<Grade> grades,
-      final Area? initialArea}) = _$TableDataImpl;
+      required final List<Grade> grades}) = _$TableDataImpl;
 
   @override
   List<Area> get areas;
@@ -231,8 +189,6 @@ abstract class _TableData implements TableData {
   List<Profession> get professions;
   @override
   List<Grade> get grades;
-  @override
-  Area? get initialArea;
   @override
   @JsonKey(ignore: true)
   _$$TableDataImplCopyWith<_$TableDataImpl> get copyWith =>

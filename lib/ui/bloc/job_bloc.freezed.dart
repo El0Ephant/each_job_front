@@ -23,6 +23,7 @@ mixin _$JobEvent {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) =>
@@ -33,6 +34,7 @@ mixin _$JobEvent {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) =>
@@ -43,6 +45,7 @@ mixin _$JobEvent {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -54,6 +57,7 @@ mixin _$JobEvent {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) =>
@@ -64,6 +68,7 @@ mixin _$JobEvent {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) =>
@@ -74,6 +79,7 @@ mixin _$JobEvent {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -181,6 +187,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -194,6 +201,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -207,6 +215,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -224,6 +233,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -237,6 +247,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -250,6 +261,7 @@ class _$UpdateAreaImpl implements _UpdateArea {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -355,6 +367,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -368,6 +381,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -381,6 +395,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -398,6 +413,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -411,6 +427,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -424,6 +441,7 @@ class _$UpdateProfessionImpl implements _UpdateProfession {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -528,6 +546,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -541,6 +560,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -554,6 +574,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -571,6 +592,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -584,6 +606,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -597,6 +620,7 @@ class _$UpdateGradeImpl implements _UpdateGrade {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -686,6 +710,7 @@ class _$UpdatePeriodImpl implements _UpdatePeriod {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -699,6 +724,7 @@ class _$UpdatePeriodImpl implements _UpdatePeriod {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -712,6 +738,7 @@ class _$UpdatePeriodImpl implements _UpdatePeriod {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -729,6 +756,7 @@ class _$UpdatePeriodImpl implements _UpdatePeriod {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -742,6 +770,7 @@ class _$UpdatePeriodImpl implements _UpdatePeriod {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -755,6 +784,7 @@ class _$UpdatePeriodImpl implements _UpdatePeriod {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -773,6 +803,173 @@ abstract class _UpdatePeriod implements JobEvent {
   ({DateTime end, DateTime start})? get period;
   @JsonKey(ignore: true)
   _$$UpdatePeriodImplCopyWith<_$UpdatePeriodImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateSelectionModeImplCopyWith<$Res> {
+  factory _$$UpdateSelectionModeImplCopyWith(_$UpdateSelectionModeImpl value,
+          $Res Function(_$UpdateSelectionModeImpl) then) =
+      __$$UpdateSelectionModeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isStrict});
+}
+
+/// @nodoc
+class __$$UpdateSelectionModeImplCopyWithImpl<$Res>
+    extends _$JobEventCopyWithImpl<$Res, _$UpdateSelectionModeImpl>
+    implements _$$UpdateSelectionModeImplCopyWith<$Res> {
+  __$$UpdateSelectionModeImplCopyWithImpl(_$UpdateSelectionModeImpl _value,
+      $Res Function(_$UpdateSelectionModeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isStrict = null,
+  }) {
+    return _then(_$UpdateSelectionModeImpl(
+      isStrict: null == isStrict
+          ? _value.isStrict
+          : isStrict // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateSelectionModeImpl implements _UpdateSelectionMode {
+  const _$UpdateSelectionModeImpl({required this.isStrict});
+
+  @override
+  final bool isStrict;
+
+  @override
+  String toString() {
+    return 'JobEvent.updateSelectionMode(isStrict: $isStrict)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateSelectionModeImpl &&
+            (identical(other.isStrict, isStrict) ||
+                other.isStrict == isStrict));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isStrict);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateSelectionModeImplCopyWith<_$UpdateSelectionModeImpl> get copyWith =>
+      __$$UpdateSelectionModeImplCopyWithImpl<_$UpdateSelectionModeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Area? area) updateArea,
+    required TResult Function(Profession? profession) updateProfession,
+    required TResult Function(Grade? grade) updateGrade,
+    required TResult Function(({DateTime end, DateTime start})? period)
+        updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
+    required TResult Function() search,
+    required TResult Function() fetchPage,
+  }) {
+    return updateSelectionMode(isStrict);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Area? area)? updateArea,
+    TResult? Function(Profession? profession)? updateProfession,
+    TResult? Function(Grade? grade)? updateGrade,
+    TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
+    TResult? Function()? search,
+    TResult? Function()? fetchPage,
+  }) {
+    return updateSelectionMode?.call(isStrict);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Area? area)? updateArea,
+    TResult Function(Profession? profession)? updateProfession,
+    TResult Function(Grade? grade)? updateGrade,
+    TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
+    TResult Function()? search,
+    TResult Function()? fetchPage,
+    required TResult orElse(),
+  }) {
+    if (updateSelectionMode != null) {
+      return updateSelectionMode(isStrict);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateArea value) updateArea,
+    required TResult Function(_UpdateProfession value) updateProfession,
+    required TResult Function(_UpdateGrade value) updateGrade,
+    required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
+    required TResult Function(_Search value) search,
+    required TResult Function(_FetchPage value) fetchPage,
+  }) {
+    return updateSelectionMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateArea value)? updateArea,
+    TResult? Function(_UpdateProfession value)? updateProfession,
+    TResult? Function(_UpdateGrade value)? updateGrade,
+    TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_FetchPage value)? fetchPage,
+  }) {
+    return updateSelectionMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateArea value)? updateArea,
+    TResult Function(_UpdateProfession value)? updateProfession,
+    TResult Function(_UpdateGrade value)? updateGrade,
+    TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
+    TResult Function(_Search value)? search,
+    TResult Function(_FetchPage value)? fetchPage,
+    required TResult orElse(),
+  }) {
+    if (updateSelectionMode != null) {
+      return updateSelectionMode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateSelectionMode implements JobEvent {
+  const factory _UpdateSelectionMode({required final bool isStrict}) =
+      _$UpdateSelectionModeImpl;
+
+  bool get isStrict;
+  @JsonKey(ignore: true)
+  _$$UpdateSelectionModeImplCopyWith<_$UpdateSelectionModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -819,6 +1016,7 @@ class _$SearchImpl implements _Search {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -832,6 +1030,7 @@ class _$SearchImpl implements _Search {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -845,6 +1044,7 @@ class _$SearchImpl implements _Search {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -862,6 +1062,7 @@ class _$SearchImpl implements _Search {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -875,6 +1076,7 @@ class _$SearchImpl implements _Search {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -888,6 +1090,7 @@ class _$SearchImpl implements _Search {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),
@@ -946,6 +1149,7 @@ class _$FetchPageImpl implements _FetchPage {
     required TResult Function(Grade? grade) updateGrade,
     required TResult Function(({DateTime end, DateTime start})? period)
         updatePeriod,
+    required TResult Function(bool isStrict) updateSelectionMode,
     required TResult Function() search,
     required TResult Function() fetchPage,
   }) {
@@ -959,6 +1163,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult? Function(Profession? profession)? updateProfession,
     TResult? Function(Grade? grade)? updateGrade,
     TResult? Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult? Function(bool isStrict)? updateSelectionMode,
     TResult? Function()? search,
     TResult? Function()? fetchPage,
   }) {
@@ -972,6 +1177,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult Function(Profession? profession)? updateProfession,
     TResult Function(Grade? grade)? updateGrade,
     TResult Function(({DateTime end, DateTime start})? period)? updatePeriod,
+    TResult Function(bool isStrict)? updateSelectionMode,
     TResult Function()? search,
     TResult Function()? fetchPage,
     required TResult orElse(),
@@ -989,6 +1195,7 @@ class _$FetchPageImpl implements _FetchPage {
     required TResult Function(_UpdateProfession value) updateProfession,
     required TResult Function(_UpdateGrade value) updateGrade,
     required TResult Function(_UpdatePeriod value) updatePeriod,
+    required TResult Function(_UpdateSelectionMode value) updateSelectionMode,
     required TResult Function(_Search value) search,
     required TResult Function(_FetchPage value) fetchPage,
   }) {
@@ -1002,6 +1209,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult? Function(_UpdateProfession value)? updateProfession,
     TResult? Function(_UpdateGrade value)? updateGrade,
     TResult? Function(_UpdatePeriod value)? updatePeriod,
+    TResult? Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult? Function(_Search value)? search,
     TResult? Function(_FetchPage value)? fetchPage,
   }) {
@@ -1015,6 +1223,7 @@ class _$FetchPageImpl implements _FetchPage {
     TResult Function(_UpdateProfession value)? updateProfession,
     TResult Function(_UpdateGrade value)? updateGrade,
     TResult Function(_UpdatePeriod value)? updatePeriod,
+    TResult Function(_UpdateSelectionMode value)? updateSelectionMode,
     TResult Function(_Search value)? search,
     TResult Function(_FetchPage value)? fetchPage,
     required TResult orElse(),

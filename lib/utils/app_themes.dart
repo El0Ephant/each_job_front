@@ -52,6 +52,10 @@ abstract class AppThemes{
         shape: WidgetStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius))))
       )
     ),
+    radioTheme: const RadioThemeData(
+      fillColor: WidgetStatePropertyAll(AppColors.main1Color),
+      visualDensity: VisualDensity(vertical: VisualDensity.minimumDensity, horizontal: VisualDensity.minimumDensity)
+    ),
     useMaterial3: true,
   );
 }

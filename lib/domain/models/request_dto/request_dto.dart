@@ -14,7 +14,8 @@ class RequestDto with _$RequestDto {
     required Profession? profession,
     required Grade? grade,
     required DateTime? fromDate,
-    required DateTime? toDate
+    required DateTime? toDate,
+    required bool isStrictSelectionMode,
   }) = _RequestDto;
 
   Map<String, dynamic> toJson() => {
@@ -30,7 +31,8 @@ class RequestDto with _$RequestDto {
     profession: null,
     grade: null,
     fromDate: null,
-    toDate: null
+    toDate: null,
+    isStrictSelectionMode: false
   );
 
   bool get isReady => area != null && profession != null;

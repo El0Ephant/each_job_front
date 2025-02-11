@@ -8,6 +8,8 @@ import 'package:each_job/ui/widgets/percentile_line.dart';
 import 'package:each_job/ui/widgets/period_picker_component.dart';
 import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
+import 'package:each_job/ui/widgets/selection_mode_switcher.dart';
+import 'package:each_job/ui/widgets/two_options_switcher.dart';
 import 'package:each_job/ui/widgets/vacancies_list.dart';
 import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
@@ -98,21 +100,12 @@ class _JobPageState extends State<JobPage> {
                       },
                     ),
                     const SizedBox(
-                      height: AppSizes.outerIndent,
+                      height: AppSizes.innerIndent,
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Обратите внимание! В текущей версии проекта доступны данные только за ноябрь и декабрь 2024-го года. Могут пристутствовать вакансии несоответствующие профессии.",
-                        style: AppTextStyles.commonLabelTextStyle.copyWith(
-                          color: AppColors.errorColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: AppSizes.outerIndent,
+                    SelectionModeSwitcher(
+                      onChange: (isStrict) {
+                        jobBloc.add(JobEvent.updateSelectionMode(isStrict: isStrict));
+                      },
                     ),
                     SizedBox(
                         height: AppSizes.commonHeight,
