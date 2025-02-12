@@ -19,6 +19,8 @@ mixin _$TableData {
   List<Area> get areas => throw _privateConstructorUsedError;
   List<Profession> get professions => throw _privateConstructorUsedError;
   List<Grade> get grades => throw _privateConstructorUsedError;
+  List<ExperienceOption> get experienceOptions =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TableDataCopyWith<TableData> get copyWith =>
@@ -31,7 +33,10 @@ abstract class $TableDataCopyWith<$Res> {
       _$TableDataCopyWithImpl<$Res, TableData>;
   @useResult
   $Res call(
-      {List<Area> areas, List<Profession> professions, List<Grade> grades});
+      {List<Area> areas,
+      List<Profession> professions,
+      List<Grade> grades,
+      List<ExperienceOption> experienceOptions});
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ class _$TableDataCopyWithImpl<$Res, $Val extends TableData>
     Object? areas = null,
     Object? professions = null,
     Object? grades = null,
+    Object? experienceOptions = null,
   }) {
     return _then(_value.copyWith(
       areas: null == areas
@@ -64,6 +70,10 @@ class _$TableDataCopyWithImpl<$Res, $Val extends TableData>
           ? _value.grades
           : grades // ignore: cast_nullable_to_non_nullable
               as List<Grade>,
+      experienceOptions: null == experienceOptions
+          ? _value.experienceOptions
+          : experienceOptions // ignore: cast_nullable_to_non_nullable
+              as List<ExperienceOption>,
     ) as $Val);
   }
 }
@@ -77,7 +87,10 @@ abstract class _$$TableDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Area> areas, List<Profession> professions, List<Grade> grades});
+      {List<Area> areas,
+      List<Profession> professions,
+      List<Grade> grades,
+      List<ExperienceOption> experienceOptions});
 }
 
 /// @nodoc
@@ -94,6 +107,7 @@ class __$$TableDataImplCopyWithImpl<$Res>
     Object? areas = null,
     Object? professions = null,
     Object? grades = null,
+    Object? experienceOptions = null,
   }) {
     return _then(_$TableDataImpl(
       areas: null == areas
@@ -108,6 +122,10 @@ class __$$TableDataImplCopyWithImpl<$Res>
           ? _value._grades
           : grades // ignore: cast_nullable_to_non_nullable
               as List<Grade>,
+      experienceOptions: null == experienceOptions
+          ? _value._experienceOptions
+          : experienceOptions // ignore: cast_nullable_to_non_nullable
+              as List<ExperienceOption>,
     ));
   }
 }
@@ -118,10 +136,12 @@ class _$TableDataImpl implements _TableData {
   const _$TableDataImpl(
       {required final List<Area> areas,
       required final List<Profession> professions,
-      required final List<Grade> grades})
+      required final List<Grade> grades,
+      required final List<ExperienceOption> experienceOptions})
       : _areas = areas,
         _professions = professions,
-        _grades = grades;
+        _grades = grades,
+        _experienceOptions = experienceOptions;
 
   final List<Area> _areas;
   @override
@@ -147,9 +167,18 @@ class _$TableDataImpl implements _TableData {
     return EqualUnmodifiableListView(_grades);
   }
 
+  final List<ExperienceOption> _experienceOptions;
+  @override
+  List<ExperienceOption> get experienceOptions {
+    if (_experienceOptions is EqualUnmodifiableListView)
+      return _experienceOptions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_experienceOptions);
+  }
+
   @override
   String toString() {
-    return 'TableData(areas: $areas, professions: $professions, grades: $grades)';
+    return 'TableData(areas: $areas, professions: $professions, grades: $grades, experienceOptions: $experienceOptions)';
   }
 
   @override
@@ -160,7 +189,9 @@ class _$TableDataImpl implements _TableData {
             const DeepCollectionEquality().equals(other._areas, _areas) &&
             const DeepCollectionEquality()
                 .equals(other._professions, _professions) &&
-            const DeepCollectionEquality().equals(other._grades, _grades));
+            const DeepCollectionEquality().equals(other._grades, _grades) &&
+            const DeepCollectionEquality()
+                .equals(other._experienceOptions, _experienceOptions));
   }
 
   @override
@@ -168,7 +199,8 @@ class _$TableDataImpl implements _TableData {
       runtimeType,
       const DeepCollectionEquality().hash(_areas),
       const DeepCollectionEquality().hash(_professions),
-      const DeepCollectionEquality().hash(_grades));
+      const DeepCollectionEquality().hash(_grades),
+      const DeepCollectionEquality().hash(_experienceOptions));
 
   @JsonKey(ignore: true)
   @override
@@ -179,9 +211,11 @@ class _$TableDataImpl implements _TableData {
 
 abstract class _TableData implements TableData {
   const factory _TableData(
-      {required final List<Area> areas,
-      required final List<Profession> professions,
-      required final List<Grade> grades}) = _$TableDataImpl;
+          {required final List<Area> areas,
+          required final List<Profession> professions,
+          required final List<Grade> grades,
+          required final List<ExperienceOption> experienceOptions}) =
+      _$TableDataImpl;
 
   @override
   List<Area> get areas;
@@ -189,6 +223,8 @@ abstract class _TableData implements TableData {
   List<Profession> get professions;
   @override
   List<Grade> get grades;
+  @override
+  List<ExperienceOption> get experienceOptions;
   @override
   @JsonKey(ignore: true)
   _$$TableDataImplCopyWith<_$TableDataImpl> get copyWith =>

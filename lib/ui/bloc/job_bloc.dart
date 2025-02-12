@@ -1,5 +1,6 @@
 import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
+import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/request_dto/request_dto.dart';
@@ -22,6 +23,7 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<_UpdateArea>(_onUpdateAreaEvent);
     on<_UpdateProfession>(_onUpdateProfessionEvent);
     on<_UpdateGrade>(_onUpdateGradeEvent);
+    on<_UpdateExperienceOption>(_onUpdateExperienceOption);
     on<_UpdatePeriod>(_onUpdatePeriodEvent);
     on<_UpdateSelectionMode>(_onUpdateSelectionMode);
     on<_Search>(_onSearch);
@@ -94,6 +96,12 @@ class JobBloc extends Bloc<JobEvent, JobState> {
 
   void _onUpdateGradeEvent(_UpdateGrade event, Emitter emit) {
     _requestDto = _requestDto.copyWith(grade: event.grade);
+    print("${_requestDto.experienceOption}  ${_requestDto.grade}");
+  }
+
+  void _onUpdateExperienceOption(_UpdateExperienceOption event, Emitter emit) {
+    _requestDto = _requestDto.copyWith(experienceOption: event.experienceOption);
+    print("${_requestDto.experienceOption}  ${_requestDto.grade}");
   }
 
   void _onUpdatePeriodEvent(_UpdatePeriod event, Emitter emit) {

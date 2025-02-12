@@ -1,4 +1,5 @@
 import 'package:each_job/domain/models/area/area.dart';
+import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/request_dto/request_dto.dart';
@@ -11,6 +12,8 @@ abstract interface class IApiService{
   Future<List<Grade>> getGrades();
 
   Future<List<Area>> getAreas();
+
+  Future<List<ExperienceOption>> getExperienceOptions();
 
   Future<SalaryStatistics> getStatistics({
     required RequestDto requestDto

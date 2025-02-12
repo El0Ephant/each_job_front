@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
+import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/request_dto/request_dto.dart';
@@ -25,6 +26,16 @@ class ApiServiceImplMock implements IApiService{
       List.generate(
         grades.length,
         (index) => Grade(id: index.toString(), title: grades[index]),
+      )
+    );
+  }
+
+  @override
+  Future<List<ExperienceOption>> getExperienceOptions() {
+    return Future.value(
+      List.generate(
+        experienceOptions.length,
+        (index) => ExperienceOption(id: index.toString(), title: experienceOptions[index]),
       )
     );
   }
@@ -83,6 +94,13 @@ class ApiServiceImplMock implements IApiService{
     );
   }
 }
+
+const List<String> experienceOptions = [
+  'Нет опыта',
+  'От 1 года до 3 лет',
+  'От 3 до 6 лет',
+  'Более 6 лет'
+];
 
 const List<String> grades = [
   'Junior',

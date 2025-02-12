@@ -19,6 +19,7 @@ mixin _$RequestDto {
   Area? get area => throw _privateConstructorUsedError;
   Profession? get profession => throw _privateConstructorUsedError;
   Grade? get grade => throw _privateConstructorUsedError;
+  ExperienceOption? get experienceOption => throw _privateConstructorUsedError;
   DateTime? get fromDate => throw _privateConstructorUsedError;
   DateTime? get toDate => throw _privateConstructorUsedError;
   bool get isStrictSelectionMode => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $RequestDtoCopyWith<$Res> {
       {Area? area,
       Profession? profession,
       Grade? grade,
+      ExperienceOption? experienceOption,
       DateTime? fromDate,
       DateTime? toDate,
       bool isStrictSelectionMode});
@@ -45,6 +47,7 @@ abstract class $RequestDtoCopyWith<$Res> {
   $AreaCopyWith<$Res>? get area;
   $ProfessionCopyWith<$Res>? get profession;
   $GradeCopyWith<$Res>? get grade;
+  $ExperienceOptionCopyWith<$Res>? get experienceOption;
 }
 
 /// @nodoc
@@ -63,6 +66,7 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
     Object? area = freezed,
     Object? profession = freezed,
     Object? grade = freezed,
+    Object? experienceOption = freezed,
     Object? fromDate = freezed,
     Object? toDate = freezed,
     Object? isStrictSelectionMode = null,
@@ -80,6 +84,10 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
               as Grade?,
+      experienceOption: freezed == experienceOption
+          ? _value.experienceOption
+          : experienceOption // ignore: cast_nullable_to_non_nullable
+              as ExperienceOption?,
       fromDate: freezed == fromDate
           ? _value.fromDate
           : fromDate // ignore: cast_nullable_to_non_nullable
@@ -130,6 +138,18 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
       return _then(_value.copyWith(grade: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExperienceOptionCopyWith<$Res>? get experienceOption {
+    if (_value.experienceOption == null) {
+      return null;
+    }
+
+    return $ExperienceOptionCopyWith<$Res>(_value.experienceOption!, (value) {
+      return _then(_value.copyWith(experienceOption: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -144,6 +164,7 @@ abstract class _$$RequestDtoImplCopyWith<$Res>
       {Area? area,
       Profession? profession,
       Grade? grade,
+      ExperienceOption? experienceOption,
       DateTime? fromDate,
       DateTime? toDate,
       bool isStrictSelectionMode});
@@ -154,6 +175,8 @@ abstract class _$$RequestDtoImplCopyWith<$Res>
   $ProfessionCopyWith<$Res>? get profession;
   @override
   $GradeCopyWith<$Res>? get grade;
+  @override
+  $ExperienceOptionCopyWith<$Res>? get experienceOption;
 }
 
 /// @nodoc
@@ -170,6 +193,7 @@ class __$$RequestDtoImplCopyWithImpl<$Res>
     Object? area = freezed,
     Object? profession = freezed,
     Object? grade = freezed,
+    Object? experienceOption = freezed,
     Object? fromDate = freezed,
     Object? toDate = freezed,
     Object? isStrictSelectionMode = null,
@@ -187,6 +211,10 @@ class __$$RequestDtoImplCopyWithImpl<$Res>
           ? _value.grade
           : grade // ignore: cast_nullable_to_non_nullable
               as Grade?,
+      experienceOption: freezed == experienceOption
+          ? _value.experienceOption
+          : experienceOption // ignore: cast_nullable_to_non_nullable
+              as ExperienceOption?,
       fromDate: freezed == fromDate
           ? _value.fromDate
           : fromDate // ignore: cast_nullable_to_non_nullable
@@ -210,6 +238,7 @@ class _$RequestDtoImpl extends _RequestDto {
       {required this.area,
       required this.profession,
       required this.grade,
+      required this.experienceOption,
       required this.fromDate,
       required this.toDate,
       required this.isStrictSelectionMode})
@@ -222,6 +251,8 @@ class _$RequestDtoImpl extends _RequestDto {
   @override
   final Grade? grade;
   @override
+  final ExperienceOption? experienceOption;
+  @override
   final DateTime? fromDate;
   @override
   final DateTime? toDate;
@@ -230,7 +261,7 @@ class _$RequestDtoImpl extends _RequestDto {
 
   @override
   String toString() {
-    return 'RequestDto(area: $area, profession: $profession, grade: $grade, fromDate: $fromDate, toDate: $toDate, isStrictSelectionMode: $isStrictSelectionMode)';
+    return 'RequestDto(area: $area, profession: $profession, grade: $grade, experienceOption: $experienceOption, fromDate: $fromDate, toDate: $toDate, isStrictSelectionMode: $isStrictSelectionMode)';
   }
 
   @override
@@ -242,6 +273,8 @@ class _$RequestDtoImpl extends _RequestDto {
             (identical(other.profession, profession) ||
                 other.profession == profession) &&
             (identical(other.grade, grade) || other.grade == grade) &&
+            (identical(other.experienceOption, experienceOption) ||
+                other.experienceOption == experienceOption) &&
             (identical(other.fromDate, fromDate) ||
                 other.fromDate == fromDate) &&
             (identical(other.toDate, toDate) || other.toDate == toDate) &&
@@ -251,7 +284,7 @@ class _$RequestDtoImpl extends _RequestDto {
 
   @override
   int get hashCode => Object.hash(runtimeType, area, profession, grade,
-      fromDate, toDate, isStrictSelectionMode);
+      experienceOption, fromDate, toDate, isStrictSelectionMode);
 
   @JsonKey(ignore: true)
   @override
@@ -265,6 +298,7 @@ abstract class _RequestDto extends RequestDto {
       {required final Area? area,
       required final Profession? profession,
       required final Grade? grade,
+      required final ExperienceOption? experienceOption,
       required final DateTime? fromDate,
       required final DateTime? toDate,
       required final bool isStrictSelectionMode}) = _$RequestDtoImpl;
@@ -276,6 +310,8 @@ abstract class _RequestDto extends RequestDto {
   Profession? get profession;
   @override
   Grade? get grade;
+  @override
+  ExperienceOption? get experienceOption;
   @override
   DateTime? get fromDate;
   @override

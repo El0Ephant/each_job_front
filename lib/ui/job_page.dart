@@ -6,6 +6,7 @@ import 'package:each_job/ui/bloc/job_bloc.dart';
 import 'package:each_job/ui/widgets/basic_progress_indicator.dart';
 import 'package:each_job/ui/widgets/percentile_line.dart';
 import 'package:each_job/ui/widgets/period_picker_component.dart';
+import 'package:each_job/ui/widgets/qualification_experience_field.dart';
 import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
 import 'package:each_job/ui/widgets/selection_mode_switcher.dart';
@@ -83,13 +84,9 @@ class _JobPageState extends State<JobPage> {
                     const SizedBox(
                       height: AppSizes.innerIndent,
                     ),
-                    SearchField<Grade>(
-                      label: 'Квалификация',
-                      onChange: (selectedValue) {
-                        jobBloc.add(JobEvent.updateGrade(grade: selectedValue));
-                      },
-                      choices: state.tableData.grades,
-                      typeAheadEnabled: false,
+                    QualificationExperienceField(
+                      grades: state.tableData.grades,
+                      experienceOptions: state.tableData.experienceOptions,
                     ),
                     const SizedBox(
                       height: AppSizes.outerIndent,

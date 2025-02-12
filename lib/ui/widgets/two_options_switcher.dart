@@ -33,7 +33,10 @@ class _TwoOptionsSwitcherState extends State<TwoOptionsSwitcher> {
   @override
   void initState() {
     super.initState();
-    widget.onChange.call(_isFirstSelected);
+    // Trick to guarantee correct option. PostFrameCallback to avoid rebuilds during build
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.onChange.call(_isFirstSelected);
+    },);
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:each_job/data/api_service_impl_mock.dart';
 import 'package:each_job/di/di_container.dart';
 import 'package:each_job/domain/models/area/area.dart';
+import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/table_data/table_data.dart';
@@ -15,17 +16,24 @@ void main() async {
   final [
     professions as List<Profession>,
     areas as List<Area>,
-    grades as List<Grade>
+    grades as List<Grade>,
+    experienceOptions as List<ExperienceOption>
   ] = await Future.wait([
     apiService.getProfessions(),
     apiService.getAreas(),
-    apiService.getGrades()
+    apiService.getGrades(),
+    apiService.getExperienceOptions()
   ]);
   runApp(
     BlocProvider<JobBloc>(
       create: (context) => JobBloc(
         apiService,
-        TableData(areas: areas, professions: professions, grades: grades)
+        TableData(
+          areas: areas,
+          professions: professions,
+          grades: grades,
+          experienceOptions: experienceOptions
+        )
       ),
       child: const MyApp()
     )

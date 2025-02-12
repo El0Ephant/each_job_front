@@ -1,4 +1,5 @@
 import 'package:each_job/domain/models/area/area.dart';
+import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,12 +14,14 @@ class RequestDto with _$RequestDto {
     required Area? area,
     required Profession? profession,
     required Grade? grade,
+    required ExperienceOption? experienceOption,
     required DateTime? fromDate,
     required DateTime? toDate,
     required bool isStrictSelectionMode,
   }) = _RequestDto;
 
   Map<String, dynamic> toJson() => {
+    // TODO experienceOption and isStrictSelectionMode
     "areaId": area?.id,
     "professionId": profession?.id,
     "gradeId": grade?.id,
@@ -32,6 +35,7 @@ class RequestDto with _$RequestDto {
     grade: null,
     fromDate: null,
     toDate: null,
+    experienceOption: null,
     isStrictSelectionMode: false
   );
 

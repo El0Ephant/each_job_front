@@ -1,5 +1,6 @@
 import 'package:each_job/domain/i_api_service.dart';
 import 'package:each_job/domain/models/area/area.dart';
+import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/request_dto/request_dto.dart';
@@ -21,6 +22,10 @@ abstract class ApiServiceImpl implements IApiService{
   @GET('/grades')
   @override
   Future<List<Grade>> getGrades();
+
+  @GET('/experienceOptions')
+  @override
+  Future<List<ExperienceOption>> getExperienceOptions();
 
   @GET('/professions')
   @override

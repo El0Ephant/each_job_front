@@ -20,7 +20,7 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
   });
   final List<T> choices;
   final Function(T? selectedValue) onChange;
-  final String label;
+  final String? label;
   final String hint;
   final int maxSuggestions;
   final bool typeAheadEnabled;
@@ -34,6 +34,7 @@ class SearchField<T extends ISearchable> extends StatefulWidget {
 class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
   final _searchController = TextEditingController();
   final _focusNode = FocusNode();
+  final _typeAheadKey = GlobalKey();
 
   @override
   void initState() {
@@ -58,6 +59,7 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
   @override
   Widget build(BuildContext context) {
     return TypeAheadField<T>(
+      key: _typeAheadKey,
       decorationBuilder: (context, child) {
         return ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 350,),
@@ -76,8 +78,11 @@ class _SearchFieldState<T extends ISearchable> extends State<SearchField<T>> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.label, style: AppTextStyles.commonLabelTextStyle,),
-            const SizedBox(height: AppSizes.innerIndent,),
+            if (widget.label != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: AppSizes.innerIndent),
+              child: Text(widget.label!, style: AppTextStyles.commonLabelTextStyle,),
+            ),
             SizedBox(
               height: AppSizes.commonHeight,
               child: _SearchTextField(
