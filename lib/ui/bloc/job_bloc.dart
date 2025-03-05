@@ -96,12 +96,10 @@ class JobBloc extends Bloc<JobEvent, JobState> {
 
   void _onUpdateGradeEvent(_UpdateGrade event, Emitter emit) {
     _requestDto = _requestDto.copyWith(grade: event.grade);
-    print("${_requestDto.experienceOption}  ${_requestDto.grade}");
   }
 
   void _onUpdateExperienceOption(_UpdateExperienceOption event, Emitter emit) {
     _requestDto = _requestDto.copyWith(experienceOption: event.experienceOption);
-    print("${_requestDto.experienceOption}  ${_requestDto.grade}");
   }
 
   void _onUpdatePeriodEvent(_UpdatePeriod event, Emitter emit) {

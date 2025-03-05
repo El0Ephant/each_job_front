@@ -14,7 +14,7 @@ class _ApiServiceImpl implements ApiServiceImpl {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://150.241.98.84:3000/';
+    baseUrl ??= 'http://217.144.189.205:3000/';
   }
 
   final Dio _dio;
@@ -106,7 +106,7 @@ class _ApiServiceImpl implements ApiServiceImpl {
     )
         .compose(
           _dio.options,
-          '/experienceOptions',
+          '/experiences',
           queryParameters: queryParameters,
           data: _data,
         )

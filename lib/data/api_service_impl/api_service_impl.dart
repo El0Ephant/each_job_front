@@ -11,7 +11,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'api_service_impl.g.dart';
 
-@RestApi(baseUrl: 'http://150.241.98.84:3000/')
+@RestApi(baseUrl: 'http://217.144.189.205:3000/')
 abstract class ApiServiceImpl implements IApiService{
   factory ApiServiceImpl(Dio dio) = _ApiServiceImpl;
 
@@ -23,7 +23,7 @@ abstract class ApiServiceImpl implements IApiService{
   @override
   Future<List<Grade>> getGrades();
 
-  @GET('/experienceOptions')
+  @GET('/experiences')
   @override
   Future<List<ExperienceOption>> getExperienceOptions();
 
@@ -35,7 +35,6 @@ abstract class ApiServiceImpl implements IApiService{
   @override
   Future<SalaryStatistics> getStatistics({
     @Queries() required RequestDto requestDto,
-
   });
 
   @GET('/vacancies')

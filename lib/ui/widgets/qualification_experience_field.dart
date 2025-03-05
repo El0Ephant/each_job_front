@@ -31,16 +31,6 @@ class _QualificationExperienceFieldState extends State<QualificationExperienceFi
 
   @override
   Widget build(BuildContext context) {
-    if (widget.experienceOptions.isEmpty){
-      return SearchField<Grade>(
-        label: 'Квалификация',
-        onChange: (selectedValue) {
-          _jobBloc.add(JobEvent.updateGrade(grade: selectedValue));
-        },
-        choices: widget.grades,
-        typeAheadEnabled: false,
-      );
-    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

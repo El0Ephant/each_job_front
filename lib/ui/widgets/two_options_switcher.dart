@@ -52,12 +52,12 @@ class _TwoOptionsSwitcherState extends State<TwoOptionsSwitcher> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Text(widget.first, style: AppTextStyles.commonLabelTextStyle),
               Radio(
                 onChanged: null,
                 groupValue: _isFirstSelected,
                 value: true,
               ),
-              Text(widget.first, style: AppTextStyles.commonLabelTextStyle)
             ],
           ),
         ),
@@ -75,7 +75,7 @@ class _TwoOptionsSwitcherState extends State<TwoOptionsSwitcher> {
                 groupValue: _isFirstSelected,
                 value: false,
               ),
-              Text(widget.second, style: AppTextStyles.commonLabelTextStyle)
+              Text(widget.second, style: AppTextStyles.commonLabelTextStyle),
             ],
           ),
         )
