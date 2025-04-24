@@ -21,7 +21,7 @@ class RequestDto with _$RequestDto {
   }) = _RequestDto;
 
   Map<String, dynamic> toJson() => {
-    // TODO isStrictSelectionMode
+    "onlyTitleMatch": isStrictSelectionMode,
     "experienceId": experienceOption?.id,
     "areaId": area?.id,
     "professionId": profession?.id,
