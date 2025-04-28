@@ -56,6 +56,18 @@ abstract class AppThemes{
       fillColor: WidgetStatePropertyAll(AppColors.main1Color),
       visualDensity: VisualDensity(vertical: VisualDensity.minimumDensity, horizontal: VisualDensity.minimumDensity)
     ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith(
+        (states) {
+          if (states.contains(WidgetState.selected)){
+            return AppColors.main1Color;
+          }
+          return AppColors.backgroundColor;
+        },
+      ),
+      side: const BorderSide(color: AppColors.main1Color, width: 2),
+      visualDensity: const VisualDensity(vertical: VisualDensity.minimumDensity, horizontal: VisualDensity.minimumDensity)
+    ),
     useMaterial3: true,
   );
 }

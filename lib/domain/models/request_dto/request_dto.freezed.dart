@@ -22,7 +22,7 @@ mixin _$RequestDto {
   ExperienceOption? get experienceOption => throw _privateConstructorUsedError;
   DateTime? get fromDate => throw _privateConstructorUsedError;
   DateTime? get toDate => throw _privateConstructorUsedError;
-  bool get isStrictSelectionMode => throw _privateConstructorUsedError;
+  SearchSettings get searchSettings => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestDtoCopyWith<RequestDto> get copyWith =>
@@ -42,12 +42,13 @@ abstract class $RequestDtoCopyWith<$Res> {
       ExperienceOption? experienceOption,
       DateTime? fromDate,
       DateTime? toDate,
-      bool isStrictSelectionMode});
+      SearchSettings searchSettings});
 
   $AreaCopyWith<$Res>? get area;
   $ProfessionCopyWith<$Res>? get profession;
   $GradeCopyWith<$Res>? get grade;
   $ExperienceOptionCopyWith<$Res>? get experienceOption;
+  $SearchSettingsCopyWith<$Res> get searchSettings;
 }
 
 /// @nodoc
@@ -69,7 +70,7 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
     Object? experienceOption = freezed,
     Object? fromDate = freezed,
     Object? toDate = freezed,
-    Object? isStrictSelectionMode = null,
+    Object? searchSettings = null,
   }) {
     return _then(_value.copyWith(
       area: freezed == area
@@ -96,10 +97,10 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isStrictSelectionMode: null == isStrictSelectionMode
-          ? _value.isStrictSelectionMode
-          : isStrictSelectionMode // ignore: cast_nullable_to_non_nullable
-              as bool,
+      searchSettings: null == searchSettings
+          ? _value.searchSettings
+          : searchSettings // ignore: cast_nullable_to_non_nullable
+              as SearchSettings,
     ) as $Val);
   }
 
@@ -150,6 +151,14 @@ class _$RequestDtoCopyWithImpl<$Res, $Val extends RequestDto>
       return _then(_value.copyWith(experienceOption: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SearchSettingsCopyWith<$Res> get searchSettings {
+    return $SearchSettingsCopyWith<$Res>(_value.searchSettings, (value) {
+      return _then(_value.copyWith(searchSettings: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -167,7 +176,7 @@ abstract class _$$RequestDtoImplCopyWith<$Res>
       ExperienceOption? experienceOption,
       DateTime? fromDate,
       DateTime? toDate,
-      bool isStrictSelectionMode});
+      SearchSettings searchSettings});
 
   @override
   $AreaCopyWith<$Res>? get area;
@@ -177,6 +186,8 @@ abstract class _$$RequestDtoImplCopyWith<$Res>
   $GradeCopyWith<$Res>? get grade;
   @override
   $ExperienceOptionCopyWith<$Res>? get experienceOption;
+  @override
+  $SearchSettingsCopyWith<$Res> get searchSettings;
 }
 
 /// @nodoc
@@ -196,7 +207,7 @@ class __$$RequestDtoImplCopyWithImpl<$Res>
     Object? experienceOption = freezed,
     Object? fromDate = freezed,
     Object? toDate = freezed,
-    Object? isStrictSelectionMode = null,
+    Object? searchSettings = null,
   }) {
     return _then(_$RequestDtoImpl(
       area: freezed == area
@@ -223,10 +234,10 @@ class __$$RequestDtoImplCopyWithImpl<$Res>
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isStrictSelectionMode: null == isStrictSelectionMode
-          ? _value.isStrictSelectionMode
-          : isStrictSelectionMode // ignore: cast_nullable_to_non_nullable
-              as bool,
+      searchSettings: null == searchSettings
+          ? _value.searchSettings
+          : searchSettings // ignore: cast_nullable_to_non_nullable
+              as SearchSettings,
     ));
   }
 }
@@ -241,7 +252,7 @@ class _$RequestDtoImpl extends _RequestDto {
       required this.experienceOption,
       required this.fromDate,
       required this.toDate,
-      required this.isStrictSelectionMode})
+      required this.searchSettings})
       : super._();
 
   @override
@@ -257,11 +268,11 @@ class _$RequestDtoImpl extends _RequestDto {
   @override
   final DateTime? toDate;
   @override
-  final bool isStrictSelectionMode;
+  final SearchSettings searchSettings;
 
   @override
   String toString() {
-    return 'RequestDto(area: $area, profession: $profession, grade: $grade, experienceOption: $experienceOption, fromDate: $fromDate, toDate: $toDate, isStrictSelectionMode: $isStrictSelectionMode)';
+    return 'RequestDto(area: $area, profession: $profession, grade: $grade, experienceOption: $experienceOption, fromDate: $fromDate, toDate: $toDate, searchSettings: $searchSettings)';
   }
 
   @override
@@ -278,13 +289,13 @@ class _$RequestDtoImpl extends _RequestDto {
             (identical(other.fromDate, fromDate) ||
                 other.fromDate == fromDate) &&
             (identical(other.toDate, toDate) || other.toDate == toDate) &&
-            (identical(other.isStrictSelectionMode, isStrictSelectionMode) ||
-                other.isStrictSelectionMode == isStrictSelectionMode));
+            (identical(other.searchSettings, searchSettings) ||
+                other.searchSettings == searchSettings));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, area, profession, grade,
-      experienceOption, fromDate, toDate, isStrictSelectionMode);
+      experienceOption, fromDate, toDate, searchSettings);
 
   @JsonKey(ignore: true)
   @override
@@ -301,7 +312,7 @@ abstract class _RequestDto extends RequestDto {
       required final ExperienceOption? experienceOption,
       required final DateTime? fromDate,
       required final DateTime? toDate,
-      required final bool isStrictSelectionMode}) = _$RequestDtoImpl;
+      required final SearchSettings searchSettings}) = _$RequestDtoImpl;
   const _RequestDto._() : super._();
 
   @override
@@ -317,7 +328,7 @@ abstract class _RequestDto extends RequestDto {
   @override
   DateTime? get toDate;
   @override
-  bool get isStrictSelectionMode;
+  SearchSettings get searchSettings;
   @override
   @JsonKey(ignore: true)
   _$$RequestDtoImplCopyWith<_$RequestDtoImpl> get copyWith =>

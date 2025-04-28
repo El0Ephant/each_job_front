@@ -5,6 +5,7 @@ import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
 import 'package:each_job/domain/models/request_dto/request_dto.dart';
 import 'package:each_job/domain/models/salary_statistics/salary_statistics.dart';
+import 'package:each_job/domain/models/search_settings/search_settings.dart';
 import 'package:each_job/domain/models/table_data/table_data.dart';
 import 'package:each_job/domain/models/vacancy/vacancy.dart';
 import 'package:each_job/ui/bloc/error_dto.dart';
@@ -25,7 +26,7 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<_UpdateGrade>(_onUpdateGradeEvent);
     on<_UpdateExperienceOption>(_onUpdateExperienceOption);
     on<_UpdatePeriod>(_onUpdatePeriodEvent);
-    on<_UpdateSelectionMode>(_onUpdateSelectionMode);
+    on<_UpdateSearchSettings>(_onUpdateSearchSettings);
     on<_Search>(_onSearch);
     on<_FetchPage>(_onFetchPage);
   }
@@ -107,7 +108,8 @@ class JobBloc extends Bloc<JobEvent, JobState> {
         fromDate: event.period?.start, toDate: event.period?.end);
   }
 
-  void _onUpdateSelectionMode(_UpdateSelectionMode event, Emitter emit) {
-    _requestDto = _requestDto.copyWith(isStrictSelectionMode: event.isStrict);
+  void _onUpdateSearchSettings(_UpdateSearchSettings event, Emitter emit) {
+    _requestDto = _requestDto.copyWith(searchSettings: event.searchSettings);
+    print(_requestDto.searchSettings);
   }
 }

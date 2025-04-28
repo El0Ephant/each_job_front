@@ -9,6 +9,7 @@ import 'package:each_job/ui/widgets/period_picker_component.dart';
 import 'package:each_job/ui/widgets/qualification_experience_field.dart';
 import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
+import 'package:each_job/ui/widgets/search_settings/search_settings_title.dart';
 import 'package:each_job/ui/widgets/selection_mode_switcher.dart';
 import 'package:each_job/ui/widgets/two_options_switcher.dart';
 import 'package:each_job/ui/widgets/vacancies_list.dart';
@@ -99,10 +100,9 @@ class _JobPageState extends State<JobPage> {
                     const SizedBox(
                       height: AppSizes.innerIndent,
                     ),
-                    SelectionModeSwitcher(
-                      onChange: (isStrict) {
-                        jobBloc.add(JobEvent.updateSelectionMode(isStrict: isStrict));
-                      },
+                    const SearchSettingsTitle(),
+                    const SizedBox(
+                      height: AppSizes.innerIndent,
                     ),
                     SizedBox(
                         height: AppSizes.commonHeight,

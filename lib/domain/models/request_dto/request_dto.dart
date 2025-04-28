@@ -2,6 +2,8 @@ import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/experience/experience_option.dart';
 import 'package:each_job/domain/models/grade/grade.dart';
 import 'package:each_job/domain/models/profession/profession.dart';
+import 'package:each_job/domain/models/search_fields.dart';
+import 'package:each_job/domain/models/search_settings/search_settings.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'request_dto.freezed.dart';
@@ -17,11 +19,11 @@ class RequestDto with _$RequestDto {
     required ExperienceOption? experienceOption,
     required DateTime? fromDate,
     required DateTime? toDate,
-    required bool isStrictSelectionMode,
+    required SearchSettings searchSettings,
   }) = _RequestDto;
 
   Map<String, dynamic> toJson() => {
-    "onlyTitleMatch": isStrictSelectionMode,
+    "onlyTitleMatch": searchSettings.searchFields == SearchFields.onlyTitle, // TODO ADD ALL SEARCH SETTINGS
     "experienceId": experienceOption?.id,
     "areaId": area?.id,
     "professionId": profession?.id,
@@ -30,14 +32,14 @@ class RequestDto with _$RequestDto {
     "to": toDate?.toIso8601String(),
   };
 
-  factory RequestDto.empty() => const RequestDto(
+  factory RequestDto.empty() => RequestDto(
     area: null,
     profession: null,
     grade: null,
     fromDate: null,
     toDate: null,
     experienceOption: null,
-    isStrictSelectionMode: false
+    searchSettings: SearchSettings.common(),
   );
 
   bool get isReady => area != null && profession != null;
