@@ -1,8 +1,8 @@
 
 enum SearchFields{
-  onlyTitle(title: 'Название', apiOptionName: 'title'),  // TODO RENAME API OPTION
-  titleAndRequirements(title: 'Название и требования', apiOptionName: 'titleAndRequirements'), // TODO RENAME API OPTION
-  titleAndDescription(title: 'Название и описание', apiOptionName: 'titleAndDescription');  // TODO RENAME API OPTION
+  onlyTitle(title: 'Название', apiOptionName: 'onlyTitle'),
+  titleAndRequirements(title: 'Название и требования', apiOptionName: 'titleAndRequirements'),
+  titleAndDescription(title: 'Название и описание', apiOptionName: 'titleAndDescription');
 
   const SearchFields({
     required this.title,

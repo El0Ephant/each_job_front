@@ -30,8 +30,8 @@ class _MinSalaryState extends State<MinSalaryPicker> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text("Мин. зарплата:", style: AppTextStyles.commonLabelTextStyle,),
-        const SizedBox(width: AppSizes.innerIndent,),
+        const Text("Мин. зарплата", style: AppTextStyles.commonLabelTextStyle,),
+        const SizedBox(width: 20,),
         Expanded(
           child: TextField(
             controller: _controller,

@@ -23,13 +23,15 @@ class RequestDto with _$RequestDto {
   }) = _RequestDto;
 
   Map<String, dynamic> toJson() => {
-    "onlyTitleMatch": searchSettings.searchFields == SearchFields.onlyTitle, // TODO ADD ALL SEARCH SETTINGS
     "experienceId": experienceOption?.id,
     "areaId": area?.id,
     "professionId": profession?.id,
     "gradeId": grade?.id,
-    "from": fromDate?.toIso8601String(),
-    "to": toDate?.toIso8601String(),
+    // "from": fromDate?.toIso8601String(),
+    // "to": toDate?.toIso8601String(),
+    "searchFields": searchSettings.searchFields.apiOptionName,
+    "includeHourly": searchSettings.hourlyVacanciesEnabled,
+    "minSalary": searchSettings.minSalary
   };
 
   factory RequestDto.empty() => RequestDto(
