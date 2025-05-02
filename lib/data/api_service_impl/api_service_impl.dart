@@ -11,8 +11,8 @@ import 'package:retrofit/retrofit.dart';
 
 part 'api_service_impl.g.dart';
 
-@RestApi(baseUrl: 'http://217.144.189.205:3000/')
-abstract class ApiServiceImpl implements IApiService{
+@RestApi(baseUrl: 'http://localhost:3001/api')
+abstract class ApiServiceImpl implements IApiService {
   factory ApiServiceImpl(Dio dio) = _ApiServiceImpl;
 
   @GET('/areas')
@@ -39,9 +39,8 @@ abstract class ApiServiceImpl implements IApiService{
 
   @GET('/vacancies')
   @override
-  Future<List<Vacancy>> getVacanciesPage({
-    @Queries() required RequestDto requestDto,
-    @Query('page') required int pageNumber,
-    @Query('size') required int pageSize
-  });
+  Future<List<Vacancy>> getVacanciesPage(
+      {@Queries() required RequestDto requestDto,
+      @Query('page') required int pageNumber,
+      @Query('size') required int pageSize});
 }
