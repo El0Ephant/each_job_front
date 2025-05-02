@@ -110,6 +110,5 @@ class JobBloc extends Bloc<JobEvent, JobState> {
 
   void _onUpdateSearchSettings(_UpdateSearchSettings event, Emitter emit) {
     _requestDto = _requestDto.copyWith(searchSettings: event.searchSettings);
-    print(_requestDto.searchSettings);
   }
 }
