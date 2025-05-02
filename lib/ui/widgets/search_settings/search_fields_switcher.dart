@@ -25,7 +25,7 @@ class _SearchFieldsSwitcherState extends State<SearchFieldsSwitcher> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Искать в полях:", style: AppTextStyles.commonLabelTextStyle,),
+        const Text("Искать в полях", style: AppTextStyles.commonLabelTextStyle,),
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
