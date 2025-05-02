@@ -7,12 +7,14 @@ class AdaptiveLayout extends StatelessWidget {
     super.key,
     required this.searchFields,
     required this.periodPicker,
+    required this.searchSettings,
     required this.content,
     required this.searchButton,
   });
 
   final Widget searchFields;
   final Widget periodPicker;
+  final Widget searchSettings;
   final Widget searchButton;
   final Widget content;
 
@@ -20,12 +22,15 @@ class AdaptiveLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, BoxConstraints constraints) {
-        if (MediaQuery.of(context).size.height * 1.2 >
-            MediaQuery.of(context).size.width) {
+        if (!AppSizes.isAlbum(context)) {
           return Column(
             children: [
               searchFields,
               periodPicker,
+              const SizedBox(
+                height: AppSizes.outerIndent,
+              ),
+              searchSettings,
               const SizedBox(
                 height: AppSizes.innerIndent,
               ),
@@ -63,6 +68,10 @@ class AdaptiveLayout extends StatelessWidget {
                         child: Column(
                           children: [
                             searchFields,
+                            searchSettings,
+                            const SizedBox(
+                              height: AppSizes.innerIndent,
+                            ),
                             searchButton,
                           ],
                         ),

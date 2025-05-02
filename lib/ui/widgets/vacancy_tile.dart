@@ -56,9 +56,17 @@ class VacancyTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(vacancy.name, style: AppTextStyles.vacancyBigTextStyle,),
+                    SizedBox(
+                      height: 50,
+                      child: Text(
+                        vacancy.name,
+                        style: AppTextStyles.vacancyBigTextStyle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    ),
                     if (vacancy.employerName != null)
-                    Text(vacancy.employerName!, style: AppTextStyles.vacancySmallTextStyle,),
+                    Text(vacancy.employerName!, style: AppTextStyles.vacancySmallTextStyle, maxLines: 1, overflow: TextOverflow.ellipsis,),
                     if (vacancy.salaryFrom != null && vacancy.salaryTo != null)
                       Text('${vacancy.salaryFrom!} - ${vacancy.salaryTo!} $decodedCurrency', style: AppTextStyles.vacancyMediumTextStyle,),
                     if (vacancy.salaryFrom != null && vacancy.salaryTo == null)

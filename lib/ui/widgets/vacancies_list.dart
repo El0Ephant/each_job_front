@@ -50,16 +50,31 @@ class _VacanciesListState extends State<VacanciesList> {
 
   @override
   Widget build(BuildContext context) {
+    final isAlbum = AppSizes.isAlbum(context);
     return ListView.separated(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: widget.vacancies.length + (widget.hasReachedMax ? 0 : 1),
+      itemCount: isAlbum ?
+        (widget.vacancies.length / 2).ceil() + (widget.hasReachedMax ? 0 : 1) : widget.vacancies.length + (widget.hasReachedMax ? 0 : 1),
       separatorBuilder: (context, index) => const SizedBox(height: 15,),
       itemBuilder: (context, index) {
-        if (index == widget.vacancies.length){
-          return const BasicProgressIndicator();
+        if (isAlbum){
+          if (index == (widget.vacancies.length / 2).ceil()){
+            return const BasicProgressIndicator();
+          }
+          return Row(
+            children: [
+              Expanded(child: VacancyTile(vacancy: widget.vacancies[index * 2])),
+              const SizedBox(width: 15,),
+              Expanded(child: VacancyTile(vacancy: widget.vacancies[index * 2 + 1]))
+            ],
+          );
+        } else {
+          if (index == widget.vacancies.length){
+            return const BasicProgressIndicator();
+          }
+          return VacancyTile(vacancy: widget.vacancies[index]);
         }
-        return VacancyTile(vacancy: widget.vacancies[index]);
       },
     );
   }

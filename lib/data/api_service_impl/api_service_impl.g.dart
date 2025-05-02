@@ -14,7 +14,7 @@ class _ApiServiceImpl implements ApiServiceImpl {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://localhost:8000';
+    baseUrl ??= 'http://217.144.189.205:3000';
   }
 
   final Dio _dio;

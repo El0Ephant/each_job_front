@@ -9,6 +9,7 @@ import 'package:each_job/ui/widgets/period_picker_component.dart';
 import 'package:each_job/ui/widgets/qualification_experience_field.dart';
 import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
+import 'package:each_job/ui/widgets/search_settings/search_settings_title.dart';
 import 'package:each_job/ui/widgets/vacancies_list.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
@@ -98,6 +99,7 @@ class _JobPageState extends State<JobPage> {
                       jobBloc.add(JobEvent.updatePeriod(period: period));
                     },
                   ),
+                  searchSettings: const SearchSettingsTitle(),
                   content: state.maybeWhen(
                     loaded: (tableData, salaryStatistics, vacancies,
                         hasReachedMaxVacancies) {
@@ -113,28 +115,37 @@ class _JobPageState extends State<JobPage> {
                       }
                       return Column(
                         children: [
-                          const SizedBox(
-                            height: AppSizes.outerIndent,
-                          ),
-                          PercentileLine(
-                            bottom: salaryStatistics.bottomSalary!,
-                            upper: salaryStatistics.upperSalary!,
-                            median: salaryStatistics.medianSalary!,
-                            oftenSalariesBottom:
-                                salaryStatistics.oftenSalariesBottom!,
-                            oftenSalariesUpper:
-                                salaryStatistics.oftenSalariesUpper!,
-                          ),
-                          const SizedBox(
-                            height: AppSizes.outerIndent,
-                          ),
-                          if (salaryStatistics.chartData.length >= 2)
-                            SizedBox(
-                                height: 300,
-                                child: SalaryChart(
-                                    data: salaryStatistics.chartData)),
-                          const SizedBox(
-                            height: AppSizes.innerIndent,
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 1000
+                            ),
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: AppSizes.outerIndent,
+                                ),
+                                PercentileLine(
+                                  bottom: salaryStatistics.bottomSalary!,
+                                  upper: salaryStatistics.upperSalary!,
+                                  median: salaryStatistics.medianSalary!,
+                                  oftenSalariesBottom:
+                                  salaryStatistics.oftenSalariesBottom!,
+                                  oftenSalariesUpper:
+                                  salaryStatistics.oftenSalariesUpper!,
+                                ),
+                                const SizedBox(
+                                  height: AppSizes.outerIndent,
+                                ),
+                                if (salaryStatistics.chartData.length >= 2)
+                                  SizedBox(
+                                      height: 300,
+                                      child: SalaryChart(
+                                          data: salaryStatistics.chartData)),
+                                const SizedBox(
+                                  height: AppSizes.innerIndent,
+                                ),
+                              ],
+                            ),
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -158,11 +169,6 @@ class _JobPageState extends State<JobPage> {
                   ),
                   searchButton: Column(
                     children: [
-                      // SelectionModeSwitcher(
-                      //   onChange: (isStrict) {
-                      //     jobBloc.add(JobEvent.updateSelectionMode(isStrict: isStrict));
-                      //   },
-                      // ),
                       SizedBox(
                         height: AppSizes.commonHeight,
                         width: double.infinity,
