@@ -11,7 +11,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'api_service_impl.g.dart';
 
-@RestApi(baseUrl: 'http://217.144.189.205:3000')
+@RestApi(baseUrl: 'https://backend.each-job.ru:8443')
 abstract class ApiServiceImpl implements IApiService {
   factory ApiServiceImpl(Dio dio) = _ApiServiceImpl;
 

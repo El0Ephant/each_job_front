@@ -14,7 +14,7 @@ class _ApiServiceImpl implements ApiServiceImpl {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://217.144.189.205:3000';
+    baseUrl ??= 'https://backend.each-job.ru:8443';
   }
 
   final Dio _dio;
