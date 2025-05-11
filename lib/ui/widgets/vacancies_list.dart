@@ -66,7 +66,10 @@ class _VacanciesListState extends State<VacanciesList> {
             children: [
               Expanded(child: VacancyTile(vacancy: widget.vacancies[index * 2])),
               const SizedBox(width: 15,),
-              Expanded(child: VacancyTile(vacancy: widget.vacancies[index * 2 + 1]))
+              Expanded(
+                child: index * 2 + 1 < widget.vacancies.length ?
+                  VacancyTile(vacancy: widget.vacancies[index * 2 + 1]) : const SizedBox()
+              )
             ],
           );
         } else {
