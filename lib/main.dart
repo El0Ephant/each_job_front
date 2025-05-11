@@ -1,4 +1,3 @@
-import 'package:each_job/data/api_service_impl_mock.dart';
 import 'package:each_job/di/di_container.dart';
 import 'package:each_job/domain/models/area/area.dart';
 import 'package:each_job/domain/models/experience/experience_option.dart';

@@ -14,13 +14,13 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
   late final PageController controller;
   bool isStart = true;
   bool isMonth = true;
-  int year = 2024;
-  DateTime start = DateTime.utc(2024, 1);
-  DateTime end = DateTime.utc(2024, 5);
+  int year = 2025;
+  DateTime start = DateTime.utc(2024, 10);
+  DateTime end = DateTime.utc(2025, 5);
 
   @override
   void initState() {
-    controller = PageController(initialPage: 1);
+    controller = PageController(initialPage: 2);
     controller.addListener(() {
       setState(() {
         year = controller.page!.round() + 2023;
@@ -80,7 +80,7 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
         SizedBox(
           height: 50,
           child: PageView.builder(
-              itemCount: 2,
+              itemCount: 3,
               controller: controller,
               itemBuilder: (_, i) {
                 return Center(

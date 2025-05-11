@@ -11,6 +11,7 @@ import 'package:each_job/ui/widgets/salary_chart.dart';
 import 'package:each_job/ui/widgets/search_field.dart';
 import 'package:each_job/ui/widgets/search_settings/search_settings_title.dart';
 import 'package:each_job/ui/widgets/vacancies_list.dart';
+import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,35 @@ class JobPage extends StatefulWidget {
 
 class _JobPageState extends State<JobPage> {
   final _scrollController = ScrollController();
+  bool _showFab = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  void _scrollListener() {
+    final threshold = MediaQuery.of(context).size.height + 300;
+    if (_scrollController.offset >= threshold && !_showFab) {
+      setState(() {
+        _showFab = true;
+      });
+    }
+    else if (_scrollController.offset < threshold  && _showFab) {
+      setState(() {
+        _showFab = false;
+      });
+    }
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   void dispose() {
@@ -36,6 +66,22 @@ class _JobPageState extends State<JobPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      floatingActionButton: _showFab
+      ? FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius)
+        ),
+        onPressed: _scrollToTop,
+        backgroundColor: AppColors.backgroundColor,
+        elevation: 15,
+        child: const Icon(
+          color: AppColors.main1Color,
+          size: 30,
+          Icons.keyboard_arrow_up
+        ),
+      )
+      : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: SafeArea(
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,

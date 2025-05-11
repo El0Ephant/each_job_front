@@ -39,7 +39,7 @@ class VacancyTile extends StatelessWidget {
     return InkWell(
       onTap: () {
         final url = vacancy.url ?? 'https://hh.ru/vacancy/${vacancy.hhId}';
-        launchUrl(Uri.parse(url));
+        launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
       },
       borderRadius: const BorderRadius.all(Radius.circular(AppSizes.commonBorderRadius)),
       child: DecoratedBox(
