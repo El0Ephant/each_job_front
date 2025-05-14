@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:each_job/utils/app_colors.dart';
 import 'package:each_job/utils/app_sizes.dart';
 import 'package:each_job/utils/app_text_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PercentileLine extends StatelessWidget {
@@ -56,12 +57,14 @@ class PercentileLine extends StatelessWidget {
                 ),
               ),
               _Mark(
+                message: '10% получают меньше',
                 isOftenSalaries: false,
                 value: bottom.toInt(),
                 padding: const EdgeInsets.only(left: AppSizes.commonBorderRadius),
                 crossAxisAlignment: CrossAxisAlignment.start,
               ),
               _Mark(
+                message: '90% получают меньше',
                 isOftenSalaries: false,
                 value: upper.toInt(),
                 padding: const EdgeInsets.only(right: AppSizes.commonBorderRadius),
@@ -69,6 +72,7 @@ class PercentileLine extends StatelessWidget {
                 right: 0,
               ),
               _Mark(
+                message: '25% получают меньше',
                 isOftenSalaries: true,
                 value: oftenSalariesBottom.toInt(),
                 padding: const EdgeInsets.only(left: AppSizes.commonBorderRadius),
@@ -77,6 +81,7 @@ class PercentileLine extends StatelessWidget {
                 bottom: 0,
               ),
               _Mark(
+                message: '75% получают меньше',
                 isOftenSalaries: true,
                 value: oftenSalariesUpper.toInt(),
                 padding: const EdgeInsets.only(right: AppSizes.commonBorderRadius),
@@ -84,6 +89,7 @@ class PercentileLine extends StatelessWidget {
                 right: constraints.maxWidth - oftenSalariesEnd,
                 bottom: 0,
               ),
+
               Positioned.fill(
                 left: oftenSalariesStart,
                 child: Align(
@@ -122,7 +128,35 @@ class PercentileLine extends StatelessWidget {
                     child: Text("${median}k", style: AppTextStyles.plotOnMainTextStyle,),
                   );
                 }
-              )
+              ),
+              // Костыль, но иначе тултип не срабатывал на 50%
+              Positioned(
+                top: 95/2 - 10,
+                left: medianPos - 20,
+                child:  const Tooltip(
+                  message: '50% получают меньше',
+                  verticalOffset: 20,
+                  preferBelow: false,
+                  child: SizedBox(
+                    height: 20,
+                    width: 40,
+                  ),
+                ),
+              ),
+              // Костыль, но иначе тултип не срабатывал на 75%
+              Positioned(
+                right: constraints.maxWidth - oftenSalariesEnd,
+                bottom: 0,
+                child:  const Tooltip(
+                  message: '75% получают меньше',
+                  verticalOffset: 10,
+                  preferBelow: true,
+                  child: SizedBox(
+                    height: 20,
+                    width: 40,
+                  ),
+                ),
+              ),
             ],
           ),
         );
@@ -138,6 +172,7 @@ class _Mark extends StatelessWidget {
     required this.value,
     required this.padding,
     required this.crossAxisAlignment,
+    required this.message,
     this.right,
     this.left,
     this.top,
@@ -150,6 +185,7 @@ class _Mark extends StatelessWidget {
   final double? top;
   final double? bottom;
   final EdgeInsets padding;
+  final String message;
   final int value;
   final _secondaryMarkIndent = 10;
 
@@ -173,15 +209,20 @@ class _Mark extends StatelessWidget {
       left: left,
       top: top,
       bottom: bottom,
-      child: Column(
-        crossAxisAlignment: crossAxisAlignment,
-        children: isOftenSalaries ? [
-          markWidget,
-          textWidget
-        ] : [
-          textWidget,
-          markWidget
-        ],
+      child: Tooltip(
+        message: message,
+        verticalOffset: 37,
+        preferBelow: isOftenSalaries,
+        child: Column(
+          crossAxisAlignment: crossAxisAlignment,
+          children: isOftenSalaries ? [
+            markWidget,
+            textWidget
+          ] : [
+            textWidget,
+            markWidget
+          ],
+        ),
       ),
     );
   }

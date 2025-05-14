@@ -28,7 +28,7 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
       });
     });
     super.initState();
-    widget.onChanged?.call((start: start, end: end));
+    widget.onChanged?.call((start: start, end: _lastDayOfMonth(end)));
   }
 
   void _onUpdate() {
