@@ -27,11 +27,11 @@ class AdaptiveLayout extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 35, right: 35, bottom: AppSizes.innerIndent),
+                padding: const EdgeInsets.only(
+                    left: 35, right: 35, bottom: AppSizes.innerIndent),
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 350),
-                  child: const EachJobLogo()
-                ),
+                    constraints: const BoxConstraints(maxWidth: 350),
+                    child: const EachJobLogo()),
               ),
               searchFields,
               periodPicker,
@@ -49,18 +49,13 @@ class AdaptiveLayout extends StatelessWidget {
         } else {
           return Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 1200
-              ),
+              constraints: const BoxConstraints(maxWidth: 1200),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(bottom: 20, top: 10),
-                    child: SizedBox(
-                      height: 100,
-                      child: EachJobLogo()
-                    ),
+                    child: SizedBox(height: 100, child: EachJobLogo()),
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,

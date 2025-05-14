@@ -15,6 +15,8 @@ dependencies:
 
   cupertino_icons: ^1.0.6
 
+  # svg
+  flutter_svg: ^2.1.0
   # text field with suggestions
   flutter_typeahead: ^5.2.0
   # fuzzy search

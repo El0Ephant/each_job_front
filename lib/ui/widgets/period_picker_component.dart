@@ -1,5 +1,6 @@
 import 'package:each_job/ui/widgets/period_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PeriodPickerComponent extends StatefulWidget {
   const PeriodPickerComponent({super.key, this.onChanged});
@@ -41,7 +42,7 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
   }
 
   DateTime _lastDayOfMonth(DateTime date) {
-    return date.copyWith(month: date.month+1, day: 0);
+    return date.copyWith(month: date.month + 1, day: 0);
   }
 
   @override
@@ -79,19 +80,51 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
         ),
         SizedBox(
           height: 50,
-          child: PageView.builder(
-              itemCount: 3,
-              controller: controller,
-              itemBuilder: (_, i) {
-                return Center(
-                    child: Text(
-                  "${i + 2023}",
-                  style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ));
-              }),
+          child: Row(
+            children: [
+              IconButton(
+                icon: SvgPicture.asset(
+                  'assets/img/left_arrow.svg',
+                  height: 24,
+                ),
+                onPressed: () {
+                  controller.previousPage(
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.bounceIn,
+                  );
+                },
+              ),
+              Expanded(
+                child: PageView.builder(
+                  itemCount: 3,
+                  controller: controller,
+                  itemBuilder: (_, i) {
+                    return Center(
+                      child: Text(
+                        "${i + 2023}",
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              IconButton(
+                icon: SvgPicture.asset(
+                  'assets/img/right_arrow.svg',
+                  height: 24,
+                ),
+                onPressed: () {
+                  controller.nextPage(
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.bounceIn,
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         PeriodPicker(
           period: isMonth ? Period.month : Period.quarter,
@@ -136,7 +169,8 @@ class _PeriodPickerComponentState extends State<PeriodPickerComponent> {
     );
   }
 
-  static Future<({DateTime end, DateTime start})?> showAsDialog(BuildContext context) {
+  static Future<({DateTime end, DateTime start})?> showAsDialog(
+      BuildContext context) {
     return showDialog<({DateTime start, DateTime end})>(
       context: context,
       builder: (BuildContext context) {

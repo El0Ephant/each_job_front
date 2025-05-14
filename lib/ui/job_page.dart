@@ -40,8 +40,7 @@ class _JobPageState extends State<JobPage> {
       setState(() {
         _showFab = true;
       });
-    }
-    else if (_scrollController.offset < threshold  && _showFab) {
+    } else if (_scrollController.offset < threshold && _showFab) {
       setState(() {
         _showFab = false;
       });
@@ -67,20 +66,19 @@ class _JobPageState extends State<JobPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       floatingActionButton: _showFab
-      ? FloatingActionButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSizes.commonBorderRadius)
-        ),
-        onPressed: _scrollToTop,
-        backgroundColor: AppColors.backgroundColor,
-        elevation: 15,
-        child: const Icon(
-          color: AppColors.main1Color,
-          size: 30,
-          Icons.keyboard_arrow_up
-        ),
-      )
-      : null,
+          ? FloatingActionButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(AppSizes.commonBorderRadius)),
+              onPressed: _scrollToTop,
+              backgroundColor: AppColors.backgroundColor,
+              elevation: 15,
+              child: const Icon(
+                  color: AppColors.main1Color,
+                  size: 30,
+                  Icons.keyboard_arrow_up),
+            )
+          : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: SafeArea(
         child: GestureDetector(
@@ -162,9 +160,7 @@ class _JobPageState extends State<JobPage> {
                       return Column(
                         children: [
                           ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              maxWidth: 1000
-                            ),
+                            constraints: const BoxConstraints(maxWidth: 1000),
                             child: Column(
                               children: [
                                 const SizedBox(
@@ -175,9 +171,9 @@ class _JobPageState extends State<JobPage> {
                                   upper: salaryStatistics.upperSalary!,
                                   median: salaryStatistics.medianSalary!,
                                   oftenSalariesBottom:
-                                  salaryStatistics.oftenSalariesBottom!,
+                                      salaryStatistics.oftenSalariesBottom!,
                                   oftenSalariesUpper:
-                                  salaryStatistics.oftenSalariesUpper!,
+                                      salaryStatistics.oftenSalariesUpper!,
                                 ),
                                 const SizedBox(
                                   height: AppSizes.outerIndent,
